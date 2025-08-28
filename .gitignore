@@ -27,6 +27,8 @@
 *.smod
 
 # Compiled Static libraries
+build/
+build/*
 *.lai
 *.la
 *.a
