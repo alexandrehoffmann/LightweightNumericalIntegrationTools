@@ -1,0 +1,45 @@
+#ifndef LNIT_GAUSS_LEGENDRE_ADAPTIVE_QUADRATURE_IMPL_HPP
+#define LNIT_GAUSS_LEGENDRE_ADAPTIVE_QUADRATURE_IMPL_HPP
+
+#include <LNIT/AdaptiveQuadratures/GaussLegendreAdaptiveQuadrature.hpp>
+
+#include <LNIT/misc/ArrayView.hpp>
+
+namespace LNIT
+{
+
+//// explicit template instanciations ////
+
+extern template class GaussLegendreAdaptiveQuadrature<double, double>;
+extern template class GaussLegendreAdaptiveQuadrature<double, long double>;
+
+extern template class GaussLegendreAdaptiveQuadrature<long double, long double>;
+
+//// method implementations ////
+
+template<typename T, typename TT> template<class Function>
+auto GaussLegendreAdaptiveQuadrature<T,TT>::estimateIntegral_impl(const Function& f, const Scalar xmin, const Scalar xmax) -> std::pair<LongScalar, LongScalar>
+{
+	for (Size i=0; i!=s_xi.size(); ++i)
+	{
+		const Scalar x = xmin + (xmax - xmin)*s_xi[i];
+		m_fx15[i] = f(x);
+	}
+	
+	const misc::ArrayView fx14(m_fx15, s_15To14);
+	const misc::ArrayView fx06(m_fx15, s_15To06);
+	
+	const LongScalar I15 = (xmax - xmin)*std::inner_product(s_wi15.cbegin(), s_wi15.cend(), m_fx15.cbegin(), LongScalar(0));
+	const LongScalar I14 = (xmax - xmin)*std::inner_product(s_wi14.cbegin(), s_wi14.cend(),   fx14.cbegin(), LongScalar(0));
+	const LongScalar I06 = (xmax - xmin)*std::inner_product(s_wi06.cbegin(), s_wi06.cend(),   fx06.cbegin(), LongScalar(0));
+
+    const LongScalar err1 = std::abs(I15 - I14);
+	const LongScalar err2 = std::abs(I15 - I06);
+
+    return std::make_pair(I15, err2 == 0 ? LongScalar(0) : err2*(err1 / err2)*(err1 / err2));
+}
+
+} // namespace LNIT
+
+#endif // LNIT_GAUSS_LEGENDRE_ADAPTIVE_QUADRATURE_IMPL_HPP
+
