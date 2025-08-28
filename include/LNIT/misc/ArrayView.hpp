@@ -41,22 +41,22 @@ public:
 	ArrayView(Values& values, Idxs& idxs) : m_values(values), m_idxs(idxs) {}
 	
 	Iterator begin() { return Iterator(m_values.begin(), m_idxs.begin()); }
-    Iterator end()   { return Iterator(m_values.begin(), m_idxs.end()); }
+	Iterator end()   { return Iterator(m_values.begin(), m_idxs.end()); }
 
-    const_Iterator begin() const { return const_Iterator(m_values.begin(), m_idxs.begin()); }
-    const_Iterator end()   const { return const_Iterator(m_values.begin(), m_idxs.end()); }
+	const_Iterator begin() const { return const_Iterator(m_values.begin(), m_idxs.begin()); }
+	const_Iterator end()   const { return const_Iterator(m_values.begin(), m_idxs.end()); }
 
-    const_Iterator cbegin() const { return const_Iterator(m_values.begin(), m_idxs.begin()); }
-    const_Iterator cend()   const { return const_Iterator(m_values.begin(), m_idxs.end()); }
+	const_Iterator cbegin() const { return const_Iterator(m_values.begin(), m_idxs.begin()); }
+	const_Iterator cend()   const { return const_Iterator(m_values.begin(), m_idxs.end()); }
 
 	ReverseIterator rbegin() { return ReverseIterator(m_values.begin(), m_idxs.rbegin()); }
-    ReverseIterator rend()   { return ReverseIterator(m_values.begin(), m_idxs.rend()); }
+	ReverseIterator rend()   { return ReverseIterator(m_values.begin(), m_idxs.rend()); }
 
-    const_ReverseIterator rbegin() const { return const_ReverseIterator(m_values.begin(), m_idxs.crbegin()); }
-    const_ReverseIterator rend()   const { return const_ReverseIterator(m_values.begin(), m_idxs.crend()); }
+	const_ReverseIterator rbegin() const { return const_ReverseIterator(m_values.begin(), m_idxs.crbegin()); }
+	const_ReverseIterator rend()   const { return const_ReverseIterator(m_values.begin(), m_idxs.crend()); }
 
-    const_ReverseIterator crbegin() const { return const_ReverseIterator(m_values.begin(), m_idxs.crbegin()); }
-    const_ReverseIterator crend()   const { return const_ReverseIterator(m_values.begin(), m_idxs.crend()); }
+	const_ReverseIterator crbegin() const { return const_ReverseIterator(m_values.begin(), m_idxs.crbegin()); }
+	const_ReverseIterator crend()   const { return const_ReverseIterator(m_values.begin(), m_idxs.crend()); }
 private:
 	Values& m_values;
 	Idxs&   m_idxs;

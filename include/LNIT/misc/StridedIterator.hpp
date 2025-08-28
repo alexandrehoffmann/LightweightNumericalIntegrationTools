@@ -21,7 +21,7 @@ namespace misc
 template<class Iterator, typename Stride>
 class StridedIterator
 {
-    using iterator_category = std::input_iterator_tag;
+    using iterator_category = std::bidirectional_iterator_tag;
     using difference_type   = typename std::iterator_traits<Iterator>::difference_type;
     using value_type        = typename std::iterator_traits<Iterator>::value_type;
     using pointer           = typename std::iterator_traits<Iterator>::pointer;
@@ -32,11 +32,11 @@ public:
     reference operator*()  const { return *m_firstValue; } 
 	pointer   operator->()       { return std::addressof(*m_firstValue); }
 
-    /// @brief Prefix increment.
 	StridedIterator& operator++() { m_firstValue += m_stride; return *this; }
+	StridedIterator& operator--() { m_firstValue -= m_stride; return *this; }
 
-	/// @brief Prefix increment.
 	StridedIterator operator++(int) { StridedIterator tmp = *this; ++(*this); return tmp; }
+	StridedIterator operator--(int) { StridedIterator tmp = *this; --(*this); return tmp; }
 
 	friend bool operator== (const StridedIterator& a, const StridedIterator& b) { return a.m_firstValue == b.m_firstValue; }
 	friend bool operator!= (const StridedIterator& a, const StridedIterator& b) { return a.m_firstValue != b.m_firstValue; }  
