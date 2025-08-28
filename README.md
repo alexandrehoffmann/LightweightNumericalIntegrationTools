@@ -1,4 +1,4 @@
-<img width="640" height="384" alt="image" src="https://github.com/user-attachments/assets/976e0a40-2f7d-4968-9851-6783fbf7f980" /># Lightweight Numerical Integration Tools (LNIT)
+Lightweight Numerical Integration Tools (LNIT)
 Some basic tools for numrrical integration
 
 # Integration over infinie/semi-infinite domain
@@ -32,4 +32,6 @@ As for now, the Gauss-Hermite quadrature is only implemented with 66 nodes.
 
 Since both quadratures integrate over \f$ \mathbb{R} \f$ with the same number of nodes, we could assume both are equaly accurate.
 We compare how both methods integrate the first 40 moments of a Gaussian distribution (\f$\sigma = 1\f$ and \f$\mu = \frac{1}{2}\f$). 
-We show, in figure X, the relative error committed by both Gauss-Laguerre and Gauss-Hermite quadratures and observe that Gauss-Hermite is much more accurate. 
+We show, the relative error committed by both Gauss-Laguerre and Gauss-Hermite quadratures and observe that Gauss-Hermite is much more accurate. 
+
+<img width="640" height="384" alt="image" src="https://github.com/user-attachments/assets/bae97298-658b-4f70-8652-b9ffb89564e5" />
