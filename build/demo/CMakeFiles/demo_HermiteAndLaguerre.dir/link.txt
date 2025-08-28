@@ -1,0 +1,1 @@
+/usr/bin/clang++ -O3 -DNDEBUG CMakeFiles/demo_HermiteAndLaguerre.dir/demo_HermiteAndLaguerre.cpp.o -o demo_HermiteAndLaguerre  -Wl,-rpath,/home/alex/miniforge3/lib ../libLNIT.a /home/alex/miniforge3/lib/libfmt.so.11.1.4 

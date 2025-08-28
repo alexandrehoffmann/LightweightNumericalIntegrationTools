@@ -58,7 +58,7 @@ auto AdaptiveQuadratureBase<Derived>::integrate(const Function& f, const Scalar 
 
         // we find the interval over which the integral is the least accurate
 		const const_Iterator maxErrIt = std::max_element(m_subIntergralsErr.cbegin(), m_subIntergralsErr.cend());
-		const Size maxErrIdx = std::distance(m_subIntergralsErr.cbegin(), maxErrIt);
+		const Size maxErrIdx = Size(std::distance(m_subIntergralsErr.cbegin(), maxErrIt));
         // we split it in two
 		const auto [a, b] = m_intervals[maxErrIdx];
 		const Scalar midPoint = (a + b) / 2.;
@@ -99,7 +99,7 @@ auto AdaptiveQuadratureBase<Derived>::integrateRightInfinite(const Function& f, 
 	
 	GaussLaguerreQuadrature<Scalar,LongScalar> gLaguerreQuad;
 	
-	if (std::abs(f(NumTraits::infinity()) > NumTraits::epsilon()))                { return NumTraits::quiet_NaN(); }	
+	if (std::abs(f(NumTraits::infinity())) > NumTraits::epsilon())                { return NumTraits::quiet_NaN(); }	
 	if (std::abs(gLaguerreQuad.integrateRightInfinite(f)) < NumTraits::epsilon()) { return integrate(f, xmin, 0);  }
 	
 	Scalar xmax = 1;
@@ -117,8 +117,8 @@ auto AdaptiveQuadratureBase<Derived>::integrate(const Function& f) -> Scalar
 	
 	GaussLaguerreQuadrature<Scalar,LongScalar> gLaguerreQuad;
 	
-	if (std::abs(f(-NumTraits::infinity()) > NumTraits::epsilon()))              { return NumTraits::quiet_NaN(); }	
-	if (std::abs(f( NumTraits::infinity()) > NumTraits::epsilon()))              { return NumTraits::quiet_NaN(); }	
+	if (std::abs(f(-NumTraits::infinity())) > NumTraits::epsilon())              { return NumTraits::quiet_NaN(); }	
+	if (std::abs(f( NumTraits::infinity())) > NumTraits::epsilon())              { return NumTraits::quiet_NaN(); }	
 	
 	if (std::abs(gLaguerreQuad.integrateLeftInfinite(f)) < NumTraits::epsilon()) 
 	{

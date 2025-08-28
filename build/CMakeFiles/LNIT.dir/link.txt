@@ -1,0 +1,2 @@
+/usr/bin/ar qc libLNIT.a CMakeFiles/LNIT.dir/src/LNIT/GaussLaguerreQuadrature.cpp.o CMakeFiles/LNIT.dir/src/LNIT/GaussHermiteQuadrature.cpp.o CMakeFiles/LNIT.dir/src/LNIT/AdaptiveQuadratures/ClensawCurtisAdaptiveQuadrature.cpp.o CMakeFiles/LNIT.dir/src/LNIT/AdaptiveQuadratures/GaussLegendreAdaptiveQuadrature.cpp.o
+/usr/bin/ranlib libLNIT.a

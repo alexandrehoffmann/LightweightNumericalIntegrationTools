@@ -1,7 +1,7 @@
-prefix=@CMAKE_INSTALL_PREFIX@
-includedir=${prefix}/@CMAKE_INSTALL_INCLUDEDIR@
+prefix=/usr/local
+includedir=${prefix}/include
 
 Name: LightweightNumericalIntegrationTools
 Description: Header-only numerical integration tools in C++
-Version: @PROJECT_VERSION@
+Version: 1.0.0
 Cflags: -I${includedir}

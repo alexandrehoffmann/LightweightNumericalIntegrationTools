@@ -1,0 +1,6 @@
+#NumericalIntegrator addapting quadrature over [-16, 16]
+#Iteration integral estimated_error tol
+0 8.4899e+00 8.8857e-01 8.4899e-10
+1 8.7813e+00 5.3689e-05 8.7813e-10
+2 8.7813e+00 4.6619e-07 8.7813e-10
+3 8.7813e+00 2.2507e-10 8.7813e-10

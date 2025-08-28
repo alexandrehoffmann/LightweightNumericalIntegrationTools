@@ -10,7 +10,7 @@ inline constexpr double normalDistribRawMoments(const double mu, const double si
 
 int main()
 {
-	using Scalar = long double;
+	using Scalar = double;
 	using Size   = unsigned int;
 	
     const Scalar mu = 0.5;
