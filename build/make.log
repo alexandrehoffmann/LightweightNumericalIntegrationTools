@@ -1,4 +1,0 @@
-[ 20%] Building CXX object CMakeFiles/LNIT.dir/src/LNIT/AdaptiveQuadratures/ClensawCurtisAdaptiveQuadrature.cpp.o
-[ 40%] Building CXX object CMakeFiles/LNIT.dir/src/LNIT/AdaptiveQuadratures/GaussLegendreAdaptiveQuadrature.cpp.o
-[ 60%] Linking CXX static library libLNIT.a
-[100%] Built target LNIT

@@ -1,7 +1,0 @@
-prefix=/usr/local
-includedir=${prefix}/include
-
-Name: LightweightNumericalIntegrationTools
-Description: Header-only numerical integration tools in C++
-Version: 1.0.0
-Cflags: -I${includedir}
