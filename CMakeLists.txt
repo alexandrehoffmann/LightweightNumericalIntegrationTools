@@ -79,6 +79,7 @@ set(LNIT_SRC
 	#
 	src/LNIT/AdaptiveQuadratures/ClensawCurtisAdaptiveQuadrature.cpp
 	src/LNIT/AdaptiveQuadratures/GaussLegendreAdaptiveQuadrature.cpp
+	src/LNIT/AdaptiveQuadratures/ClensawCurtisHybridAdaptiveQuadrature.cpp
 )
 
 add_library(LNIT STATIC ${LNIT_SRC})
