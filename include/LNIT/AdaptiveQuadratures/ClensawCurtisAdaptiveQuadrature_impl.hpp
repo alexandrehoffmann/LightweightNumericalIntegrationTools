@@ -20,11 +20,12 @@ extern template class ClensawCurtisAdaptiveQuadrature<long double, long double>;
 template<typename T, typename TT> template<class Function>
 auto ClensawCurtisAdaptiveQuadrature<T,TT>::estimateIntegral_impl(const Function& f, const Scalar xmin, const Scalar xmax) -> std::pair<LongScalar, LongScalar>
 {	
-    for (Size i=0; i!=s_xi.size(); ++i)
-    {
-        const Scalar x = 0.5*(s_xi[i]*(xmax - xmin) + (xmax + xmin));
-        m_fx33[i] = f(x);
-    }
+    const auto fx = s_xi | std::views::transform([&f, xmin, xmax](const Scalar xi) -> Scalar
+	{
+		const Scalar x = 0.5*(xi*(xmax - xmin) + (xmax + xmin));
+		return f(x); 
+	});
+	std::ranges::copy(fx, m_fx33.begin());
     
     const misc::StridedView fx17(m_fx33, 2);
     const misc::StridedView fx09(m_fx33, 4);

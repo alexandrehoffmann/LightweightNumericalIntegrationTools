@@ -20,11 +20,12 @@ extern template class GaussLegendreAdaptiveQuadrature<long double, long double>;
 template<typename T, typename TT> template<class Function>
 auto GaussLegendreAdaptiveQuadrature<T,TT>::estimateIntegral_impl(const Function& f, const Scalar xmin, const Scalar xmax) -> std::pair<LongScalar, LongScalar>
 {
-	for (Size i=0; i!=s_xi.size(); ++i)
+    const auto fx = s_xi | std::views::transform([&f, xmin, xmax](const Scalar xi) -> Scalar
 	{
-		const Scalar x = xmin + (xmax - xmin)*s_xi[i];
-		m_fx15[i] = f(x);
-	}
+		const Scalar x = xmin + (xmax - xmin)*xi;
+		return f(x); 
+	});
+	std::ranges::copy(fx, m_fx15.begin());
 	
 	const misc::ArrayView fx14(m_fx15, s_15To14);
 	const misc::ArrayView fx06(m_fx15, s_15To06);
