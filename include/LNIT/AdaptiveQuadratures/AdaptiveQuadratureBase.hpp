@@ -12,6 +12,25 @@ template<class Derived> class AdaptiveQuadratureBase;
 
 template<class Derived> struct AdaptiveQuadratureTraits;
 
+/**
+ * @class AdaptiveQuadratureBase
+ * @brief Base class for all addaptive quadratures classes (implements the Curiously Recurring Template Pattern (CRTP))
+ * @tparam Derived The derived quadrature implementation.
+ * 
+ * This class provides a generic framework for adaptive quadrature methods, a class of methods 
+ * that tries to addapt the quadrature point to the integrated function. 
+ * More precisely, an addaptive quadrature method tries to find an subdivision of the integration domain, 
+ * \f$[a,b] = \cup_{i=1} [x_{i}, x_{i+1}]\f$, such that the estimated integration error on each subdomains
+ * is bellow a given threshold. 
+ * 
+ * If the integration domain is infinite, the methods tries to find an interval \f$[x_\min, x_\max]\f$ such that
+ * \f$\int_{-\infty}^{x_\min} f(x)\,\mathrm{d}x \approx 0\f$ and \f$\int_{x_\max}^{+\infty} f(x)\,\mathrm{d}x \approx 0\f$
+ * using the Gauss-Laguerre quadrature to estimate the indefinite integrals. And then uses the addaptive quadrature method
+ * to compute \f$\int_{x_\min}^{x_\max} f(x)\,\mathrm{d}x \approx \int_{-\infty}^{+\infty} f(x)\,\mathrm{d}x\f$.
+ * 
+ * The Derived class must implement the function `estimateIntegral_impl` that returns both the value of the 
+ * integral iver a subdomain and the estimated error.
+ */
 template<class Derived>
 class AdaptiveQuadratureBase
 {

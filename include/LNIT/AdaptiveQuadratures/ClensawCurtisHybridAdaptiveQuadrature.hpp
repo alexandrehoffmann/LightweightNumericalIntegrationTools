@@ -18,6 +18,18 @@ struct AdaptiveQuadratureTraits< ClensawCurtisHybridAdaptiveQuadrature<T, TT> >
 	using LongScalar = TT;
 };
 
+/**
+ * @brief Adaptive quadrature using Clenshaw–Curtis rules and another quadrature for error estimation.
+ *
+ * This class implements adaptive quadrature using Clenshaw–Curtis (CC) rules with 13 nodes to evalutate the integral
+ * and a 11 nodes quadrature to estimate the error.
+ * More precisely, the 11 nodes quadrature is constructed by removing the leftmost, rightmost and mid-point CC node (-1, 1 and 0)
+ * 
+ * The error estimate is computed as \f$|I_{\text{CC}} - I_{11}|\f$ and is of order 11.
+ * 
+ * @tparam T Floating point type for integration (e.g., double).
+ * @tparam TT Higher precision type for accumulation (e.g., long double).
+ */
 template<typename T, typename TT=T>
 class ClensawCurtisHybridAdaptiveQuadrature : public AdaptiveQuadratureBase< ClensawCurtisHybridAdaptiveQuadrature<T,TT> >
 {
