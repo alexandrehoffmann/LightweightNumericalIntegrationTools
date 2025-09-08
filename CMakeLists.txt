@@ -40,8 +40,9 @@ if(NOT CMAKE_BUILD_TYPE AND NOT CMAKE_CONFIGURATION_TYPES)
 endif()
 
 # === Options ===
-option(LNIT_BUILD_DEMO  "Build demo executable" OFF)
-option(LNIT_BUILD_DOC   "Build Doxygen documentation" OFF)
+option(LNIT_BUILD_DEMO      "Build demo executable" OFF)
+option(LNIT_BUILD_BENCHMARK "Build benchmark executables" OFF)
+option(LNIT_BUILD_DOC       "Build Doxygen documentation" OFF)
 
 # === Dependencies ===
 find_package(fmt REQUIRED)
@@ -70,6 +71,11 @@ endif()
 # === Demo subdir ===
 if(LNIT_BUILD_DEMO)
     add_subdirectory(demo)
+endif()
+
+# === Benchmark subdir ===
+if(LNIT_BUILD_BENCHMARK)
+    add_subdirectory(benchmark)
 endif()
 
 # === Library Target ===

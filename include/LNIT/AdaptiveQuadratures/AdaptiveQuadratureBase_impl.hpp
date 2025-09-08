@@ -53,8 +53,8 @@ auto AdaptiveQuadratureBase<Derived>::integrate(const Function& f, const Scalar 
 
         if (m_out) { fmt::print(m_out, "{} {:10.4e} {:10.4e} {:10.4e}\n", m_it, I, err, std::abs(I)*m_tol); }
 
-        if (not std::isfinite(I)) { return I; }
-        if (err < I*m_tol)        { m_hasConverged = true; return I; }
+        if (not std::isfinite(I))    { return I; }
+        if (err < std::abs(I)*m_tol) { m_hasConverged = true; return I; }
 
         // we find the interval over which the integral is the least accurate
 		const const_Iterator maxErrIt = std::max_element(m_subIntergralsErr.cbegin(), m_subIntergralsErr.cend());
