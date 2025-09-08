@@ -23,6 +23,6 @@ ax.grid()
 ax.legend()
 
 fig.tight_layout()
-plt.savefig('perfs.pdf', bbox_inches='tight')
+plt.savefig('perfs.svg', bbox_inches='tight')
 plt.clf()
 plt.cla()

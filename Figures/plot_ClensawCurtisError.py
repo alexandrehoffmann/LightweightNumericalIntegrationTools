@@ -47,6 +47,6 @@ leg = axes[0, 0].legend(
 fig.tight_layout()
 fig.subplots_adjust(hspace=0.04, wspace=0.04)
 
-plt.savefig('ClensawCurtisError.pdf', bbox_inches='tight')
+plt.savefig('ClensawCurtisError.svg', bbox_inches='tight')
 plt.clf()
 plt.cla()
