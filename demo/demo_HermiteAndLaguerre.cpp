@@ -24,7 +24,7 @@ int main()
     LNIT::GaussHermiteQuadrature<Scalar>  quadHermite;
     LNIT::GaussLaguerreQuadrature<Scalar> quadLaguerre;
     
-	std::FILE* fout = stdout;
+	std::FILE* fout = std::fopen("hermite_and_laguerre.log", "w");
 	fmt::print(fout, "#Estimations of the moments of the normal distribution with mu = {} and sigma = {}\n", mu, sigma);
 	fmt::print(fout, "#order Hermite_estimated Laguerre_estimate analytical Hermite_absolute_error Laguerre_absolute_error Hermite_relative_error Laguerre_relative_error\n");
 
