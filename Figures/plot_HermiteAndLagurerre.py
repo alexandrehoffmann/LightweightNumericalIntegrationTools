@@ -23,6 +23,6 @@ ax.grid()
 ax.legend()
 
 fig.tight_layout()
-plt.savefig('HermiteAndLagurerre.pdf', bbox_inches='tight')
+plt.savefig('HermiteAndLagurerre.svg', bbox_inches='tight')
 plt.clf()
 plt.cla()
