@@ -25,14 +25,14 @@ auto ClensawCurtisAdaptiveQuadrature<T,TT>::estimateIntegral_impl(const Function
 		const Scalar x = 0.5*(xi*(xmax - xmin) + (xmax + xmin));
 		return f(x); 
 	});
-	std::ranges::copy(fx, m_fx33.begin());
+	std::ranges::copy(fx, std::begin(m_fx33));
     
     const misc::StridedView fx17(m_fx33, 2);
     const misc::StridedView fx09(m_fx33, 4);
 	
-    const LongScalar I33 = 0.5*(xmax - xmin)*std::inner_product(s_wi33.cbegin(), s_wi33.cend(), m_fx33.cbegin(), LongScalar(0));
-    const LongScalar I17 = 0.5*(xmax - xmin)*std::inner_product(s_wi17.cbegin(), s_wi17.cend(),   fx17.cbegin(), LongScalar(0));
-    const LongScalar I09 = 0.5*(xmax - xmin)*std::inner_product(s_wi09.cbegin(), s_wi09.cend(),   fx09.cbegin(), LongScalar(0));
+    const LongScalar I33 = 0.5*(xmax - xmin)*std::inner_product(std::cbegin(s_wi33), std::cend(s_wi33), std::cbegin(m_fx33), LongScalar(0));
+    const LongScalar I17 = 0.5*(xmax - xmin)*std::inner_product(std::cbegin(s_wi17), std::cend(s_wi17), std::cbegin(  fx17), LongScalar(0));
+    const LongScalar I09 = 0.5*(xmax - xmin)*std::inner_product(std::cbegin(s_wi09), std::cend(s_wi09), std::cbegin(  fx09), LongScalar(0));
 	
     const LongScalar err1 = std::abs(I33 - I17);
 	const LongScalar err2 = std::abs(I33 - I09);

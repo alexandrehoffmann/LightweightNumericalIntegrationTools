@@ -25,7 +25,7 @@ Scalar GaussHermiteQuadrature<Scalar, LongScalar>::integrate(const Function& f) 
 		return f(x); 
 	});
 
-	return Scalar(std::inner_product(s_wi.cbegin(), s_wi.cend(), fx.begin(), LongScalar(0)));	
+	return Scalar(std::inner_product(std::cbegin(s_wi), std::cend(s_wi), std::cbegin(fx), LongScalar(0)));	
 }
 
 } // namespace LNIT

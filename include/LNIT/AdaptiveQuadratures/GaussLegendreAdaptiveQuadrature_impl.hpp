@@ -25,14 +25,14 @@ auto GaussLegendreAdaptiveQuadrature<T,TT>::estimateIntegral_impl(const Function
 		const Scalar x = xmin + (xmax - xmin)*xi;
 		return f(x); 
 	});
-	std::ranges::copy(fx, m_fx15.begin());
+	std::ranges::copy(fx, std::begin(m_fx15));
 	
 	const misc::ArrayView fx14(m_fx15, s_15To14);
 	const misc::ArrayView fx06(m_fx15, s_15To06);
 	
-	const LongScalar I15 = (xmax - xmin)*std::inner_product(s_wi15.cbegin(), s_wi15.cend(), m_fx15.cbegin(), LongScalar(0));
-	const LongScalar I14 = (xmax - xmin)*std::inner_product(s_wi14.cbegin(), s_wi14.cend(),   fx14.cbegin(), LongScalar(0));
-	const LongScalar I06 = (xmax - xmin)*std::inner_product(s_wi06.cbegin(), s_wi06.cend(),   fx06.cbegin(), LongScalar(0));
+	const LongScalar I15 = (xmax - xmin)*std::inner_product(std::cbegin(s_wi15), std::cend(s_wi15), std::cbegin(m_fx15), LongScalar(0));
+	const LongScalar I14 = (xmax - xmin)*std::inner_product(std::cbegin(s_wi14), std::cend(s_wi14), std::cbegin(  fx14), LongScalar(0));
+	const LongScalar I06 = (xmax - xmin)*std::inner_product(std::cbegin(s_wi06), std::cend(s_wi06), std::cbegin(  fx06), LongScalar(0));
 
     const LongScalar err1 = std::abs(I15 - I14);
 	const LongScalar err2 = std::abs(I15 - I06);

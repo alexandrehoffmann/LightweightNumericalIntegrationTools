@@ -23,10 +23,10 @@ auto ClensawCurtisHybridAdaptiveQuadrature<T,TT>::estimateIntegral_impl(const Fu
 		const Scalar x = 0.5*(xi*(xmax - xmin) + (xmax + xmin));
 		return f(x); 
 	});
-	std::ranges::copy(fx, m_fx.begin());
+	std::ranges::copy(fx, std::begin(m_fx));
     
-    const LongScalar I1 = 0.5*(xmax - xmin)*std::inner_product(s_wi.cbegin(),          s_wi.cend(),          m_fx.cbegin(), LongScalar(0));
-    const LongScalar I2 = 0.5*(xmax - xmin)*std::inner_product(s_alternateWi.cbegin(), s_alternateWi.cend(), m_fx.cbegin(), LongScalar(0));
+    const LongScalar I1 = 0.5*(xmax - xmin)*std::inner_product(std::cbegin(s_wi),          std::cend(s_wi),          std::cbegin(m_fx), LongScalar(0));
+    const LongScalar I2 = 0.5*(xmax - xmin)*std::inner_product(std::cbegin(s_alternateWi), std::cend(s_alternateWi), std::cbegin(m_fx), LongScalar(0));
 	
     return std::make_pair(I1, std::abs(I1 - I2));
 }
