@@ -117,8 +117,8 @@ auto AdaptiveQuadratureBase<Derived>::integrate(const Function& f) -> Scalar
 	
 	GaussLaguerreQuadrature<Scalar,LongScalar> gLaguerreQuad;
 	
-	if (std::abs(f(-NumTraits::infinity())) > NumTraits::epsilon())              { return NumTraits::quiet_NaN(); }	
-	if (std::abs(f( NumTraits::infinity())) > NumTraits::epsilon())              { return NumTraits::quiet_NaN(); }	
+	if (std::abs(f(-NumTraits::infinity())) > NumTraits::epsilon()) { return NumTraits::quiet_NaN(); }	
+	if (std::abs(f( NumTraits::infinity())) > NumTraits::epsilon()) { return NumTraits::quiet_NaN(); }	
 	
 	if (std::abs(gLaguerreQuad.integrateLeftInfinite(f)) < NumTraits::epsilon()) 
 	{
@@ -132,6 +132,24 @@ auto AdaptiveQuadratureBase<Derived>::integrate(const Function& f) -> Scalar
 	}
 	
 	return integrateRightInfinite(f, xmin);
+}
+
+template<class Derived> template<class Function>
+auto AdaptiveQuadratureBase<Derived>::remapAndIntegrate(const Function& f) -> Scalar
+{
+	using NumTraits = std::numeric_limits<Scalar>;
+	
+	if (std::abs(f(-NumTraits::infinity())) > NumTraits::epsilon()) { return NumTraits::quiet_NaN(); }	
+	if (std::abs(f( NumTraits::infinity())) > NumTraits::epsilon()) { return NumTraits::quiet_NaN(); }	
+	
+	const auto fref = [&f](const Scalar t) -> Scalar
+	{
+		return (t != -1 and t != 1) 
+			? f(t / (1 - t*t))*(1 + t*t) / ((1 - t*t)*(1 - t*t))
+			: 0;	
+	};
+	
+	return integrate(fref, -1, 1);
 }
 
 } // namespace LNIT

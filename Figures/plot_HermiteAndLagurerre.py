@@ -9,7 +9,7 @@ import my_plot
 
 path = "../build/demo/"
 
-fig, ax = plt.subplots(1, 1, sharex=True, sharey=True, figsize=my_plot.get_figure_size(2*345, subplots=(1, 1)), dpi=600, layout='constrained')
+fig, ax = plt.subplots(1, 1, sharex=True, sharey=True, figsize=my_plot.get_figure_size(345, subplots=(1, 1)), dpi=600, layout='constrained')
 
 mom, herite_rel_err = gnuplot_utils.read_2d_curve(path + "hermite_and_laguerre.log", 6)
 mom, lagurre_rel_err = gnuplot_utils.read_2d_curve(path + "hermite_and_laguerre.log", 7)
@@ -23,6 +23,7 @@ ax.grid()
 ax.legend()
 
 fig.tight_layout()
-plt.savefig('HermiteAndLagurerre.svg', bbox_inches='tight')
+# ~ plt.savefig('HermiteAndLagurerre.svg', bbox_inches='tight')
+plt.savefig('HermiteAndLagurerre.pdf', bbox_inches='tight')
 plt.clf()
 plt.cla()

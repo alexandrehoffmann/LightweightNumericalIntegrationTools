@@ -1,10 +1,29 @@
 #include <LNIT/AdaptiveQuadratures.hpp>
 
-inline constexpr double normalDistribRawMoments(const double mu, const double sigma, const unsigned int k)
-{
-    if (k == 0) { return 1.; }
-    if (k == 1) { return mu; }
-    return mu*normalDistribRawMoments(mu, sigma, k-1) + (k-1)*sigma*sigma*normalDistribRawMoments(mu, sigma, k-2);
+#include <map>
+
+using ArgsTuple = std::tuple<double, double, unsigned int>;
+
+std::map<ArgsTuple, double> memory_normalDistribRawMoments{};
+
+inline double normalDistribRawMoments(const double mu, const double sigma, const unsigned int k)
+{	
+	using Iterator = typename std::map<ArgsTuple, double>::const_iterator;
+	const ArgsTuple argsTuple = std::make_tuple(mu, sigma, k);
+	const Iterator  resIt  = memory_normalDistribRawMoments.find(argsTuple);
+	
+	if (resIt == memory_normalDistribRawMoments.cend())
+	{
+		if (k == 0) { return 1.; }
+		if (k == 1) { return mu; }
+		const double res = mu*normalDistribRawMoments(mu, sigma, k-1) + (k-1)*sigma*sigma*normalDistribRawMoments(mu, sigma, k-2);
+		memory_normalDistribRawMoments[argsTuple] = res;
+		return res;
+	}
+	else
+	{
+		return resIt->second;
+	}
 }
 
 int main()
@@ -29,7 +48,7 @@ int main()
 		fmt::print(fout, "#Estimations of the moments of the normal distribution with mu = {} and sigma = {}\n", mu, sigma);
 		fmt::print(fout, "#order has_converged n_iterations estimated analytical absolute_error relative_error\n");
 	
-		for (Size k=0; k!=41; ++k)
+		for (Size k=0; k!=101; ++k)
 		{		
 			//~ std::FILE* quadOut = std::fopen(fmt::format("Gauss_Legendre_for_moment_{}.log", k).c_str(), "w");
 			//~ quad.setOutput(quadOut);
@@ -39,6 +58,7 @@ int main()
 				return f(x)*std::pow(x, k);
 			};
 			const Scalar estimated  = quad.integrate(mf_k);
+			//~ const Scalar estimated  = quad.remapAndIntegrate(mf_k);
 			const Scalar analytical = normalDistribRawMoments(mu, sigma, k);
 			fmt::print(fout, "{} {} {} {} {} {} {}\n", k, quad.hasConverged(), quad.getNits(), estimated, analytical, std::abs(estimated - analytical), std::abs(estimated - analytical) / analytical);
 			std::fflush(fout);

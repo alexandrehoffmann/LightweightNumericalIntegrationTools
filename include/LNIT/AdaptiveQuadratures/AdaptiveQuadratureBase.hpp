@@ -123,6 +123,21 @@ public:
      */
 	template<class Function> Scalar integrate(const Function& f);
 	
+	/**
+	 * @brief Perform adaptive quadrature on (-inf, inf) using a coordinate-remapping technique.
+	 * 
+	 * Uses the following coordinate transformation:
+	 * \f[
+	 *  x : t \to \frac{t}{1 - t^2}.
+	 * \f]
+	 * 
+	 * So that the integral can be computed as:
+	 * \f[
+	 * \int_{-1}^{1} f(x(t))\frac{1 + t^2}{(1 - t^2)^2} dt.
+	 * \f]
+	 */
+	template<class Function> Scalar remapAndIntegrate(const Function& f);
+	
     Size   getMaxIt() const { return m_maxIt; } ///<  @brief Maximum iterations allowed.
 	Size   getNits()  const { return m_it; }    ///<  @brief Number of iterations performed.
 	Scalar getTol()   const { return m_tol; }   ///<  @brief Tolerance of the quadrature.
