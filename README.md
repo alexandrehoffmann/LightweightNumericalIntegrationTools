@@ -34,5 +34,7 @@ Since both quadratures integrate over \f$ \mathbb{R} \f$ with the same number of
 We compare how both methods integrate the first 40 moments of a Gaussian distribution (\f$\sigma = 1\f$ and \f$\mu = \frac{1}{2}\f$). 
 We show, the relative error committed by both Gauss-Laguerre and Gauss-Hermite quadratures and observe that Gauss-Hermite is much more accurate. 
 
-![Result](Figures/HermiteAndLagurerre.svg)
+<p align="center">
+  <img src="Figures/HermiteAndLagurerre.svg" alt="Result" width="70%">
+</p>
 
