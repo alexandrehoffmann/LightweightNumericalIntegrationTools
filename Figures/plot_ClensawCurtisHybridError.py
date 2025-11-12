@@ -34,7 +34,7 @@ for ax_nd_id, ax in np.ndenumerate(axes):
 fig.supxlabel("moment order")
 fig.legend(handles=[lRel_err, lTreshold], labels=["Clensaw Curtis Hybrid relative error", "treshold"], loc='upper center', bbox_to_anchor=(0.5, 1.125), ncol=2)
 
-# ~ plt.savefig('ClensawCurtisHybridError.svg', bbox_inches='tight')
-plt.savefig('ClensawCurtisHybridError.pdf', bbox_inches='tight')
+plt.savefig('ClensawCurtisHybridError.svg', bbox_inches='tight')
+# ~ plt.savefig('ClensawCurtisHybridError.pdf', bbox_inches='tight')
 plt.clf()
 plt.cla()

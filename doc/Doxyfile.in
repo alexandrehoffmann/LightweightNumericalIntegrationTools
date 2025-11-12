@@ -1,9 +1,11 @@
 PROJECT_NAME           = "@DOXYGEN_PROJECT_NAME@"
-INPUT                  = "@DOXYGEN_INPUT_DIR@" ../README.md
+INPUT                  = "@DOXYGEN_INPUT_DIR@" ../README.md ../Figures/
 OUTPUT_DIRECTORY       = "@DOXYGEN_OUTPUT_DIR@"
 USE_MDFILE_AS_MAINPAGE = README.md
+IMAGE_PATH             = ../Figures
 											
 EXCLUDE_PATTERNS       = *_impl.hpp
+MARKDOWN_SUPPORT       = YES
 USE_MATHJAX            = YES
 RECURSIVE              = YES
 GENERATE_LATEX         = NO

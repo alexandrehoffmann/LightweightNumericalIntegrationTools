@@ -14,8 +14,8 @@ fig, ax = plt.subplots(1, 1, sharex=True, sharey=True, figsize=my_plot.get_figur
 mom, herite_rel_err = gnuplot_utils.read_2d_curve(path + "hermite_and_laguerre.log", 6)
 mom, lagurre_rel_err = gnuplot_utils.read_2d_curve(path + "hermite_and_laguerre.log", 7)
 
-ax.plot(mom, herite_rel_err, label="Guass-Hermite")
-ax.plot(mom, lagurre_rel_err, label="Guass-Laguerre")
+ax.plot(mom[0:40], herite_rel_err[0:40], label="Guass-Hermite")
+ax.plot(mom[0:40], lagurre_rel_err[0:40], label="Guass-Laguerre")
 
 ax.set_xlabel("moment order")
 ax.set_ylabel("relative error")
@@ -23,7 +23,7 @@ ax.grid()
 ax.legend()
 
 fig.tight_layout()
-# ~ plt.savefig('HermiteAndLagurerre.svg', bbox_inches='tight')
-plt.savefig('HermiteAndLagurerre.pdf', bbox_inches='tight')
+plt.savefig('HermiteAndLagurerre.svg', bbox_inches='tight')
+# ~ plt.savefig('HermiteAndLagurerre.pdf', bbox_inches='tight')
 plt.clf()
 plt.cla()

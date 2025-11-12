@@ -28,7 +28,7 @@ template<class Derived> struct AdaptiveQuadratureTraits;
  * using the Gauss-Laguerre quadrature to estimate the indefinite integrals. And then uses the addaptive quadrature method
  * to compute \f$\int_{x_\min}^{x_\max} f(x)\,\mathrm{d}x \approx \int_{-\infty}^{+\infty} f(x)\,\mathrm{d}x\f$.
  * 
- * The Derived class must implement the function `estimateIntegral_impl` that returns both the value of the 
+ * The Derived class must implement the function `estimateIntegralImpl` that returns both the value of the 
  * integral iver a subdomain and the estimated error.
  */
 template<class Derived>
@@ -41,8 +41,8 @@ public:
 	using LongScalar = typename DerivedTraits::LongScalar; ///<  @brief Higher precision type for accumulation (e.g., long double).
 	using Interval = std::pair<Scalar, Scalar>;            ///<  @brief Type representing an integration interval.
 	
-	      Derived& derived_cast()       { return static_cast<      Derived&>(*this); }
-	const Derived& derived_cast() const { return static_cast<const Derived&>(*this); }
+	      Derived& derived()       { return static_cast<      Derived&>(*this); }
+	const Derived& derived() const { return static_cast<const Derived&>(*this); }
 	
 	/**
 	 * @brief Construct quadrature object.
@@ -58,11 +58,11 @@ public:
 	 * @param xmin Lower bound.
 	 * @param xmax Upper bound.
 	 * 
-	 * Delegates to Derived::estimateIntegral_impl.
+	 * Delegates to Derived::estimateIntegralImpl.
 	 * 
 	 * @return Pair (integral, estimated error).
 	 */
-	template<class Function> std::pair<LongScalar, LongScalar> estimateIntegral(const Function& f, const Scalar xmin, const Scalar xmax) { return derived_cast().estimateIntegral_impl(f, xmin, xmax); }
+	template<class Function> std::pair<LongScalar, LongScalar> estimateIntegral(const Function& f, const Scalar xmin, const Scalar xmax) { return derived().estimateIntegralImpl(f, xmin, xmax); }
 
 	/**
 	 * @brief Perform adaptive quadrature on [xmin, xmax].

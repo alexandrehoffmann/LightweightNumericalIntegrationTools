@@ -14,7 +14,10 @@ FetchContent_MakeAvailable(benchmark)
 find_package(PkgConfig REQUIRED)
 
 add_executable(benchmark_addaptiveQuadratures  benchmark_addaptiveQuadratures.cpp)
+add_executable(benchmark_LevermoreLikePDF      benchmark_LevermoreLikePDF.cpp)
 
 target_include_directories(benchmark_addaptiveQuadratures PRIVATE ${PROJECT_SOURCE_DIR}/include)
+target_include_directories(benchmark_LevermoreLikePDF     PRIVATE ${PROJECT_SOURCE_DIR}/include)
 
 target_link_libraries(benchmark_addaptiveQuadratures PRIVATE LNIT benchmark::benchmark)
+target_link_libraries(benchmark_LevermoreLikePDF     PRIVATE LNIT benchmark::benchmark)

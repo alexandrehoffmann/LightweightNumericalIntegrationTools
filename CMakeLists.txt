@@ -41,6 +41,7 @@ endif()
 
 # === Options ===
 option(LNIT_BUILD_DEMO      "Build demo executable" OFF)
+option(LNIT_NATIVE_OPT      "Enable CPU-specific optimizations (-march=native -mtune=native)" OFF)
 option(LNIT_BUILD_BENCHMARK "Build benchmark executables" OFF)
 option(LNIT_BUILD_DOC       "Build Doxygen documentation" OFF)
 
@@ -52,7 +53,7 @@ if(LNIT_BUILD_DOC)
     find_package(Doxygen REQUIRED dot)
 
     # Set default values for Doxyfile
-    set(DOXYGEN_PROJECT_NAME "Lightweight Numerical Optimization Tools (LNIT)")
+    set(DOXYGEN_PROJECT_NAME "Lightweight Numerical Integration Tools (LNIT)")
     set(DOXYGEN_INPUT_DIR "${CMAKE_CURRENT_SOURCE_DIR}/include")
     set(DOXYGEN_OUTPUT_DIR "${CMAKE_CURRENT_BINARY_DIR}/doc")
 
@@ -101,6 +102,11 @@ target_link_libraries(LNIT PUBLIC fmt::fmt)
 target_compile_options(LNIT PUBLIC
     $<$<COMPILE_LANGUAGE:CXX>:${LNIT_COMPILE_WARNINGS}>
 )
+
+if(LNIT_NATIVE_OPT)
+    message(STATUS "Enabling native CPU optimizations (-march=native -mtune=native)")
+    target_compile_options(LNIT PRIVATE -march=native -mtune=native)
+endif()
 
 # === Installation ===
 include(GNUInstallDirs)

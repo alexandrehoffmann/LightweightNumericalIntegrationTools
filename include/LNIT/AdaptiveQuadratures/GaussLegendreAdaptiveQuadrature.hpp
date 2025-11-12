@@ -35,7 +35,7 @@ public:
 	 * @param xmax Upper bound.
 	 * @return Pair (integral, estimated error).
 	 */
-	template<class Function> std::pair<LongScalar, LongScalar> estimateIntegral_impl(const Function& f, const Scalar xmin, const Scalar xmax);
+	template<class Function> std::pair<LongScalar, LongScalar> estimateIntegralImpl(const Function& f, const Scalar xmin, const Scalar xmax);
 private:
 	std::array<LongScalar, 15> m_fx15;
 	
