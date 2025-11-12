@@ -3,6 +3,8 @@ INPUT                  = "@DOXYGEN_INPUT_DIR@" ../README.md ../Figures/
 OUTPUT_DIRECTORY       = "@DOXYGEN_OUTPUT_DIR@"
 USE_MDFILE_AS_MAINPAGE = README.md
 IMAGE_PATH             = ../Figures
+MATHJAX_RELPATH        = https://cdn.jsdelivr.net/npm/mathjax@2
+MATHJAX_EXTENSIONS     = TeX/AMSmath.js;TeX/AMSsymbols.js;TeX/noUndefined.js
 											
 EXCLUDE_PATTERNS       = *_impl.hpp
 MARKDOWN_SUPPORT       = YES

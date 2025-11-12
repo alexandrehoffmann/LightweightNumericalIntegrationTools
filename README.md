@@ -34,7 +34,7 @@ Since both quadratures integrate over $\mathbb{R}$ with the same number of nodes
 We compare how both methods integrate the first 40 moments of a Gaussian distribution ($\sigma = 1$ and $\mu = \frac{1}{2}$). 
 We show, the relative error committed by both Gauss-Laguerre and Gauss-Hermite quadratures and observe that Gauss-Hermite is much more accurate. 
 
-\image html Figures/HermiteAndLagurerre.svg width=50% center
+![](Figures/HermiteAndLagurerre.svg)
 
 This is to be expected as the Gauss-Hermite quadrature is exact for integral of the following kind:
 $\int_{\mathbb{R}} \exp(-x^2)p(x)\mathrm{d}x$, where $p$ is a polynomial of order 66.
@@ -86,17 +86,19 @@ First, we compare the accuracy of the three quadratures introduced in the above 
 We compute the first 100 moments of a Gaussian distribution ($\sigma = 1$ and $\mu = \frac{1}{2}$) for various tolerences $10^{-4}$, $10^{-6}$, $10^{-8}$, $10^{-10}$, $10^{-12}$ and $10^{-14}$. 
 and display the actual relative error commited by the quadrature and the prescribed thershold.
 
-\image html Figures/GaussLegendreError.svg width=50% center
-\image html Figures/ClensawCurtisError.svg width=50% center
-\image html Figures/ClensawCurtisHybridError.svg width=50% center
+![](Figures/GaussLegendreError.svg)
+
+![](Figures/ClensawCurtisError.svg)
+
+![](Figures/ClensawCurtisHybridError.svg)
 
 We see that the "Hybrid" Clensaw-Curstis (i.e. 33 nodes Clensaw-Curtis with a 30 nodes non-Gaussian quadrature) is the most reliable quadrature as the relative error rarelly grows larger than the prescibed treshold.
 This means the "Hybrid" Clensaw-Curstis has the most pesimistic error estimate.
 
 We now compare the speed of the three methods on the same example with a treshold of $10^{-11}$.
-<p align="center">
-  <img src="Figures/perfs.svg" alt="Result" width="70%">
-</p>
+
+![](Figures/perfs.svg)
+
 We see that the Gauss-Legrendre addaptive quadrature is the fastest. This is to be expected as it has roughly the same accuracy as the 33 nodes Clensaw-Curstis with less Nodes.
 The "Hybrid" Clensaw-Curtis is the slower method. This is to be expected because a) it uses more nodes 33 + 30 vs 33+17+9 vs 15+14+6 and b) its more pesimistic error estimate pushes it to subdivide the integration domain more.
 
@@ -106,5 +108,7 @@ If we need speed, the Gauss-Legrendre addaptive quadrature is the best. If we wa
 
 We now compare the two approaches to integrate over an infinite interval. 
 We compute the first 100 moments of a Gaussian distribution ($\sigma = 1$ and $\mu = \frac{1}{2}$) with the "Hybrid" Clensaw-Curtis as it is the more accurate.
-\image html Figures/perfs_infinite.svg width=50% center
+
+![](Figures/perfs_infinite.svg)
+
 For the lower modes, the second appraoch is the fastest. Conversly, for the higer modes, the "remap" approach is the fastest.
