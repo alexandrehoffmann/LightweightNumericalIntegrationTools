@@ -57,8 +57,8 @@ int main()
 			{
 				return f(x)*std::pow(x, k);
 			};
-			const Scalar estimated  = quad.integrate(mf_k);
-			//~ const Scalar estimated  = quad.remapAndIntegrate(mf_k);
+			//~ const Scalar estimated  = quad.integrate(mf_k);
+			const Scalar estimated  = quad.remapAndIntegrate(mf_k);
 			const Scalar analytical = normalDistribRawMoments(mu, sigma, k);
 			fmt::print(fout, "{} {} {} {} {} {} {}\n", k, quad.hasConverged(), quad.getNits(), estimated, analytical, std::abs(estimated - analytical), std::abs(estimated - analytical) / analytical);
 			std::fflush(fout);

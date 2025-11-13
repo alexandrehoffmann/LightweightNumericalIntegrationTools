@@ -71,9 +71,9 @@ static void benchmark_ClensawCurtisHybridAdaptiveQuadrature(benchmark::State& st
     state.counters.insert({"Nit", quad.getNits()});
 }
 
-BENCHMARK(benchmark_GaussLegendreAdaptiveQuadrature)->DenseRange(0, 100, 2);
-BENCHMARK(benchmark_ClensawCurtisAdaptiveQuadrature)->DenseRange(0, 100, 2);
-BENCHMARK(benchmark_ClensawCurtisHybridAdaptiveQuadrature)->DenseRange(0, 100, 2);
+BENCHMARK(benchmark_GaussLegendreAdaptiveQuadrature)->DenseRange(0, 80, 2);
+BENCHMARK(benchmark_ClensawCurtisAdaptiveQuadrature)->DenseRange(0, 80, 2);
+BENCHMARK(benchmark_ClensawCurtisHybridAdaptiveQuadrature)->DenseRange(0, 80, 2);
 
 static void benchmark_RemapGaussLegendreAdaptiveQuadrature(benchmark::State& state) 
 {
@@ -144,8 +144,8 @@ static void benchmark_RemapClensawCurtisHybridAdaptiveQuadrature(benchmark::Stat
     state.counters.insert({"Nit", quad.getNits()});
 }
 
-BENCHMARK(benchmark_RemapGaussLegendreAdaptiveQuadrature)->DenseRange(0, 100, 2);
-BENCHMARK(benchmark_RemapClensawCurtisAdaptiveQuadrature)->DenseRange(0, 100, 2);
-BENCHMARK(benchmark_RemapClensawCurtisHybridAdaptiveQuadrature)->DenseRange(0, 100, 2);
+BENCHMARK(benchmark_RemapGaussLegendreAdaptiveQuadrature)->DenseRange(0, 80, 2);
+BENCHMARK(benchmark_RemapClensawCurtisAdaptiveQuadrature)->DenseRange(0, 80, 2);
+BENCHMARK(benchmark_RemapClensawCurtisHybridAdaptiveQuadrature)->DenseRange(0, 80, 2);
 
 BENCHMARK_MAIN();

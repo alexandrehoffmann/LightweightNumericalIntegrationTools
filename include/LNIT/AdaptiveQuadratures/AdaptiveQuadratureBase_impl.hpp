@@ -2,6 +2,7 @@
 #define LNIT_ADAPTIVE_QUADRATURE_BASE_IMPL_HPP
 
 #include <LNIT/AdaptiveQuadratures/AdaptiveQuadratureBase.hpp>
+#include <LNIT/misc/FPComparator.hpp>
 
 #include <cassert>
 #include <numeric>
@@ -151,12 +152,14 @@ auto AdaptiveQuadratureBase<Derived>::integrate(const Function& f) -> Scalar
 
 template<class Derived> template<class Function>
 auto AdaptiveQuadratureBase<Derived>::remapAndIntegrate(const Function& f) -> Scalar
-{	
+{		
 	const auto fref = [&f](const Scalar t) -> Scalar
-	{
-		return (t != -1 and t != 1) 
-			? f(t / (1 - t*t))*(1 + t*t) / ((1 - t*t)*(1 - t*t))
-			: 0;	
+	{			
+		const Scalar fx = f(t / (1 - t*t));
+			
+		return std::isnan(fx)
+			? 0
+			: fx*(1 + t*t) / ((1 - t*t)*(1 - t*t));	
 	};
 	
 	return integrate(fref, -1, 1);
