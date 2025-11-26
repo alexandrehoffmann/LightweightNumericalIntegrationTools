@@ -46,7 +46,7 @@ int main()
 		
 		std::FILE* fout = std::fopen(fmt::format("addaptive_gl_eps_m{}.log", int(std::abs(std::log10(quad.getTol())))).c_str(), "w");
 		fmt::print(fout, "#Estimations of the moments of the normal distribution with mu = {} and sigma = {}\n", mu, sigma);
-		fmt::print(fout, "#order has_converged n_iterations estimated analytical absolute_error relative_error\n");
+		fmt::print(fout, "#order has_converged n_iterations estimated_integral estimated_error analytical absolute_error relative_error\n");
 	
 		for (Size k=0; k!=101; ++k)
 		{		
@@ -57,10 +57,10 @@ int main()
 			{
 				return f(x)*std::pow(x, k);
 			};
-			//~ const Scalar estimated  = quad.integrate(mf_k);
-			const Scalar estimated  = quad.remapAndIntegrate(mf_k);
+			const Scalar estimated  = quad.integrate(mf_k);
+			//~ const Scalar estimated  = quad.remapAndIntegrate(mf_k);
 			const Scalar analytical = normalDistribRawMoments(mu, sigma, k);
-			fmt::print(fout, "{} {} {} {} {} {} {}\n", k, quad.hasConverged(), quad.getNits(), estimated, analytical, std::abs(estimated - analytical), std::abs(estimated - analytical) / analytical);
+			fmt::print(fout, "{} {} {} {} {} {} {} {}\n", k, quad.hasConverged(), quad.getNits(), estimated, quad.getEstimatedError(), analytical, std::abs(estimated - analytical), std::abs(estimated - analytical) / analytical);
 			std::fflush(fout);
 			
 			//~ std::fclose(quadOut);

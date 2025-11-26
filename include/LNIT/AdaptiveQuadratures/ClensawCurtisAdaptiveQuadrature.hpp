@@ -4,6 +4,7 @@
 #include <cmath>
 
 #include <LNIT/AdaptiveQuadratures/AdaptiveQuadratureBase.hpp>
+#include <LNIT/misc/Numeric.hpp>
 
 namespace LNIT
 {
@@ -45,6 +46,8 @@ public:
 	 * @return Pair (integral, estimated error).
 	 */
 	template<class Function> std::pair<LongScalar, LongScalar> estimateIntegralImpl(const Function& f, const Scalar xmin, const Scalar xmax);
+	
+	Scalar getMaxDeltaXImpl(const Scalar xmin, const Scalar xmax) const { return (xmax - xmin)*misc::maxDiff(std::span{s_xi}); } 
 private:
 	std::array<Scalar, 33> m_fx33;
 

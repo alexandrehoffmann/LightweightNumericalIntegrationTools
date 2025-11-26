@@ -22,19 +22,20 @@ for ax_nd_id, ax in np.ndenumerate(axes):
 	ax_id = np.ravel_multi_index(ax_nd_id, sp)
 	
 	eps = pow(10, -eps_pow[ax_id])
-	mom, rel_err = gnuplot_utils.read_2d_curve(path + "addaptive_cch_eps_m" + str(eps_pow[ax_id]) + ".log", 7)
+	est_err_mom, est_err = gnuplot_utils.read_2d_curve(path + "addaptive_cch_eps_m" + str(eps_pow[ax_id]) + ".log", 4)
+	err_mom,     err     = gnuplot_utils.read_2d_curve(path + "addaptive_cch_eps_m" + str(eps_pow[ax_id]) + ".log", 6)
 	
-	lRel_err,  = ax.plot(mom, rel_err)
-	lTreshold, = ax.plot(mom, eps*np.ones(len(mom)))
+	lRel_err,     = ax.plot(err_mom,     err)
+	lRel_est_err, = ax.plot(est_err_mom, est_err)
 	
 	ax.grid()
 	ax.set_yscale('log')
 	my_plot.add_label_int(fig, ax, ax_id)
 
 fig.supxlabel("moment order")
-fig.legend(handles=[lRel_err, lTreshold], labels=["Clensaw Curtis Hybrid relative error", "treshold"], loc='upper center', bbox_to_anchor=(0.5, 1.125), ncol=2)
+fig.legend(handles=[lRel_est_err, lRel_err], labels=["Estimated error", "Real error"], loc='upper center', bbox_to_anchor=(0.5, 1.125), ncol=2)
 
-plt.savefig('ClensawCurtisHybridError.svg', bbox_inches='tight')
-# ~ plt.savefig('ClensawCurtisHybridError.pdf', bbox_inches='tight')
+# ~ plt.savefig('ClensawCurtisErrorEstimate.svg', bbox_inches='tight')
+plt.savefig('ClensawCurtisHybridErrorEstimate.pdf', bbox_inches='tight')
 plt.clf()
 plt.cla()

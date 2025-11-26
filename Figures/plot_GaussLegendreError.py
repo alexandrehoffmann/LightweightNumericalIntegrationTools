@@ -22,7 +22,7 @@ for ax_nd_id, ax in np.ndenumerate(axes):
 	ax_id = np.ravel_multi_index(ax_nd_id, sp)
 	
 	eps = pow(10, -eps_pow[ax_id])
-	mom, rel_err = gnuplot_utils.read_2d_curve(path + "addaptive_gl_eps_m" + str(eps_pow[ax_id]) + ".log", 6)
+	mom, rel_err = gnuplot_utils.read_2d_curve(path + "addaptive_gl_eps_m" + str(eps_pow[ax_id]) + ".log", 7)
 	
 	lRel_err,  = ax.plot(mom, rel_err)
 	lTreshold, = ax.plot(mom, eps*np.ones(len(mom)))

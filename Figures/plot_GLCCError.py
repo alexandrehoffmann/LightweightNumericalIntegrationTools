@@ -22,7 +22,7 @@ for ax_nd_id, ax in np.ndenumerate(axes):
 	ax_id = np.ravel_multi_index(ax_nd_id, sp)
 	
 	eps = pow(10, -eps_pow[ax_id])
-	mom, rel_err = gnuplot_utils.read_2d_curve(path + "addaptive_cch_eps_m" + str(eps_pow[ax_id]) + ".log", 7)
+	mom, rel_err = gnuplot_utils.read_2d_curve(path + "addaptive_glcc_eps_m" + str(eps_pow[ax_id]) + ".log", 7)
 	
 	lRel_err,  = ax.plot(mom, rel_err)
 	lTreshold, = ax.plot(mom, eps*np.ones(len(mom)))
@@ -32,9 +32,8 @@ for ax_nd_id, ax in np.ndenumerate(axes):
 	my_plot.add_label_int(fig, ax, ax_id)
 
 fig.supxlabel("moment order")
-fig.legend(handles=[lRel_err, lTreshold], labels=["Clensaw Curtis Hybrid relative error", "treshold"], loc='upper center', bbox_to_anchor=(0.5, 1.125), ncol=2)
+fig.legend(handles=[lRel_err, lTreshold], labels=["Gauss-Legnedre -- Clensaw Curtis relative error", "treshold"], loc='upper center', bbox_to_anchor=(0.5, 1.125), ncol=2)
 
-plt.savefig('ClensawCurtisHybridError.svg', bbox_inches='tight')
-# ~ plt.savefig('ClensawCurtisHybridError.pdf', bbox_inches='tight')
+plt.savefig('GLCCError.svg', bbox_inches='tight')
 plt.clf()
 plt.cla()

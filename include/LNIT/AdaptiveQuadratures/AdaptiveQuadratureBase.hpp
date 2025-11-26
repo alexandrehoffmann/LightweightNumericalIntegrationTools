@@ -4,6 +4,7 @@
 #include <cstdio>
 #include <array>
 #include <vector>
+#include <numeric>
 
 namespace LNIT
 {
@@ -148,6 +149,11 @@ public:
 	void setTol(const Scalar& tol)  { m_tol   = tol; }   ///<  @brief Set the tolerance of the quadrature.
 	
 	void setOutput(std::FILE* out) { m_out = out; } ///<  @brief Redirect output to a file for logging progress.
+
+	Scalar getMaxDeltaX(const Scalar xmin, const Scalar xmax) const { return derived().getMaxDeltaXImpl(xmin, xmax); } 
+	
+	Scalar getEstimatedIntegral() const { return Scalar( std::reduce(std::cbegin(m_subIntergrals),    std::cend(m_subIntergrals),    LongScalar(0)) ); }
+	Scalar getEstimatedError()    const { return Scalar( std::reduce(std::cbegin(m_subIntergralsErr), std::cend(m_subIntergralsErr), LongScalar(0)) ); }
 private:
 	std::vector<Interval>   m_intervals;
 	std::vector<LongScalar> m_subIntergrals;

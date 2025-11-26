@@ -1,9 +1,6 @@
 cmake_minimum_required(VERSION 3.14)
 project(LightweightNumericalIntegrationTools VERSION 1.0.0 LANGUAGES CXX)
 
-set(CMAKE_CXX_STANDARD 20)
-set(CMAKE_CXX_STANDARD_REQUIRED ON)
-
 # List of compiler flags
 set(LNIT_COMPILE_WARNINGS
     -fopenmp-simd
@@ -40,10 +37,18 @@ if(NOT CMAKE_BUILD_TYPE AND NOT CMAKE_CONFIGURATION_TYPES)
 endif()
 
 # === Options ===
+option(LNIT_CXX23           "Use the C++23 standard" OFF)
 option(LNIT_BUILD_DEMO      "Build demo executable" OFF)
 option(LNIT_NATIVE_OPT      "Enable CPU-specific optimizations (-march=native -mtune=native)" OFF)
 option(LNIT_BUILD_BENCHMARK "Build benchmark executables" OFF)
 option(LNIT_BUILD_DOC       "Build Doxygen documentation" OFF)
+
+if(LNIT_CXX23)
+	set(CMAKE_CXX_STANDARD 23)
+else()
+	set(CMAKE_CXX_STANDARD 20)
+endif()
+set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
 # === Dependencies ===
 find_package(fmt REQUIRED)
@@ -87,6 +92,7 @@ set(LNIT_SRC
 	src/LNIT/AdaptiveQuadratures/ClensawCurtisAdaptiveQuadrature.cpp
 	src/LNIT/AdaptiveQuadratures/GaussLegendreAdaptiveQuadrature.cpp
 	src/LNIT/AdaptiveQuadratures/ClensawCurtisHybridAdaptiveQuadrature.cpp
+	src/LNIT/AdaptiveQuadratures/GLCCAdaptiveQuadrature.cpp
 )
 
 add_library(LNIT STATIC ${LNIT_SRC})

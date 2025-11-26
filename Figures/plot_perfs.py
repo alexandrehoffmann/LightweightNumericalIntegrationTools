@@ -9,7 +9,7 @@ import my_plot
 
 path = "../build/benchmark/"
 
-row_names = ["Gauss Legendre", "Clensaw Curtis", "Clensaw Curtis Hybrid"]
+row_names = ["Gauss Legendre", "Clensaw Curtis", "Clensaw Curtis Hybrid", "GL CC"]
 
 fig, ax = plt.subplots(1, 1, sharex=True, sharey=True, figsize=my_plot.get_figure_size(345, subplots=(1, 1)), dpi=600, layout='constrained')
 
