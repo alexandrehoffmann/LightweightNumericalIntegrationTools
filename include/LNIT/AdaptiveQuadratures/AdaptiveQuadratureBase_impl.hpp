@@ -2,7 +2,6 @@
 #define LNIT_ADAPTIVE_QUADRATURE_BASE_IMPL_HPP
 
 #include <LNIT/AdaptiveQuadratures/AdaptiveQuadratureBase.hpp>
-#include <LNIT/misc/FPComparator.hpp>
 #include <LNIT/GaussLaguerreQuadrature.hpp>
 #include <LNIT/misc/Numeric.hpp>
 
@@ -42,29 +41,29 @@ auto AdaptiveQuadratureBase<Derived>::integrate(const Function& f, const Scalar 
 	if (m_out) { fmt::print(m_out, "#NumericalIntegrator addapting quadrature over [{}, {}]\n", xmin, xmax); }
 	if (m_out) { fmt::print(m_out, "#Iteration integral estimated_error tol intervals\n"); }
 	
-	//~ const Size N = Size(std::ceil(getMaxDeltaX(xmin, xmax)));
+	const Size N = Size(std::ceil(getMaxDeltaX(xmin, xmax)));
 	
-	//~ m_intervals.reserve(N);
-	//~ m_subIntergrals.reserve(N);
-	//~ m_subIntergralsErr.reserve(N);
+	m_intervals.reserve(N);
+	m_subIntergrals.reserve(N);
+	m_subIntergralsErr.reserve(N);
 	
-	//~ for (Size i=0; i!=N; ++i)
-	//~ {
-		//~ const Scalar x_i   = xmin + i*(xmax - xmin) / (N);
-		//~ const Scalar x_ip1 = xmin + (i+1)*(xmax - xmin) / (N);
+	for (Size i=0; i!=N; ++i)
+	{
+		const Scalar x_i   = xmin + i*(xmax - xmin) / (N);
+		const Scalar x_ip1 = xmin + (i+1)*(xmax - xmin) / (N);
 		
-		//~ std::tie(res, estimatedErr) = estimateIntegral(f, x_i, x_ip1);
+		std::tie(res, estimatedErr) = estimateIntegral(f, x_i, x_ip1);
 		
-		//~ m_intervals.emplace_back(x_i, x_ip1);
-		//~ m_subIntergrals.push_back(res);
-		//~ m_subIntergralsErr.push_back(estimatedErr);
-	//~ }
+		m_intervals.emplace_back(x_i, x_ip1);
+		m_subIntergrals.push_back(res);
+		m_subIntergralsErr.push_back(estimatedErr);
+	}
 	
-	std::tie(res, estimatedErr) = estimateIntegral(f, xmin, xmax);
+	//~ std::tie(res, estimatedErr) = estimateIntegral(f, xmin, xmax);
 	
-	m_intervals.emplace_back(xmin, xmax);
-	m_subIntergrals.push_back(res);
-	m_subIntergralsErr.push_back(estimatedErr);
+	//~ m_intervals.emplace_back(xmin, xmax);
+	//~ m_subIntergrals.push_back(res);
+	//~ m_subIntergralsErr.push_back(estimatedErr);
 
     for (m_it=0; m_it!=m_maxIt; ++m_it)
 	{
