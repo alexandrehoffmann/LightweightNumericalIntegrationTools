@@ -44,7 +44,7 @@ int main()
     {
 		quad.setTol(tol);
 		
-		std::FILE* fout = std::fopen(fmt::format("addaptive_glcc_eps_m{}.log", std::abs(std::log10(quad.getTol()))).c_str(), "w");
+		std::FILE* fout = std::fopen(fmt::format("addaptive_glcc_eps_m{}.log", std::abs(std::log10(quad.getRelativeTol()))).c_str(), "w");
 		fmt::print(fout, "#Estimations of the moments of the normal distribution with mu = {} and sigma = {}\n", mu, sigma);
 		fmt::print(fout, "#order has_converged n_iterations estimated_integral estimated_error analytical absolute_error relative_error\n");
 	

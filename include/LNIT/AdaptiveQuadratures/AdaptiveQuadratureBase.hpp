@@ -50,7 +50,7 @@ public:
 	 * @param maxIt Maximum number of iterations.
 	 * @param tol Relative tolerance for convergence.
 	 */
-	AdaptiveQuadratureBase(const Size maxIt = 20000, const Scalar tol = std::numeric_limits<Scalar>::epsilon());
+	AdaptiveQuadratureBase(const Size maxIt = 20000, const Scalar relativeTol = std::numeric_limits<Scalar>::epsilon(), const Scalar absoluteTol = std::numeric_limits<Scalar>::epsilon());
 
 	/**
 	 * @brief Estimate integral and error on [xmin, xmax].
@@ -139,14 +139,17 @@ public:
 	 */
 	template<class Function> Scalar remapAndIntegrate(const Function& f);
 	
-    Size   getMaxIt() const { return m_maxIt; } ///<  @brief Maximum iterations allowed.
-	Size   getNits()  const { return m_it; }    ///<  @brief Number of iterations performed.
-	Scalar getTol()   const { return m_tol; }   ///<  @brief Tolerance of the quadrature.
+    Size   getMaxIt()       const { return m_maxIt; }       ///<  @brief Maximum iterations allowed.
+	Size   getNits()        const { return m_it; }          ///<  @brief Number of iterations performed.
+	Scalar getRelativeTol() const { return m_relativeTol; } ///<  @brief Relative tolerance of the quadrature.
+	Scalar getAbsoluteTol() const { return m_absoluteTol; } ///<  @brief Absolute tolerance of the quadrature.
 	
 	bool hasConverged() const { return m_hasConverged; } ///<  @brief Whether convergence was achieved.
 	
-	void setMaxIt(const Size maxIt) { m_maxIt = maxIt; } ///<  @brief Set maximum number of iterations.
-	void setTol(const Scalar& tol)  { m_tol   = tol; }   ///<  @brief Set the tolerance of the quadrature.
+	void setMaxIt(const Size maxIt)        { m_maxIt = maxIt; }                          ///<  @brief Set maximum number of iterations.
+	void setTol(const Scalar& tol)         { m_absoluteTol = tol; m_relativeTol = tol; } ///<  @brief Set the tolerance of the quadrature.
+	void setRelativeTol(const Scalar& tol) { m_relativeTol = tol; }                      ///<  @brief Set the relative tolerance of the quadrature.
+	void setAbsoluteTol(const Scalar& tol) { m_absoluteTol = tol; }                      ///<  @brief Set the absolute tolerance of the quadrature.
 	
 	void setOutput(std::FILE* out) { m_out = out; } ///<  @brief Redirect output to a file for logging progress.
 
@@ -154,6 +157,8 @@ public:
 	
 	Scalar getEstimatedIntegral() const { return Scalar( std::reduce(std::cbegin(m_subIntergrals),    std::cend(m_subIntergrals),    LongScalar(0)) ); }
 	Scalar getEstimatedError()    const { return Scalar( std::reduce(std::cbegin(m_subIntergralsErr), std::cend(m_subIntergralsErr), LongScalar(0)) ); }
+	
+	const std::vector<Interval>& getSubIntervals() const { return m_intervals; }
 private:
 	std::vector<Interval>   m_intervals;
 	std::vector<LongScalar> m_subIntergrals;
@@ -161,7 +166,8 @@ private:
 
 	Size   m_maxIt;
 	Size   m_it;
-	Scalar m_tol;
+	Scalar m_relativeTol;
+	Scalar m_absoluteTol;
 	bool   m_hasConverged;
 	
 	std::FILE* m_out = nullptr;

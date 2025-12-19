@@ -1,22 +1,22 @@
 #ifndef LNIT_CLENSAW_CURTIS_HYBRID_ADAPTIVE_QUADRATURE_IMPL_HPP
 #define LNIT_CLENSAW_CURTIS_HYBRID_ADAPTIVE_QUADRATURE_IMPL_HPP
 
-#include <LNIT/AdaptiveQuadratures/ClensawCurtisHybridAdaptiveQuadrature.hpp>
+#include <LNIT/AdaptiveQuadratures/ClenshawCurtisHybridAdaptiveQuadrature.hpp>
 
 namespace LNIT
 {
 
 //// explicit template instanciations ////
 
-extern template class ClensawCurtisHybridAdaptiveQuadrature<double, double>;
-extern template class ClensawCurtisHybridAdaptiveQuadrature<double, long double>;
+extern template class ClenshawCurtisHybridAdaptiveQuadrature<double, double>;
+extern template class ClenshawCurtisHybridAdaptiveQuadrature<double, long double>;
 
-extern template class ClensawCurtisHybridAdaptiveQuadrature<long double, long double>;
+extern template class ClenshawCurtisHybridAdaptiveQuadrature<long double, long double>;
 
 //// method implementations ////
 
 template<typename T, typename TT> template<class Function>
-auto ClensawCurtisHybridAdaptiveQuadrature<T,TT>::estimateIntegralImpl(const Function& f, const Scalar xmin, const Scalar xmax) -> std::pair<LongScalar, LongScalar>
+auto ClenshawCurtisHybridAdaptiveQuadrature<T,TT>::estimateIntegralImpl(const Function& f, const Scalar xmin, const Scalar xmax) -> std::pair<LongScalar, LongScalar>
 {	
     const auto fx = s_xi | std::views::transform([&f, xmin, xmax](const Scalar xi) -> Scalar
 	{

@@ -11,7 +11,7 @@ int main()
 		return std::exp(5 - 10*x - 5*x*x - 0.01*x*x*x - 0.02*x*x*x*x);
 	};
 	
-	LNIT::ClensawCurtisHybridAdaptiveQuadrature<Scalar> quad;
+	LNIT::ClenshawCurtisHybridAdaptiveQuadrature<Scalar> quad;
 	quad.setTol(1.e-11);
 	
 	fmt::print("Hessian of Levermoor like PDF:\n");

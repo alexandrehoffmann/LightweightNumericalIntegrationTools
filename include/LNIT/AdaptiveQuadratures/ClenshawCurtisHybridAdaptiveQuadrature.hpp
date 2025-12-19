@@ -9,10 +9,10 @@
 namespace LNIT
 {
 
-template<typename T, typename TT> class ClensawCurtisHybridAdaptiveQuadrature;
+template<typename T, typename TT> class ClenshawCurtisHybridAdaptiveQuadrature;
 
 template<typename T, typename TT> 
-struct AdaptiveQuadratureTraits< ClensawCurtisHybridAdaptiveQuadrature<T, TT> >
+struct AdaptiveQuadratureTraits< ClenshawCurtisHybridAdaptiveQuadrature<T, TT> >
 {
 	using Size       = unsigned int;
 	using Scalar     = T;
@@ -32,9 +32,9 @@ struct AdaptiveQuadratureTraits< ClensawCurtisHybridAdaptiveQuadrature<T, TT> >
  * @tparam TT Higher precision type for accumulation (e.g., long double).
  */
 template<typename T, typename TT=T>
-class ClensawCurtisHybridAdaptiveQuadrature : public AdaptiveQuadratureBase< ClensawCurtisHybridAdaptiveQuadrature<T,TT> >
+class ClenshawCurtisHybridAdaptiveQuadrature : public AdaptiveQuadratureBase< ClenshawCurtisHybridAdaptiveQuadrature<T,TT> >
 {
-	using Base = AdaptiveQuadratureBase< ClensawCurtisHybridAdaptiveQuadrature<T,TT> >;
+	using Base = AdaptiveQuadratureBase< ClenshawCurtisHybridAdaptiveQuadrature<T,TT> >;
 public:
 	using Size       = Base::Size;       ///<  @brief Type for iteration counters.
 	using Scalar     = Base::Scalar;     ///<  @brief Floating point type for integration (e.g., double).
@@ -72,6 +72,6 @@ private:
 
 } // namespace LNIT
 
-#include <LNIT/AdaptiveQuadratures/ClensawCurtisHybridAdaptiveQuadrature_impl.hpp>
+#include <LNIT/AdaptiveQuadratures/ClenshawCurtisHybridAdaptiveQuadrature_impl.hpp>
 
 #endif // LNIT_CLENSAW_CURTIS_HYBRID_ADAPTIVE_QUADRATURE_HPP

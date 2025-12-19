@@ -27,6 +27,7 @@ set(LNIT_COMPILE_WARNINGS
     -pedantic
     -pedantic-errors
 	-Wno-error=array-bounds
+	-Wdouble-promotion
 )
 
 # Set default build type if not specified
@@ -89,9 +90,9 @@ set(LNIT_SRC
 	src/LNIT/GaussLaguerreQuadrature.cpp
 	src/LNIT/GaussHermiteQuadrature.cpp
 	#
-	src/LNIT/AdaptiveQuadratures/ClensawCurtisAdaptiveQuadrature.cpp
+	src/LNIT/AdaptiveQuadratures/ClenshawCurtisAdaptiveQuadrature.cpp
 	src/LNIT/AdaptiveQuadratures/GaussLegendreAdaptiveQuadrature.cpp
-	src/LNIT/AdaptiveQuadratures/ClensawCurtisHybridAdaptiveQuadrature.cpp
+	src/LNIT/AdaptiveQuadratures/ClenshawCurtisHybridAdaptiveQuadrature.cpp
 	src/LNIT/AdaptiveQuadratures/GLCCAdaptiveQuadrature.cpp
 )
 
@@ -105,7 +106,7 @@ target_include_directories(LNIT
 
 target_link_libraries(LNIT PUBLIC fmt::fmt)
 
-target_compile_options(LNIT PUBLIC
+target_compile_options(LNIT PRIVATE
     $<$<COMPILE_LANGUAGE:CXX>:${LNIT_COMPILE_WARNINGS}>
 )
 

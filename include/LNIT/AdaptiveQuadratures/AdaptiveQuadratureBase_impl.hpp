@@ -15,10 +15,11 @@ namespace LNIT
 {
 
 template<class Derived>
-AdaptiveQuadratureBase<Derived>::AdaptiveQuadratureBase(const Size maxIt, const Scalar tol) 
+AdaptiveQuadratureBase<Derived>::AdaptiveQuadratureBase(const Size maxIt, const Scalar relativeTol, const Scalar absoluteTol) 
     : m_maxIt(maxIt)
     , m_it(0)
-    , m_tol(tol) 
+    , m_relativeTol(relativeTol)
+    , m_absoluteTol(absoluteTol) 
 { 
     m_intervals.reserve(maxIt); 
     m_subIntergrals.reserve(maxIt); 
@@ -39,7 +40,7 @@ auto AdaptiveQuadratureBase<Derived>::integrate(const Function& f, const Scalar 
 	Scalar estimatedErr;
 	
 	if (m_out) { fmt::print(m_out, "#NumericalIntegrator addapting quadrature over [{}, {}]\n", xmin, xmax); }
-	if (m_out) { fmt::print(m_out, "#Iteration integral estimated_error tol intervals\n"); }
+	if (m_out) { fmt::print(m_out, "#Iteration integral estimated_error relative_tol absolute_tol\n"); }
 	
 	const Size N = Size(std::ceil(getMaxDeltaX(xmin, xmax)));
 	
@@ -70,10 +71,10 @@ auto AdaptiveQuadratureBase<Derived>::integrate(const Function& f, const Scalar 
         const Scalar I   = getEstimatedIntegral();
         const Scalar err = getEstimatedError();
 
-        if (m_out) { fmt::print(m_out, "{} {:10.4e} {:10.4e} {:10.4e}\n", m_it, I, err, std::abs(I)*m_tol); }
+        if (m_out) { fmt::print(m_out, "{} {:10.4e} {:10.4e} {:10.4e} {:10.4e}\n", m_it, I, err, std::abs(I)*m_relativeTol, m_absoluteTol); }
 
-        if (not std::isfinite(I))    { return I; }
-        if (err < std::abs(I)*m_tol) { m_hasConverged = true; return I; }
+        if (not std::isfinite(I)) { return I; }
+        if (err < std::abs(I)*m_relativeTol or err < m_absoluteTol) { m_hasConverged = true; return I; }
 
         // we find the interval over which the integral is the least accurate
 		const const_Iterator maxErrIt = std::max_element(std::cbegin(m_subIntergralsErr), std::cend(m_subIntergralsErr));

@@ -39,18 +39,18 @@ int main()
         return (1 / (sigma*std::sqrt(2*M_PI)))*std::exp(-(x-mu)*(x-mu) / (2*sigma*sigma));
     };
 
-    LNIT::ClensawCurtisAdaptiveQuadrature<Scalar> quad;
+    LNIT::ClenshawCurtisAdaptiveQuadrature<Scalar> quad;
     for (const double tol : {1.e-4, 1.e-6, 1.e-8, 1.e-10, 1.e-12, 1.e-14})
     {
 		quad.setTol(tol);
 		
-		std::FILE* fout = std::fopen(fmt::format("addaptive_cc_eps_m{}.log", std::abs(std::log10(quad.getTol()))).c_str(), "w");
+		std::FILE* fout = std::fopen(fmt::format("addaptive_cc_eps_m{}.log", std::abs(std::log10(quad.getRelativeTol()))).c_str(), "w");
 		fmt::print(fout, "#Estimations of the moments of the normal distribution with mu = {} and sigma = {}\n", mu, sigma);
 		fmt::print(fout, "#order has_converged n_iterations estimated_integral estimated_error analytical absolute_error relative_error\n");
 	
 		for (Size k=0; k!=101; ++k)
 		{		
-			//~ std::FILE* quadOut = std::fopen(fmt::format("Clensaw_Curtis_for_moment_{}.log", k).c_str(), "w");
+			//~ std::FILE* quadOut = std::fopen(fmt::format("Clenshaw_Curtis_for_moment_{}.log", k).c_str(), "w");
 			//~ quad.setOutput(quadOut);
 			
 			const auto mf_k = [&f, k](const Scalar x) -> Scalar

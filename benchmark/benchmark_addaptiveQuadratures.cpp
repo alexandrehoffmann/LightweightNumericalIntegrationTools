@@ -25,7 +25,7 @@ static void benchmark_GaussLegendreAdaptiveQuadrature(benchmark::State& state)
     state.counters.insert({"Nit", quad.getNits()});
 }
 
-static void benchmark_ClensawCurtisAdaptiveQuadrature(benchmark::State& state) 
+static void benchmark_ClenshawCurtisAdaptiveQuadrature(benchmark::State& state) 
 {
 	const int k = state.range(0);
 	
@@ -37,7 +37,7 @@ static void benchmark_ClensawCurtisAdaptiveQuadrature(benchmark::State& state)
         return (1 / (sigma*std::sqrt(2*M_PI)))*std::exp(-(x-mu)*(x-mu) / (2*sigma*sigma))*std::pow(x, k);
     };
 	
-	LNIT::ClensawCurtisAdaptiveQuadrature<double> quad;
+	LNIT::ClenshawCurtisAdaptiveQuadrature<double> quad;
 	quad.setTol(1.e-11);
 	
     for (auto _ : state) 
@@ -48,7 +48,7 @@ static void benchmark_ClensawCurtisAdaptiveQuadrature(benchmark::State& state)
     state.counters.insert({"Nit", quad.getNits()});
 }
 
-static void benchmark_ClensawCurtisHybridAdaptiveQuadrature(benchmark::State& state) 
+static void benchmark_ClenshawCurtisHybridAdaptiveQuadrature(benchmark::State& state) 
 {
 	const int k = state.range(0);
 	
@@ -60,7 +60,7 @@ static void benchmark_ClensawCurtisHybridAdaptiveQuadrature(benchmark::State& st
         return (1 / (sigma*std::sqrt(2*M_PI)))*std::exp(-(x-mu)*(x-mu) / (2*sigma*sigma))*std::pow(x, k);
     };
 	
-	LNIT::ClensawCurtisHybridAdaptiveQuadrature<double> quad;
+	LNIT::ClenshawCurtisHybridAdaptiveQuadrature<double> quad;
 	quad.setTol(1.e-11);
 	
     for (auto _ : state) 
@@ -95,8 +95,8 @@ static void benchmark_GLCCAdaptiveQuadrature(benchmark::State& state)
 }
 
 BENCHMARK(benchmark_GaussLegendreAdaptiveQuadrature)->DenseRange(0, 100, 2);
-BENCHMARK(benchmark_ClensawCurtisAdaptiveQuadrature)->DenseRange(0, 100, 2);
-BENCHMARK(benchmark_ClensawCurtisHybridAdaptiveQuadrature)->DenseRange(0, 100, 2);
+BENCHMARK(benchmark_ClenshawCurtisAdaptiveQuadrature)->DenseRange(0, 100, 2);
+BENCHMARK(benchmark_ClenshawCurtisHybridAdaptiveQuadrature)->DenseRange(0, 100, 2);
 BENCHMARK(benchmark_GLCCAdaptiveQuadrature)->DenseRange(0, 100, 2);
 
 static void benchmark_RemapGaussLegendreAdaptiveQuadrature(benchmark::State& state) 
@@ -122,7 +122,7 @@ static void benchmark_RemapGaussLegendreAdaptiveQuadrature(benchmark::State& sta
     state.counters.insert({"Nit", quad.getNits()});
 }
 
-static void benchmark_RemapClensawCurtisAdaptiveQuadrature(benchmark::State& state) 
+static void benchmark_RemapClenshawCurtisAdaptiveQuadrature(benchmark::State& state) 
 {
 	const int k = state.range(0);
 	
@@ -134,7 +134,7 @@ static void benchmark_RemapClensawCurtisAdaptiveQuadrature(benchmark::State& sta
         return (1 / (sigma*std::sqrt(2*M_PI)))*std::exp(-(x-mu)*(x-mu) / (2*sigma*sigma))*std::pow(x, k);
     };
 
-	LNIT::ClensawCurtisAdaptiveQuadrature<double> quad;
+	LNIT::ClenshawCurtisAdaptiveQuadrature<double> quad;
 	quad.setTol(1.e-11);
 	
     for (auto _ : state) 
@@ -145,7 +145,7 @@ static void benchmark_RemapClensawCurtisAdaptiveQuadrature(benchmark::State& sta
     state.counters.insert({"Nit", quad.getNits()});
 }
 
-static void benchmark_RemapClensawCurtisHybridAdaptiveQuadrature(benchmark::State& state) 
+static void benchmark_RemapClenshawCurtisHybridAdaptiveQuadrature(benchmark::State& state) 
 {
 	const int k = state.range(0);
 	
@@ -157,7 +157,7 @@ static void benchmark_RemapClensawCurtisHybridAdaptiveQuadrature(benchmark::Stat
         return (1 / (sigma*std::sqrt(2*M_PI)))*std::exp(-(x-mu)*(x-mu) / (2*sigma*sigma))*std::pow(x, k);
     };
 	
-	LNIT::ClensawCurtisHybridAdaptiveQuadrature<double> quad;
+	LNIT::ClenshawCurtisHybridAdaptiveQuadrature<double> quad;
 	quad.setTol(1.e-11);
 	
     for (auto _ : state) 
@@ -192,8 +192,8 @@ static void benchmark_RemapGLCCAdaptiveQuadrature(benchmark::State& state)
 }
 
 BENCHMARK(benchmark_RemapGaussLegendreAdaptiveQuadrature)->DenseRange(0, 100, 2);
-BENCHMARK(benchmark_RemapClensawCurtisAdaptiveQuadrature)->DenseRange(0, 100, 2);
-BENCHMARK(benchmark_RemapClensawCurtisHybridAdaptiveQuadrature)->DenseRange(0, 100, 2);
+BENCHMARK(benchmark_RemapClenshawCurtisAdaptiveQuadrature)->DenseRange(0, 100, 2);
+BENCHMARK(benchmark_RemapClenshawCurtisHybridAdaptiveQuadrature)->DenseRange(0, 100, 2);
 BENCHMARK(benchmark_RemapGLCCAdaptiveQuadrature)->DenseRange(0, 100, 2);
 
 BENCHMARK_MAIN();
