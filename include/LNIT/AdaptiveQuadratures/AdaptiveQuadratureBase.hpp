@@ -175,7 +175,7 @@ private:
 
 template<class T> struct IsAdaptiveQuadrature : std::bool_constant< std::is_base_of<AdaptiveQuadratureBase<T>, T>::value > {};  ///<  @brief Trait to determine if a type derives from AdaptiveQuadratureBase.
 
-template<class T> concept IsAdaptiveQuadrature_concept = IsAdaptiveQuadrature<T>::value;
+template<class T> concept CAdaptiveQuadrature = IsAdaptiveQuadrature<T>::value;
 
 } // namespace LNIT
 
