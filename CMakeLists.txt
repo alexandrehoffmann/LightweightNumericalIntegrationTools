@@ -29,9 +29,6 @@ set(LNIT_COMPILE_WARNINGS
 	-Wno-error=array-bounds
 	-Wdouble-promotion
 	-Wswitch-enum 
-	-Wlogical-op
-	-Wduplicated-cond 
-	-Wduplicated-branches
 )
 
 # Set default build type if not specified
