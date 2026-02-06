@@ -8,6 +8,10 @@ namespace LNIT
 
 //// explicit template instanciations ////
 
+extern template class GaussLegendreAdaptiveQuadrature<float, float>;
+extern template class GaussLegendreAdaptiveQuadrature<float, double>;
+extern template class GaussLegendreAdaptiveQuadrature<float, long double>;
+
 extern template class GaussLegendreAdaptiveQuadrature<double, double>;
 extern template class GaussLegendreAdaptiveQuadrature<double, long double>;
 

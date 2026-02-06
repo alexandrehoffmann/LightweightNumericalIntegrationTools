@@ -8,6 +8,10 @@ namespace LNIT
 
 //// explicit template instanciations ////
 
+extern template class GLCCAdaptiveQuadrature<float, float>;
+extern template class GLCCAdaptiveQuadrature<float, double>;
+extern template class GLCCAdaptiveQuadrature<float, long double>;
+
 extern template class GLCCAdaptiveQuadrature<double, double>;
 extern template class GLCCAdaptiveQuadrature<double, long double>;
 

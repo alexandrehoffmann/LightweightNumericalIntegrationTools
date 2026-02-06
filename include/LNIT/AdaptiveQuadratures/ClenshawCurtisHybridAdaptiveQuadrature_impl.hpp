@@ -8,6 +8,10 @@ namespace LNIT
 
 //// explicit template instanciations ////
 
+extern template class ClenshawCurtisHybridAdaptiveQuadrature<float, float>;
+extern template class ClenshawCurtisHybridAdaptiveQuadrature<float, double>;
+extern template class ClenshawCurtisHybridAdaptiveQuadrature<float, long double>;
+
 extern template class ClenshawCurtisHybridAdaptiveQuadrature<double, double>;
 extern template class ClenshawCurtisHybridAdaptiveQuadrature<double, long double>;
 
