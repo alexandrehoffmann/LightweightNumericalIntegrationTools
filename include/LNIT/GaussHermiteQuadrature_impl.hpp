@@ -10,6 +10,10 @@ namespace LNIT
 
 //// explicit template instanciations ////
 
+extern template class GaussHermiteQuadrature<float, float>;
+extern template class GaussHermiteQuadrature<float, double>;
+extern template class GaussHermiteQuadrature<float, long double>;
+
 extern template class GaussHermiteQuadrature<double, double>;
 extern template class GaussHermiteQuadrature<double, long double>;
 

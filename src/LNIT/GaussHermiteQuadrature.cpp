@@ -3,6 +3,10 @@
 namespace LNIT
 {
 
+template class GaussHermiteQuadrature<float, float>;
+template class GaussHermiteQuadrature<float, double>;
+template class GaussHermiteQuadrature<float, long double>;
+
 template class GaussHermiteQuadrature<double, double>;
 template class GaussHermiteQuadrature<double, long double>;
 
