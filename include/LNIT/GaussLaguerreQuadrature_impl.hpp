@@ -10,10 +10,6 @@ namespace LNIT
 
 //// explicit template instanciations ////
 
-extern template class GaussLaguerreQuadrature<float, float>;
-extern template class GaussLaguerreQuadrature<float, double>;
-extern template class GaussLaguerreQuadrature<float, long double>;
-
 extern template class GaussLaguerreQuadrature<double, double>;
 extern template class GaussLaguerreQuadrature<double, long double>;
 
