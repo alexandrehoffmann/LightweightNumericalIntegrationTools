@@ -29,6 +29,10 @@ AdaptiveQuadratureBase<Derived>::AdaptiveQuadratureBase(const Size maxIt, const 
 template<class Derived> template<class Function> 
 auto AdaptiveQuadratureBase<Derived>::integrate(const Function& f, const Scalar xmin, const Scalar xmax) -> Scalar
 {	
+	using std::ceil;
+	using std::abs;
+	using std::isfinite;
+	
     using const_Iterator = typename std::vector<LongScalar>::const_iterator;
     
     m_hasConverged = false;
@@ -42,7 +46,7 @@ auto AdaptiveQuadratureBase<Derived>::integrate(const Function& f, const Scalar 
 	if (m_out) { fmt::print(m_out, "#NumericalIntegrator addapting quadrature over [{}, {}]\n", xmin, xmax); }
 	if (m_out) { fmt::print(m_out, "#Iteration integral estimated_error relative_tol absolute_tol\n"); }
 	
-	const Size N = Size(std::ceil(getMaxDeltaX(xmin, xmax)));
+	const Size N = Size(ceil(getMaxDeltaX(xmin, xmax)));
 	
 	m_intervals.reserve(N);
 	m_subIntergrals.reserve(N);
@@ -60,21 +64,15 @@ auto AdaptiveQuadratureBase<Derived>::integrate(const Function& f, const Scalar 
 		m_subIntergralsErr.push_back(estimatedErr);
 	}
 	
-	//~ std::tie(res, estimatedErr) = estimateIntegral(f, xmin, xmax);
-	
-	//~ m_intervals.emplace_back(xmin, xmax);
-	//~ m_subIntergrals.push_back(res);
-	//~ m_subIntergralsErr.push_back(estimatedErr);
-
     for (m_it=0; m_it!=m_maxIt; ++m_it)
 	{
         const Scalar I   = getEstimatedIntegral();
         const Scalar err = getEstimatedError();
 
-        if (m_out) { fmt::print(m_out, "{} {:10.4e} {:10.4e} {:10.4e} {:10.4e}\n", m_it, I, err, std::abs(I)*m_relativeTol, m_absoluteTol); }
+        if (m_out) { fmt::print(m_out, "{} {:10.4e} {:10.4e} {:10.4e} {:10.4e}\n", m_it, I, err, abs(I)*m_relativeTol, m_absoluteTol); }
 
-        if (not std::isfinite(I)) { return I; }
-        if (err < std::abs(I)*m_relativeTol or err < m_absoluteTol) { m_hasConverged = true; return I; }
+        if (not isfinite(I)) { return I; }
+        if (err < abs(I)*m_relativeTol or err < m_absoluteTol) { m_hasConverged = true; return I; }
 
         // we find the interval over which the integral is the least accurate
 		const const_Iterator maxErrIt = std::max_element(std::cbegin(m_subIntergralsErr), std::cend(m_subIntergralsErr));
@@ -97,85 +95,99 @@ auto AdaptiveQuadratureBase<Derived>::integrate(const Function& f, const Scalar 
 template<class Derived> template<class Function>
 auto AdaptiveQuadratureBase<Derived>::integrateLeftInfinite(const Function& f, const Scalar xmax) -> Scalar
 {
-	using NumTraits = std::numeric_limits<Scalar>;
+	using std::numeric_limits<Scalar>;
+	using std::isfinite;
+	using std::abs;
+	
+	using NumTraits = numeric_limits<Scalar>;
 	
 	GaussLaguerreQuadrature<Scalar,LongScalar> gLaguerreQuad;
 	
 	Scalar leftIntegral = gLaguerreQuad.integrateLeftInfinite(f);
 	
-	if (not std::isfinite(leftIntegral))               { return NumTraits::quiet_NaN(); }	
-	if (std::abs(leftIntegral) < NumTraits::epsilon()) { return integrate(f, 0, xmax);  }
+	if (not isfinite(leftIntegral))               { return NumTraits::quiet_NaN(); }	
+	if (abs(leftIntegral) < NumTraits::epsilon()) { return integrate(f, 0, xmax);  }
 	
 	Scalar xmin = -1;
 	leftIntegral = gLaguerreQuad.integrateLeftInfinite(f, xmin);
-	while (std::isfinite(leftIntegral) and std::abs(leftIntegral) >= NumTraits::epsilon())
+	while (isfinite(leftIntegral) and abs(leftIntegral) >= NumTraits::epsilon())
 	{
 		xmin *= 2;
 		leftIntegral = gLaguerreQuad.integrateLeftInfinite(f, xmin);
 	}
-	return std::isfinite(leftIntegral) ? integrate(f, xmin, xmax) : NumTraits::quiet_NaN();
+	return isfinite(leftIntegral) ? integrate(f, xmin, xmax) : NumTraits::quiet_NaN();
 }
 
 template<class Derived> template<class Function>
 auto AdaptiveQuadratureBase<Derived>::integrateRightInfinite(const Function& f, const Scalar xmin) -> Scalar
 {
-	using NumTraits = std::numeric_limits<Scalar>;
+	using std::numeric_limits<Scalar>;
+	using std::isfinite;
+	using std::abs;
+	
+	using NumTraits = numeric_limits<Scalar>;
 	
 	GaussLaguerreQuadrature<Scalar,LongScalar> gLaguerreQuad;
 	
 	Scalar rightIntegral = gLaguerreQuad.integrateRightInfinite(f);
 	
-	if (not std::isfinite(rightIntegral))               { return NumTraits::quiet_NaN(); }	
-	if (std::abs(rightIntegral) < NumTraits::epsilon()) { return integrate(f, xmin, 0);  }
+	if (not isfinite(rightIntegral))               { return NumTraits::quiet_NaN(); }	
+	if (abs(rightIntegral) < NumTraits::epsilon()) { return integrate(f, xmin, 0);  }
 	
 	Scalar xmax = 1;
 	rightIntegral = gLaguerreQuad.integrateRightInfinite(f, xmax);
-	while (std::isfinite(rightIntegral) and std::abs(rightIntegral) >= NumTraits::epsilon())
+	while (isfinite(rightIntegral) and abs(rightIntegral) >= NumTraits::epsilon())
 	{
 		xmax *= 2;
 		rightIntegral = gLaguerreQuad.integrateRightInfinite(f, xmax);
 	}
-	return std::isfinite(rightIntegral) ? integrate(f, xmin, xmax) : NumTraits::quiet_NaN();
+	return isfinite(rightIntegral) ? integrate(f, xmin, xmax) : NumTraits::quiet_NaN();
 }
 
 template<class Derived> template<class Function>
 auto AdaptiveQuadratureBase<Derived>::integrate(const Function& f) -> Scalar
 {
+	using std::numeric_limits<Scalar>;
+	using std::isfinite;
+	using std::abs;
+	
 	using NumTraits = std::numeric_limits<Scalar>;
 	
 	GaussLaguerreQuadrature<Scalar,LongScalar> gLaguerreQuad;
 	
 	Scalar leftIntegral = gLaguerreQuad.integrateLeftInfinite(f);
 	
-	if (not std::isfinite(leftIntegral)) { return NumTraits::quiet_NaN(); }	
+	if (not isfinite(leftIntegral)) { return NumTraits::quiet_NaN(); }	
 	
-	if (std::abs(leftIntegral) < NumTraits::epsilon()) 
+	if (abs(leftIntegral) < NumTraits::epsilon()) 
 	{
 		const Scalar rightIntegral = gLaguerreQuad.integrateRightInfinite(f); 
 		
-		if (not std::isfinite(rightIntegral)) { return NumTraits::quiet_NaN(); } 
-		return std::abs(rightIntegral) < NumTraits::epsilon() ? 0 : integrateRightInfinite(f, 0); 
+		if (not isfinite(rightIntegral)) { return NumTraits::quiet_NaN(); } 
+		return abs(rightIntegral) < NumTraits::epsilon() ? 0 : integrateRightInfinite(f, 0); 
 	}
 	
 	Scalar xmin = -1;
 	leftIntegral = gLaguerreQuad.integrateLeftInfinite(f, xmin);
-	while (std::isfinite(leftIntegral) and std::abs(leftIntegral) >= NumTraits::epsilon())
+	while (isfinite(leftIntegral) and abs(leftIntegral) >= NumTraits::epsilon())
 	{
 		xmin *= 2;
 		leftIntegral = gLaguerreQuad.integrateLeftInfinite(f, xmin);
 	}
 	
-	return std::isfinite(leftIntegral) ? integrateRightInfinite(f, xmin) : NumTraits::quiet_NaN();
+	return isfinite(leftIntegral) ? integrateRightInfinite(f, xmin) : NumTraits::quiet_NaN();
 }
 
 template<class Derived> template<class Function>
 auto AdaptiveQuadratureBase<Derived>::remapAndIntegrate(const Function& f) -> Scalar
 {		
+	using std::isnan;
+	
 	const auto fref = [&f](const Scalar t) -> Scalar
 	{			
 		const Scalar fx = f(t / (1 - t*t));
 			
-		return std::isnan(fx)
+		return isnan(fx)
 			? 0
 			: fx*(1 + t*t) / ((1 - t*t)*(1 - t*t));	
 	};
