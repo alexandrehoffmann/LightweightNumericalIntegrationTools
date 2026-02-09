@@ -41,8 +41,8 @@ auto AdaptiveQuadratureBase<Derived>::integrate(const Function& f, const Scalar 
 	m_subIntergrals.clear();
 	m_subIntergralsErr.clear();
 
-    Scalar res;
-	Scalar estimatedErr;
+    LongScalar res;
+	LongScalar estimatedErr;
 	
 	if (m_out) { fmt::print(m_out, "#NumericalIntegrator addapting quadrature over [{}, {}]\n", xmin, xmax); }
 	if (m_out) { fmt::print(m_out, "#Iteration integral estimated_error relative_tol absolute_tol\n"); }
