@@ -95,7 +95,6 @@ auto AdaptiveQuadratureBase<Derived>::integrate(const Function& f, const Scalar 
 template<class Derived> template<class Function>
 auto AdaptiveQuadratureBase<Derived>::integrateLeftInfinite(const Function& f, const Scalar xmax) -> Scalar
 {
-	using std::numeric_limits<Scalar>;
 	using std::isfinite;
 	using std::abs;
 	
@@ -121,7 +120,6 @@ auto AdaptiveQuadratureBase<Derived>::integrateLeftInfinite(const Function& f, c
 template<class Derived> template<class Function>
 auto AdaptiveQuadratureBase<Derived>::integrateRightInfinite(const Function& f, const Scalar xmin) -> Scalar
 {
-	using std::numeric_limits<Scalar>;
 	using std::isfinite;
 	using std::abs;
 	
@@ -147,7 +145,6 @@ auto AdaptiveQuadratureBase<Derived>::integrateRightInfinite(const Function& f, 
 template<class Derived> template<class Function>
 auto AdaptiveQuadratureBase<Derived>::integrate(const Function& f) -> Scalar
 {
-	using std::numeric_limits<Scalar>;
 	using std::isfinite;
 	using std::abs;
 	
