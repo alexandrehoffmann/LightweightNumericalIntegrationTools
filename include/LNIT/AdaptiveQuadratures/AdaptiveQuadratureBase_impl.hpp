@@ -177,7 +177,7 @@ auto AdaptiveQuadratureBase<Derived>::remapAndIntegrate(const Function& f) -> Sc
 	{			
 		const Scalar fx = f(t / (1 - t*t));
 			
-		return std::isnan(fx)
+		return isnan(fx)
 			? 0
 			: fx*(1 + t*t) / ((1 - t*t)*(1 - t*t));	
 	};
