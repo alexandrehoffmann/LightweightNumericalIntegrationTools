@@ -171,6 +171,8 @@ auto AdaptiveQuadratureBase<Derived>::integrate(const Function& f) -> Scalar
 template<class Derived> template<class Function>
 auto AdaptiveQuadratureBase<Derived>::remapAndIntegrate(const Function& f) -> Scalar
 {		
+	using std::isnan;
+	
 	const auto fref = [&f](const Scalar t) -> Scalar
 	{			
 		const Scalar fx = f(t / (1 - t*t));
