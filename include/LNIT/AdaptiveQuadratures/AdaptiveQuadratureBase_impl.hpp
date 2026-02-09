@@ -8,6 +8,7 @@
 #include <cassert>
 #include <algorithm>
 #include <ranges>
+#include <cmath>
 
 #include <fmt/core.h>
 
@@ -98,7 +99,7 @@ auto AdaptiveQuadratureBase<Derived>::integrateLeftInfinite(const Function& f, c
 	using std::isfinite;
 	using std::abs;
 	
-	using NumTraits = numeric_limits<Scalar>;
+	using NumTraits = std::numeric_limits<Scalar>;
 	
 	GaussLaguerreQuadrature<Scalar,LongScalar> gLaguerreQuad;
 	
@@ -123,7 +124,7 @@ auto AdaptiveQuadratureBase<Derived>::integrateRightInfinite(const Function& f, 
 	using std::isfinite;
 	using std::abs;
 	
-	using NumTraits = numeric_limits<Scalar>;
+	using NumTraits = std::numeric_limits<Scalar>;
 	
 	GaussLaguerreQuadrature<Scalar,LongScalar> gLaguerreQuad;
 	

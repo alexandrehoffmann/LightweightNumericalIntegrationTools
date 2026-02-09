@@ -1,6 +1,7 @@
 #include <LNIT/GaussHermiteQuadrature.hpp>
 #include <LNIT/GaussLaguerreQuadrature.hpp>
 
+#include <cmath>
 #include <map>
 
 using ArgsTuple = std::tuple<double, double, unsigned int>;
