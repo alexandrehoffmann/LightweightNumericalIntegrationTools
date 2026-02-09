@@ -24,13 +24,13 @@ auto ClenshawCurtisHybridAdaptiveQuadrature<T,TT>::estimateIntegralImpl(const Fu
 {	
     const auto fx = s_xi | std::views::transform([&f, xmin, xmax](const Scalar xi) -> Scalar
 	{
-		const Scalar x = 0.5*(xi*(xmax - xmin) + (xmax + xmin));
+		const Scalar x = Scalar(0.5)*(xi*(xmax - xmin) + (xmax + xmin));
 		return f(x); 
 	});
 	std::ranges::copy(fx, std::begin(m_fx));
     
-    const LongScalar I1 = 0.5*(xmax - xmin)*std::inner_product(std::cbegin(s_wi),          std::cend(s_wi),          std::cbegin(m_fx), LongScalar(0));
-    const LongScalar I2 = 0.5*(xmax - xmin)*std::inner_product(std::cbegin(s_alternateWi), std::cend(s_alternateWi), std::cbegin(m_fx), LongScalar(0));
+    const LongScalar I1 = Scalar(0.5)*(xmax - xmin)*std::inner_product(std::cbegin(s_wi),          std::cend(s_wi),          std::cbegin(m_fx), LongScalar(0));
+    const LongScalar I2 = Scalar(0.5)*(xmax - xmin)*std::inner_product(std::cbegin(s_alternateWi), std::cend(s_alternateWi), std::cbegin(m_fx), LongScalar(0));
 	
     return std::make_pair(I1, std::abs(I1 - I2));
 }
