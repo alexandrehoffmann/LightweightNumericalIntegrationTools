@@ -81,7 +81,7 @@ auto AdaptiveQuadratureBase<Derived>::integrate(const Function& f, const Scalar 
 		const Size maxErrIdx = Size(std::distance(std::cbegin(m_subIntergralsErr), maxErrIt));
         // we split it in two
 		const auto [a, b] = m_intervals[maxErrIdx];
-		const Scalar midPoint = (a + b) / 2.;
+		const Scalar midPoint = Scalar(0.5)*(a + b)
         // first interval
 		m_intervals[maxErrIdx] = Interval(a, midPoint);
 		std::tie(m_subIntergrals[maxErrIdx], m_subIntergralsErr[maxErrIdx]) = estimateIntegral(f, a, midPoint);
