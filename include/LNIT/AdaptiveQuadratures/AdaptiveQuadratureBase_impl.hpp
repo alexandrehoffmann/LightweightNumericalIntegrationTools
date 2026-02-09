@@ -29,6 +29,8 @@ AdaptiveQuadratureBase<Derived>::AdaptiveQuadratureBase(const Size maxIt, const 
 template<class Derived> template<class Function> 
 auto AdaptiveQuadratureBase<Derived>::integrate(const Function& f, const Scalar xmin, const Scalar xmax) -> Scalar
 {
+	using std::abs;
+	
     using const_Iterator = typename std::vector<LongScalar>::const_iterator;
     
     m_hasConverged = false;
@@ -71,10 +73,10 @@ auto AdaptiveQuadratureBase<Derived>::integrate(const Function& f, const Scalar 
         const Scalar I   = getEstimatedIntegral();
         const Scalar err = getEstimatedError();
 
-        if (m_out) { fmt::print(m_out, "{} {:10.4e} {:10.4e} {:10.4e} {:10.4e}\n", m_it, I, err, std::abs(I)*m_relativeTol, m_absoluteTol); }
+        if (m_out) { fmt::print(m_out, "{} {:10.4e} {:10.4e} {:10.4e} {:10.4e}\n", m_it, I, err, abs(I)*m_relativeTol, m_absoluteTol); }
 
         if (not std::isfinite(I)) { return I; }
-        if (err < std::abs(I)*m_relativeTol or err < m_absoluteTol) { m_hasConverged = true; return I; }
+        if (err < abs(I)*m_relativeTol or err < m_absoluteTol) { m_hasConverged = true; return I; }
 
         // we find the interval over which the integral is the least accurate
 		const const_Iterator maxErrIt = std::max_element(std::cbegin(m_subIntergralsErr), std::cend(m_subIntergralsErr));
