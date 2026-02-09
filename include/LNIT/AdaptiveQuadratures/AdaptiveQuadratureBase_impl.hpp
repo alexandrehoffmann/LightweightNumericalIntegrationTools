@@ -55,8 +55,8 @@ auto AdaptiveQuadratureBase<Derived>::integrate(const Function& f, const Scalar 
 	
 	for (Size i=0; i!=N; ++i)
 	{
-		const Scalar x_i   = xmin + i*(xmax - xmin) / (N);
-		const Scalar x_ip1 = xmin + (i+1)*(xmax - xmin) / (N);
+		const Scalar x_i   = xmin + Scalar(i)*(xmax - xmin) / Scalar(N);
+		const Scalar x_ip1 = xmin + Scalar(i+1)*(xmax - xmin) / Scalar(N);
 		
 		std::tie(res, estimatedErr) = estimateIntegral(f, x_i, x_ip1);
 		
