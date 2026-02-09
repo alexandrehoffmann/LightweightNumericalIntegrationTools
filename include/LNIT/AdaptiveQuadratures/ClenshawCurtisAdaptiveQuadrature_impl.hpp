@@ -38,9 +38,9 @@ auto ClenshawCurtisAdaptiveQuadrature<T,TT>::estimateIntegralImpl(const Function
     const misc::StridedView fx09(m_fx33, 4);
 #endif // if using c++23
 
-    const LongScalar I33 = LongScalar(0.5)*(xmax - xmin)*std::inner_product(std::cbegin(s_wi33), std::cend(s_wi33), std::cbegin(m_fx33), LongScalar(0));
-    const LongScalar I17 = LongScalar(0.5)*(xmax - xmin)*std::inner_product(std::cbegin(s_wi17), std::cend(s_wi17), std::cbegin(  fx17), LongScalar(0));
-    const LongScalar I09 = LongScalar(0.5)*(xmax - xmin)*std::inner_product(std::cbegin(s_wi09), std::cend(s_wi09), std::cbegin(  fx09), LongScalar(0));
+    const LongScalar I33 = LongScalar(0.5)*LongScalar(xmax - xmin)*std::inner_product(std::cbegin(s_wi33), std::cend(s_wi33), std::cbegin(m_fx33), LongScalar(0));
+    const LongScalar I17 = LongScalar(0.5)*LongScalar(xmax - xmin)*std::inner_product(std::cbegin(s_wi17), std::cend(s_wi17), std::cbegin(  fx17), LongScalar(0));
+    const LongScalar I09 = LongScalar(0.5)*LongScalar(xmax - xmin)*std::inner_product(std::cbegin(s_wi09), std::cend(s_wi09), std::cbegin(  fx09), LongScalar(0));
 	
     const LongScalar err1 = std::abs(I33 - I17);
 	const LongScalar err2 = std::abs(I33 - I09);
