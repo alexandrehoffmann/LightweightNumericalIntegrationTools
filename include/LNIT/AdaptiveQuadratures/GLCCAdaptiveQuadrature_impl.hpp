@@ -34,8 +34,8 @@ auto GLCCAdaptiveQuadrature<T,TT>::estimateIntegralImpl(const Function& f, const
 		return f(x); 
 	});
 	
-	const LongScalar I_gl = Scalar(0.5)*(xmax - xmin)*std::inner_product(std::cbegin(s_wi_gl), std::cend(s_wi_gl), std::cbegin(fx_gl), LongScalar(0));
-	const LongScalar I_cc = Scalar(0.5)*(xmax - xmin)*std::inner_product(std::cbegin(s_wi_cc), std::cend(s_wi_cc), std::cbegin(fx_cc), LongScalar(0));
+	const LongScalar I_gl = LongScalar(0.5)*(xmax - xmin)*std::inner_product(std::cbegin(s_wi_gl), std::cend(s_wi_gl), std::cbegin(fx_gl), LongScalar(0));
+	const LongScalar I_cc = LongScalar(0.5)*(xmax - xmin)*std::inner_product(std::cbegin(s_wi_cc), std::cend(s_wi_cc), std::cbegin(fx_cc), LongScalar(0));
 	
 	return std::make_pair(I_gl, std::abs(I_cc - I_gl));
 }
