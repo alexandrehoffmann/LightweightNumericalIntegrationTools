@@ -67,8 +67,8 @@ auto AdaptiveQuadratureBase<Derived>::integrate(const Function& f, const Scalar 
 	
     for (m_it=0; m_it!=m_maxIt; ++m_it)
 	{
-        const Scalar I   = getEstimatedIntegral();
-        const Scalar err = getEstimatedError();
+        const LongScalar I   = getEstimatedIntegral();
+        const LongScalar err = getEstimatedError();
 
         if (m_out) { fmt::print(m_out, "{} {:10.4e} {:10.4e} {:10.4e} {:10.4e}\n", m_it, I, err, abs(I)*m_relativeTol, m_absoluteTol); }
 

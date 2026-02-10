@@ -146,17 +146,17 @@ public:
 	
 	bool hasConverged() const { return m_hasConverged; } ///<  @brief Whether convergence was achieved.
 	
-	void setMaxIt(const Size maxIt)        { m_maxIt = maxIt; }                          ///<  @brief Set maximum number of iterations.
-	void setTol(const Scalar& tol)         { m_absoluteTol = tol; m_relativeTol = tol; } ///<  @brief Set the tolerance of the quadrature.
-	void setRelativeTol(const Scalar& tol) { m_relativeTol = tol; }                      ///<  @brief Set the relative tolerance of the quadrature.
-	void setAbsoluteTol(const Scalar& tol) { m_absoluteTol = tol; }                      ///<  @brief Set the absolute tolerance of the quadrature.
+	void setMaxIt(const Size maxIt)            { m_maxIt = maxIt; }                          ///<  @brief Set maximum number of iterations.
+	void setTol(const LongScalar& tol)         { m_absoluteTol = tol; m_relativeTol = tol; } ///<  @brief Set the tolerance of the quadrature.
+	void setRelativeTol(const LongScalar& tol) { m_relativeTol = tol; }                      ///<  @brief Set the relative tolerance of the quadrature.
+	void setAbsoluteTol(const LongScalar& tol) { m_absoluteTol = tol; }                      ///<  @brief Set the absolute tolerance of the quadrature.
 	
 	void setOutput(std::FILE* out) { m_out = out; } ///<  @brief Redirect output to a file for logging progress.
 
 	Scalar getMaxDeltaX(const Scalar xmin, const Scalar xmax) const { return derived().getMaxDeltaXImpl(xmin, xmax); } 
 	
-	Scalar getEstimatedIntegral() const { return Scalar( std::reduce(std::cbegin(m_subIntergrals),    std::cend(m_subIntergrals),    LongScalar(0)) ); }
-	Scalar getEstimatedError()    const { return Scalar( std::reduce(std::cbegin(m_subIntergralsErr), std::cend(m_subIntergralsErr), LongScalar(0)) ); }
+	LongScalar getEstimatedIntegral() const { return std::reduce(std::cbegin(m_subIntergrals),    std::cend(m_subIntergrals),    LongScalar(0)); }
+	LongScalar getEstimatedError()    const { return std::reduce(std::cbegin(m_subIntergralsErr), std::cend(m_subIntergralsErr), LongScalar(0)); }
 	
 	const std::vector<Interval>& getSubIntervals() const { return m_intervals; }
 private:
@@ -164,11 +164,11 @@ private:
 	std::vector<LongScalar> m_subIntergrals;
 	std::vector<LongScalar> m_subIntergralsErr;
 
-	Size   m_maxIt;
-	Size   m_it;
-	Scalar m_relativeTol;
-	Scalar m_absoluteTol;
-	bool   m_hasConverged;
+	Size       m_maxIt;
+	Size       m_it;
+	LongScalar m_relativeTol;
+	LongScalar m_absoluteTol;
+	bool       m_hasConverged;
 	
 	std::FILE* m_out = nullptr;
 };
