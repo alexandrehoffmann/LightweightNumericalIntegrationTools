@@ -72,7 +72,7 @@ auto AdaptiveQuadratureBase<Derived>::integrate(const Function& f, const Scalar 
 
         if (m_out) { fmt::print(m_out, "{} {:10.4e} {:10.4e} {:10.4e} {:10.4e}\n", m_it, Scalar(I), Scalar(err), Scalar(abs(I)*m_relativeTol), Scalar(m_absoluteTol)); }
 
-        if (not isfinite(I)) { return I; }
+        if (not isfinite(I)) { return Scalar(I); }
         if (err < abs(I)*m_relativeTol or err < m_absoluteTol) { m_hasConverged = true; return Scalar(I); }
 
         // we find the interval over which the integral is the least accurate
