@@ -90,7 +90,7 @@ auto AdaptiveQuadratureBase<Derived>::integrate(const Function& f, const Scalar 
 		m_subIntergrals.push_back(res);
 		m_subIntergralsErr.push_back(estimatedErr);
     }
-    return getEstimatedIntegral();
+    return Scalar(getEstimatedIntegral());
 }
 
 template<class Derived> template<class Function>
