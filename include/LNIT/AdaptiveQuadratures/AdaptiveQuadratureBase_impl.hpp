@@ -70,7 +70,7 @@ auto AdaptiveQuadratureBase<Derived>::integrate(const Function& f, const Scalar 
         const LongScalar I   = getEstimatedIntegral();
         const LongScalar err = getEstimatedError();
 
-        if (m_out) { fmt::print(m_out, "{} {:10.4e} {:10.4e} {:10.4e} {:10.4e}\n", m_it, Scalar(I), err, Scalar(abs(I)*m_relativeTol), Scalar(m_absoluteTol)); }
+        if (m_out) { fmt::print(m_out, "{} {:10.4e} {:10.4e} {:10.4e} {:10.4e}\n", m_it, Scalar(I), Scalar(err), Scalar(abs(I)*m_relativeTol), Scalar(m_absoluteTol)); }
 
         if (not isfinite(I)) { return I; }
         if (err < abs(I)*m_relativeTol or err < m_absoluteTol) { m_hasConverged = true; return I; }
