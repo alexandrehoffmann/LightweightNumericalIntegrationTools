@@ -29,15 +29,15 @@ auto GaussLegendreAdaptiveQuadrature<T,TT>::estimateIntegralImpl(const Function&
 	});
 	std::ranges::copy(fx, std::begin(m_fx15));
 	
-	const LongScalar I15 = LongScalar(0.5)*LongScalar(xmax - xmin)*std::inner_product(std::cbegin(s_wi15), std::cend(s_wi15), std::cbegin(m_fx15), LongScalar(0));
-	const LongScalar I14 = LongScalar(0.5)*LongScalar(xmax - xmin)*std::inner_product(std::cbegin(s_wi14), std::cend(s_wi14), std::cbegin(m_fx15), LongScalar(0));
-	const LongScalar I06 = LongScalar(0.5)*LongScalar(xmax - xmin)*std::inner_product(std::cbegin(s_wi06), std::cend(s_wi06), std::cbegin(m_fx15), LongScalar(0));
+	const LongScalar I15 = LongScalar(0.5)*LongScalar(xmax - xmin)*std::inner_product(std::cbegin(s_wi15), std::cend(s_wi15), std::cbegin(m_fx15), LongScalar());
+	const LongScalar I14 = LongScalar(0.5)*LongScalar(xmax - xmin)*std::inner_product(std::cbegin(s_wi14), std::cend(s_wi14), std::cbegin(m_fx15), LongScalar());
+	const LongScalar I06 = LongScalar(0.5)*LongScalar(xmax - xmin)*std::inner_product(std::cbegin(s_wi06), std::cend(s_wi06), std::cbegin(m_fx15), LongScalar());
 
     const LongScalar err1 = std::abs(I15 - I14);
 	const LongScalar err2 = std::abs(I15 - I06);
 
-    return std::make_pair(I15, err2 == 0 ? LongScalar(0) : err1*(err1 / err2)*(err1 / err2));
-    //~ return std::make_pair(I15, err2 == 0 ? LongScalar(0) : err2*(err1 / err2)*(err1 / err2));
+    return std::make_pair(I15, err2 == 0 ? LongScalar() : err1*(err1 / err2)*(err1 / err2));
+    //~ return std::make_pair(I15, err2 == 0 ? LongScalar() : err2*(err1 / err2)*(err1 / err2));
 }
 
 } // namespace LNIT
