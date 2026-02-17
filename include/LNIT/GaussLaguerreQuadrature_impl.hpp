@@ -25,7 +25,7 @@ Scalar GaussLaguerreQuadrature<Scalar, LongScalar>::integrateLeftInfinite(const 
 		return f(a - x); 
 	});
 
-	return Scalar(std::inner_product(std::cbegin(s_wi), std::cend(s_wi), std::cbegin(fx), LongScalar()));	
+	return Scalar(std::inner_product(std::cbegin(s_wi), std::cend(s_wi), std::cbegin(fx), LongScalar{}));	
 }
 
 template<typename Scalar, typename LongScalar> template<class Function> 
@@ -36,7 +36,7 @@ Scalar GaussLaguerreQuadrature<Scalar, LongScalar>::integrateRightInfinite(const
 		return f(x + a); 
 	});
 
-	return Scalar(std::inner_product(std::cbegin(s_wi), std::cend(s_wi), std::cbegin(fx), LongScalar()));	
+	return Scalar(std::inner_product(std::cbegin(s_wi), std::cend(s_wi), std::cbegin(fx), LongScalar{}));	
 }
 
 } // namespace LNIT

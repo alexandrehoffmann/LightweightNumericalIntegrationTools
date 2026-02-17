@@ -58,9 +58,9 @@ private:
 		Scalar(0.31694007279358916956  ), Scalar(0.023655483418631419965), Scalar(0.18519843621047418522), Scalar(0.028746310200837528204), Scalar(0.042948056434679514011 )};
 		
 	static constexpr inline std::array<Scalar, 15> s_wi06{
-		Scalar(                      ), Scalar(0.21431521897243154264 ), Scalar(), Scalar(0.062261803859627636066), Scalar()                     , 
-		Scalar(0.72342297716794082129), Scalar(                       ), Scalar(), Scalar(                       ), Scalar(0.72342297716794082129), 
-		Scalar(                      ), Scalar(0.062261803859627636066), Scalar(), Scalar(0.21431521897243154264 ), Scalar()};	
+		Scalar(                      ), Scalar(0.21431521897243154264 ), Scalar{}, Scalar(0.062261803859627636066), Scalar{}                     , 
+		Scalar(0.72342297716794082129), Scalar(                       ), Scalar{}, Scalar(                       ), Scalar(0.72342297716794082129), 
+		Scalar(                      ), Scalar(0.062261803859627636066), Scalar{}, Scalar(0.21431521897243154264 ), Scalar{}};	
 };
 
 } // namespace LNIT
