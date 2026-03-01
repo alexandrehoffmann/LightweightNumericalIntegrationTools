@@ -20,25 +20,25 @@ class StridedView
     using ReverseIterator       = StridedIterator<ValuesIterator, Stride>;
     using const_ReverseIterator = StridedIterator<const_ValuesIterator, Stride>;
 public:
-    StridedView(Values& values, const Stride stride) : m_values(values), m_stride(stride) {}
+    constexpr StridedView(Values& values, const Stride stride) : m_values(values), m_stride(stride) {}
     
-	Iterator begin() { return Iterator(m_values.begin(), m_stride); }
-	Iterator end()   { return Iterator(m_values.begin(), m_stride); }
+	constexpr Iterator begin() { return Iterator(m_values.begin(), m_stride); }
+	constexpr Iterator end()   { return Iterator(m_values.begin(), m_stride); }
 
-	const_Iterator begin() const { return const_Iterator(m_values.begin(), m_stride); }
-	const_Iterator end()   const { return const_Iterator(m_values.begin(), m_stride); }
+	constexpr const_Iterator begin() const { return const_Iterator(m_values.begin(), m_stride); }
+	constexpr const_Iterator end()   const { return const_Iterator(m_values.begin(), m_stride); }
 
-	const_Iterator cbegin() const { return const_Iterator(m_values.begin(), m_stride); }
-	const_Iterator cend()   const { return const_Iterator(m_values.begin(), m_stride); }
+	constexpr const_Iterator cbegin() const { return const_Iterator(m_values.begin(), m_stride); }
+	constexpr const_Iterator cend()   const { return const_Iterator(m_values.begin(), m_stride); }
 
-	ReverseIterator rbegin() { return ReverseIterator(m_values.begin(), m_stride); }
-	ReverseIterator rend()   { return ReverseIterator(m_values.begin(), m_stride); }
+	constexpr ReverseIterator rbegin() { return ReverseIterator(m_values.begin(), m_stride); }
+	constexpr ReverseIterator rend()   { return ReverseIterator(m_values.begin(), m_stride); }
 
-	const_ReverseIterator rbegin() const { return const_ReverseIterator(m_values.begin(), m_stride); }
-	const_ReverseIterator rend()   const { return const_ReverseIterator(m_values.begin(), m_stride); }
+	constexpr const_ReverseIterator rbegin() const { return const_ReverseIterator(m_values.begin(), m_stride); }
+	constexpr const_ReverseIterator rend()   const { return const_ReverseIterator(m_values.begin(), m_stride); }
 
-	const_ReverseIterator crbegin() const { return const_ReverseIterator(m_values.begin(), m_stride); }
-	const_ReverseIterator crend()   const { return const_ReverseIterator(m_values.begin(), m_stride); }
+	constexpr const_ReverseIterator crbegin() const { return const_ReverseIterator(m_values.begin(), m_stride); }
+	constexpr const_ReverseIterator crend()   const { return const_ReverseIterator(m_values.begin(), m_stride); }
 private:
 	Values& m_values;
 	Stride  m_stride;

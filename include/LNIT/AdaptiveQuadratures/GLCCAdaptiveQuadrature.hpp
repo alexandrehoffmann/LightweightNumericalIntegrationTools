@@ -49,9 +49,9 @@ public:
 	 * @param xmax Upper bound.
 	 * @return Pair (integral, estimated error).
 	 */
-	template<class Function> std::pair<LongScalar, LongScalar> estimateIntegralImpl(const Function& f, const Scalar xmin, const Scalar xmax) const;
+	template<class Function> constexpr std::pair<LongScalar, LongScalar> estimateIntegralImpl(const Function& f, const Scalar xmin, const Scalar xmax) const;
 	
-	Scalar getMaxDeltaXImpl(const Scalar xmin, const Scalar xmax) const { return (xmax - xmin)*misc::maxDiff(std::span{s_xi_cc}); } 
+	constexpr Scalar getMaxDeltaXImpl(const Scalar xmin, const Scalar xmax) const { return (xmax - xmin)*misc::maxDiff(std::span{s_xi_cc}); } 
 private:
 	static constexpr std::array<Scalar, 15> s_xi_gl{
 		Scalar(-0.98799251802048542849), -Scalar(0.93727339240070590431), -Scalar(0.84820658341042721620), Scalar(-0.72441773136017004742), Scalar(-0.57097217260853884754), 

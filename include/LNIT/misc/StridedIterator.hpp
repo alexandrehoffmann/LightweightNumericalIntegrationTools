@@ -27,19 +27,19 @@ class StridedIterator
     using pointer           = typename std::iterator_traits<Iterator>::pointer;
     using reference         = typename std::iterator_traits<Iterator>::reference;
 public:
-    StridedIterator(Iterator firstValue, Stride stride) : m_firstValue(firstValue), m_stride(stride) {}
+    constexpr StridedIterator(Iterator firstValue, Stride stride) : m_firstValue(firstValue), m_stride(stride) {}
 
-    reference operator*()  const { return *m_firstValue; } 
-	pointer   operator->()       { return std::addressof(*m_firstValue); }
+    constexpr reference operator*()  const { return *m_firstValue; } 
+	constexpr pointer   operator->()       { return std::addressof(*m_firstValue); }
 
-	StridedIterator& operator++() { m_firstValue += m_stride; return *this; }
-	StridedIterator& operator--() { m_firstValue -= m_stride; return *this; }
+	constexpr StridedIterator& operator++() { m_firstValue += m_stride; return *this; }
+	constexpr StridedIterator& operator--() { m_firstValue -= m_stride; return *this; }
 
-	StridedIterator operator++(int) { StridedIterator tmp = *this; ++(*this); return tmp; }
-	StridedIterator operator--(int) { StridedIterator tmp = *this; --(*this); return tmp; }
+	constexpr StridedIterator operator++(int) { StridedIterator tmp = *this; ++(*this); return tmp; }
+	constexpr StridedIterator operator--(int) { StridedIterator tmp = *this; --(*this); return tmp; }
 
-	friend bool operator== (const StridedIterator& a, const StridedIterator& b) { return a.m_firstValue == b.m_firstValue; }
-	friend bool operator!= (const StridedIterator& a, const StridedIterator& b) { return a.m_firstValue != b.m_firstValue; }  
+	friend constexpr bool operator== (const StridedIterator& a, const StridedIterator& b) { return a.m_firstValue == b.m_firstValue; }
+	friend constexpr bool operator!= (const StridedIterator& a, const StridedIterator& b) { return a.m_firstValue != b.m_firstValue; }  
 private:
     Iterator m_firstValue;
     Stride   m_stride;

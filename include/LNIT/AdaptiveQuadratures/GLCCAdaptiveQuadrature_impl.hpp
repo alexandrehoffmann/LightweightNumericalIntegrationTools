@@ -20,7 +20,7 @@ extern template class GLCCAdaptiveQuadrature<long double, long double>;
 //// method implementations ////
 
 template<typename T, typename TT> template<class Function>
-auto GLCCAdaptiveQuadrature<T,TT>::estimateIntegralImpl(const Function& f, const Scalar xmin, const Scalar xmax) const -> std::pair<LongScalar, LongScalar>
+constexpr auto GLCCAdaptiveQuadrature<T,TT>::estimateIntegralImpl(const Function& f, const Scalar xmin, const Scalar xmax) const -> std::pair<LongScalar, LongScalar>
 {
     const auto fx_gl = s_xi_gl | std::views::transform([&f, xmin, xmax](const Scalar xi) -> Scalar
 	{

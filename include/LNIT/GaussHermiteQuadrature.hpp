@@ -22,10 +22,9 @@ class GaussHermiteQuadrature
 public:
 	using Size = unsigned int; ///< Type alias for sizes/indices.
 
-	GaussHermiteQuadrature() {} ///<  @brief Default constructor.
+	constexpr GaussHermiteQuadrature() {} ///<  @brief Default constructor.
 
-
-	template<class Function> Scalar integrate(const Function& f) const;
+	template<class Function> constexpr Scalar integrate(const Function& f) const;
 private:
 	static constexpr std::array<Scalar, 66> s_wi = {
 		Scalar(0.72500244352094499799), Scalar(0.55908539234713480356), Scalar(0.48645731979545141956), Scalar(0.44287166385270444111), Scalar(0.41289257970879246181), 

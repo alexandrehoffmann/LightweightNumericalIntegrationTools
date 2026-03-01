@@ -63,7 +63,7 @@ public:
 	 * 
 	 * @return Pair (integral, estimated error).
 	 */
-	template<class Function> std::pair<LongScalar, LongScalar> estimateIntegral(const Function& f, const Scalar xmin, const Scalar xmax) { return derived().estimateIntegralImpl(f, xmin, xmax); }
+	template<class Function> constexpr std::pair<LongScalar, LongScalar> estimateIntegral(const Function& f, const Scalar xmin, const Scalar xmax) { return derived().estimateIntegralImpl(f, xmin, xmax); }
 
 	/**
 	 * @brief Perform adaptive quadrature on [xmin, xmax].
@@ -139,26 +139,26 @@ public:
 	 */
 	template<class Function> Scalar remapAndIntegrate(const Function& f);
 	
-    Size   getMaxIt()       const { return m_maxIt; }       ///<  @brief Maximum iterations allowed.
-	Size   getNits()        const { return m_it; }          ///<  @brief Number of iterations performed.
-	Scalar getRelativeTol() const { return m_relativeTol; } ///<  @brief Relative tolerance of the quadrature.
-	Scalar getAbsoluteTol() const { return m_absoluteTol; } ///<  @brief Absolute tolerance of the quadrature.
+    constexpr Size   getMaxIt()       const { return m_maxIt; }       ///<  @brief Maximum iterations allowed.
+	constexpr Size   getNits()        const { return m_it; }          ///<  @brief Number of iterations performed.
+	constexpr Scalar getRelativeTol() const { return m_relativeTol; } ///<  @brief Relative tolerance of the quadrature.
+	constexpr Scalar getAbsoluteTol() const { return m_absoluteTol; } ///<  @brief Absolute tolerance of the quadrature.
 	
-	bool hasConverged() const { return m_hasConverged; } ///<  @brief Whether convergence was achieved.
+	constexpr bool hasConverged() const { return m_hasConverged; } ///<  @brief Whether convergence was achieved.
 	
-	void setMaxIt(const Size maxIt)            { m_maxIt = maxIt; }                          ///<  @brief Set maximum number of iterations.
-	void setTol(const LongScalar& tol)         { m_absoluteTol = tol; m_relativeTol = tol; } ///<  @brief Set the tolerance of the quadrature.
-	void setRelativeTol(const LongScalar& tol) { m_relativeTol = tol; }                      ///<  @brief Set the relative tolerance of the quadrature.
-	void setAbsoluteTol(const LongScalar& tol) { m_absoluteTol = tol; }                      ///<  @brief Set the absolute tolerance of the quadrature.
+	constexpr void setMaxIt(const Size maxIt)            { m_maxIt = maxIt; }                          ///<  @brief Set maximum number of iterations.
+	constexpr void setTol(const LongScalar& tol)         { m_absoluteTol = tol; m_relativeTol = tol; } ///<  @brief Set the tolerance of the quadrature.
+	constexpr void setRelativeTol(const LongScalar& tol) { m_relativeTol = tol; }                      ///<  @brief Set the relative tolerance of the quadrature.
+	constexpr void setAbsoluteTol(const LongScalar& tol) { m_absoluteTol = tol; }                      ///<  @brief Set the absolute tolerance of the quadrature.
 	
-	void setOutput(std::FILE* out) { m_out = out; } ///<  @brief Redirect output to a file for logging progress.
+	constexpr void setOutput(std::FILE* out) { m_out = out; } ///<  @brief Redirect output to a file for logging progress.
 
-	Scalar getMaxDeltaX(const Scalar xmin, const Scalar xmax) const { return derived().getMaxDeltaXImpl(xmin, xmax); } 
+	constexpr Scalar getMaxDeltaX(const Scalar xmin, const Scalar xmax) const { return derived().getMaxDeltaXImpl(xmin, xmax); } 
 	
-	LongScalar getEstimatedIntegral() const { return std::reduce(std::cbegin(m_subIntergrals),    std::cend(m_subIntergrals),    LongScalar{}); }
-	LongScalar getEstimatedError()    const { return std::reduce(std::cbegin(m_subIntergralsErr), std::cend(m_subIntergralsErr), LongScalar{}); }
+	constexpr LongScalar getEstimatedIntegral() const { return std::reduce(std::cbegin(m_subIntergrals),    std::cend(m_subIntergrals),    LongScalar{}); }
+	constexpr LongScalar getEstimatedError()    const { return std::reduce(std::cbegin(m_subIntergralsErr), std::cend(m_subIntergralsErr), LongScalar{}); }
 	
-	const std::vector<Interval>& getSubIntervals() const { return m_intervals; }
+	constexpr const std::vector<Interval>& getSubIntervals() const { return m_intervals; }
 private:
 	std::vector<Interval>   m_intervals;
 	std::vector<LongScalar> m_subIntergrals;

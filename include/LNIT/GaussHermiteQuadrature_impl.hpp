@@ -22,7 +22,7 @@ extern template class GaussHermiteQuadrature<long double, long double>;
 //// method implementations ////
 
 template<typename Scalar, typename LongScalar> template<class Function> 
-Scalar GaussHermiteQuadrature<Scalar, LongScalar>::integrate(const Function& f) const
+constexpr Scalar GaussHermiteQuadrature<Scalar, LongScalar>::integrate(const Function& f) const
 {
 	const auto fx = s_xi | std::views::transform([&f](const Scalar x) -> Scalar
 	{
