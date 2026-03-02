@@ -29,9 +29,9 @@ constexpr auto GaussLegendreAdaptiveQuadrature<T,TT>::estimateIntegralImpl(const
 	});
 	std::ranges::copy(fx, std::begin(m_fx15));
 	
-	const LongScalar I15 = LongScalar(0.5)*LongScalar(xmax - xmin)*std::inner_product(std::cbegin(s_wi15), std::cend(s_wi15), std::cbegin(m_fx15), LongScalar{});
-	const LongScalar I14 = LongScalar(0.5)*LongScalar(xmax - xmin)*std::inner_product(std::cbegin(s_wi14), std::cend(s_wi14), std::cbegin(m_fx15), LongScalar{});
-	const LongScalar I06 = LongScalar(0.5)*LongScalar(xmax - xmin)*std::inner_product(std::cbegin(s_wi06), std::cend(s_wi06), std::cbegin(m_fx15), LongScalar{});
+	const LongScalar I15 = LongScalar(0.5)*LongScalar(xmax - xmin)*std::inner_product(std::ranges::begin(s_wi15), std::ranges::end(s_wi15), std::ranges::begin(m_fx15), LongScalar{});
+	const LongScalar I14 = LongScalar(0.5)*LongScalar(xmax - xmin)*std::inner_product(std::ranges::begin(s_wi14), std::ranges::end(s_wi14), std::ranges::begin(m_fx15), LongScalar{});
+	const LongScalar I06 = LongScalar(0.5)*LongScalar(xmax - xmin)*std::inner_product(std::ranges::begin(s_wi06), std::ranges::end(s_wi06), std::ranges::begin(m_fx15), LongScalar{});
 
     const LongScalar err1 = std::abs(I15 - I14);
 	const LongScalar err2 = std::abs(I15 - I06);

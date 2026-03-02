@@ -155,8 +155,8 @@ public:
 
 	constexpr Scalar getMaxDeltaX(const Scalar xmin, const Scalar xmax) const { return derived().getMaxDeltaXImpl(xmin, xmax); } 
 	
-	constexpr LongScalar getEstimatedIntegral() const { return std::reduce(std::cbegin(m_subIntergrals),    std::cend(m_subIntergrals),    LongScalar{}); }
-	constexpr LongScalar getEstimatedError()    const { return std::reduce(std::cbegin(m_subIntergralsErr), std::cend(m_subIntergralsErr), LongScalar{}); }
+	constexpr LongScalar getEstimatedIntegral() const { return std::reduce(std::ranges::begin(m_subIntergrals),    std::ranges::end(m_subIntergrals),    LongScalar{}); }
+	constexpr LongScalar getEstimatedError()    const { return std::reduce(std::ranges::begin(m_subIntergralsErr), std::ranges::end(m_subIntergralsErr), LongScalar{}); }
 	
 	constexpr const std::vector<Interval>& getSubIntervals() const { return m_intervals; }
 private:

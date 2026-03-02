@@ -29,8 +29,8 @@ constexpr auto ClenshawCurtisHybridAdaptiveQuadrature<T,TT>::estimateIntegralImp
 	});
 	std::ranges::copy(fx, std::begin(m_fx));
     
-    const LongScalar I1 = LongScalar(0.5)*LongScalar(xmax - xmin)*std::inner_product(std::cbegin(s_wi),          std::cend(s_wi),          std::cbegin(m_fx), LongScalar{});
-    const LongScalar I2 = LongScalar(0.5)*LongScalar(xmax - xmin)*std::inner_product(std::cbegin(s_alternateWi), std::cend(s_alternateWi), std::cbegin(m_fx), LongScalar{});
+    const LongScalar I1 = LongScalar(0.5)*LongScalar(xmax - xmin)*std::inner_product(std::ranges::begin(s_wi),          std::ranges::end(s_wi),          std::ranges::begin(m_fx), LongScalar{});
+    const LongScalar I2 = LongScalar(0.5)*LongScalar(xmax - xmin)*std::inner_product(std::ranges::begin(s_alternateWi), std::ranges::end(s_alternateWi), std::ranges::begin(m_fx), LongScalar{});
 
     return std::make_pair(I1, std::abs(I1 - I2));
 }

@@ -34,13 +34,13 @@ constexpr auto ClenshawCurtisAdaptiveQuadrature<T,TT>::estimateIntegralImpl(cons
     const auto fx17 = m_fx33 | std::views::stride(2);
     const auto fx09 = m_fx33 | std::views::stride(4);
 #else
-    const misc::StridedView fx17(m_fx33, 2);
-    const misc::StridedView fx09(m_fx33, 4);
+    const auto fx17 = misc::stride<2>(m_fx33);
+    const auto fx09 = misc::stride<4>(m_fx33);
 #endif // if using c++23
 
-    const LongScalar I33 = LongScalar(0.5)*LongScalar(xmax - xmin)*std::inner_product(std::cbegin(s_wi33), std::cend(s_wi33), std::cbegin(m_fx33), LongScalar{});
-    const LongScalar I17 = LongScalar(0.5)*LongScalar(xmax - xmin)*std::inner_product(std::cbegin(s_wi17), std::cend(s_wi17), std::cbegin(  fx17), LongScalar{});
-    const LongScalar I09 = LongScalar(0.5)*LongScalar(xmax - xmin)*std::inner_product(std::cbegin(s_wi09), std::cend(s_wi09), std::cbegin(  fx09), LongScalar{});
+    const LongScalar I33 = LongScalar(0.5)*LongScalar(xmax - xmin)*std::inner_product(std::ranges::begin(s_wi33), std::ranges::end(s_wi33), std::ranges::begin(m_fx33), LongScalar{});
+    const LongScalar I17 = LongScalar(0.5)*LongScalar(xmax - xmin)*std::inner_product(std::ranges::begin(s_wi17), std::ranges::end(s_wi17), std::ranges::begin(  fx17), LongScalar{});
+    const LongScalar I09 = LongScalar(0.5)*LongScalar(xmax - xmin)*std::inner_product(std::ranges::begin(s_wi09), std::ranges::end(s_wi09), std::ranges::begin(  fx09), LongScalar{});
 	
     const LongScalar err1 = std::abs(I33 - I17);
 	const LongScalar err2 = std::abs(I33 - I09);
