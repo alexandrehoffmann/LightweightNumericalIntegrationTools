@@ -23,6 +23,8 @@ extern template class ClenshawCurtisAdaptiveQuadrature<long double, long double>
 template<typename T, typename TT> template<class Function>
 constexpr auto ClenshawCurtisAdaptiveQuadrature<T,TT>::estimateIntegralImpl(const Function& f, const Scalar xmin, const Scalar xmax) -> std::pair<LongScalar, LongScalar>
 {	
+	using std::abs;
+	
     const auto fx = s_xi | std::views::transform([&f, xmin, xmax](const Scalar xi) -> Scalar
 	{
 		const Scalar x = Scalar(0.5)*(xi*(xmax - xmin) + (xmax + xmin));
@@ -42,8 +44,8 @@ constexpr auto ClenshawCurtisAdaptiveQuadrature<T,TT>::estimateIntegralImpl(cons
     const LongScalar I17 = LongScalar(0.5)*LongScalar(xmax - xmin)*std::inner_product(std::ranges::begin(s_wi17), std::ranges::end(s_wi17), std::ranges::begin(  fx17), LongScalar{});
     const LongScalar I09 = LongScalar(0.5)*LongScalar(xmax - xmin)*std::inner_product(std::ranges::begin(s_wi09), std::ranges::end(s_wi09), std::ranges::begin(  fx09), LongScalar{});
 	
-    const LongScalar err1 = std::abs(I33 - I17);
-	const LongScalar err2 = std::abs(I33 - I09);
+    const LongScalar err1 = abs(I33 - I17);
+	const LongScalar err2 = abs(I33 - I09);
 	
     return std::make_pair(I33, err2 == 0 ? LongScalar{} : err1*(err1 / err2)*(err1 / err2));
     //~ return std::make_pair(I33, err2 == 0 ? LongScalar{} : err2*(err1 / err2)*(err1 / err2));

@@ -14,12 +14,14 @@ namespace misc
 template<typename T, size_t N> 
 constexpr T maxDiff(std::span<T, N> x)
 {
+	using std::abs;
+	
 	using Mutable = std::remove_cv_t<T>;
 	
-	Mutable res = std::abs(x[1] - x[0]);
+	Mutable res = abs(x[1] - x[0]);
 	for (size_t i=1; i!=size_t(x.size()-1); ++i)
 	{
-		res = std::max(res, std::abs(x[i+1] - x[i]));
+		res = std::max(res, abs(x[i+1] - x[i]));
 	}
 	
 	return res;
