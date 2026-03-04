@@ -1,6 +1,8 @@
 #ifndef LNIT_ADAPTIVE_QUADRATURE_BASE_HPP
 #define LNIT_ADAPTIVE_QUADRATURE_BASE_HPP
 
+#include <LNIT/NumTraits.hpp>
+
 #include <cstdio>
 #include <array>
 #include <vector>
@@ -50,7 +52,7 @@ public:
 	 * @param maxIt Maximum number of iterations.
 	 * @param tol Relative tolerance for convergence.
 	 */
-	AdaptiveQuadratureBase(const Size maxIt = 20000, const Scalar relativeTol = std::numeric_limits<Scalar>::epsilon(), const Scalar absoluteTol = std::numeric_limits<Scalar>::epsilon());
+	AdaptiveQuadratureBase(const Size maxIt = 20000, const Scalar relativeTol = NumTraits<Scalar>::epsilon, const Scalar absoluteTol = NumTraits<Scalar>::epsilon);
 
 	/**
 	 * @brief Estimate integral and error on [xmin, xmax].
