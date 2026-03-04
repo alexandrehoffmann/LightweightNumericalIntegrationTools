@@ -47,8 +47,8 @@ constexpr auto ClenshawCurtisAdaptiveQuadrature<T,TT>::estimateIntegralImpl(cons
     const LongScalar err1 = abs(I33 - I17);
 	const LongScalar err2 = abs(I33 - I09);
 	
-    return std::make_pair(I33, err2 == 0 ? LongScalar{} : err1*(err1 / err2)*(err1 / err2));
-    //~ return std::make_pair(I33, err2 == 0 ? LongScalar{} : err2*(err1 / err2)*(err1 / err2));
+    return std::make_pair(I33, err2 == LongScalar{} ? LongScalar{} : err1*(err1 / err2)*(err1 / err2));
+    //~ return std::make_pair(I33, err2 == LongScalar{} ? LongScalar{} : err2*(err1 / err2)*(err1 / err2));
 }
 
 } // namespace LNIT

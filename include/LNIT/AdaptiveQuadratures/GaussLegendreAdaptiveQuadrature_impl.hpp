@@ -38,8 +38,8 @@ constexpr auto GaussLegendreAdaptiveQuadrature<T,TT>::estimateIntegralImpl(const
     const LongScalar err1 = abs(I15 - I14);
 	const LongScalar err2 = abs(I15 - I06);
 
-    return std::make_pair(I15, err2 == 0 ? LongScalar{} : err1*(err1 / err2)*(err1 / err2));
-    //~ return std::make_pair(I15, err2 == 0 ? LongScalar{} : err2*(err1 / err2)*(err1 / err2));
+    return std::make_pair(I15, err2 == LongScalar{} ? LongScalar{} : err1*(err1 / err2)*(err1 / err2));
+    //~ return std::make_pair(I15, err2 == LongScalar{} ? LongScalar{} : err2*(err1 / err2)*(err1 / err2));
 }
 
 } // namespace LNIT
