@@ -24,7 +24,7 @@ constexpr auto ClenshawCurtisHybridAdaptiveQuadrature<T,TT>::estimateIntegralImp
 {	
 	using std::abs;
 	
-    const auto fx = s_xi | std::views::transform([&f, xmin, xmax](const Scalar xi) -> Scalar
+    const auto fx = s_xi | std::views::transform([&f, xmin, xmax](const Scalar xi) -> LongScalar
 	{
 		const Scalar x = Scalar(0.5)*(xi*(xmax - xmin) + (xmax + xmin));
 		return f(x); 

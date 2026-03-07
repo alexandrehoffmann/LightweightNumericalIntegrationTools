@@ -52,7 +52,7 @@ public:
 	
 	constexpr Scalar getMaxDeltaXImpl(const Scalar xmin, const Scalar xmax) const { return (xmax - xmin)*misc::maxDiff(std::span{s_xi}); } 
 private:
-	std::array<Scalar, 13> m_fx;
+	std::array<LongScalar, 13> m_fx;
 
 	static constexpr std::array<Scalar, 13> s_wi = {
 		Scalar(0.0064102564102564102564), Scalar(0.067222926117575560019), Scalar(0.13037703037703037703  ), Scalar(0.18592888592888592889), Scalar(0.22580752580752580753), 
