@@ -157,7 +157,7 @@ auto AdaptiveQuadratureBase<Derived>::integrate(const Function& f) -> LongScalar
 		const LongScalar rightIntegral = gLaguerreQuad.integrateRightInfinite(f); 
 		
 		if (not isfinite(rightIntegral)) { return NumTraits<LongScalar>::NaN; } 
-		return abs(rightIntegral) < NumTraits<Scalar>::epsilon ? LongScalar{} : integrateRightInfinite(f, Scalar{}); 
+		return abs(rightIntegral) < NumTraits<LongScalar>::epsilon ? LongScalar{} : integrateRightInfinite(f, Scalar{}); 
 	}
 	
 	Scalar xmin = -1;
