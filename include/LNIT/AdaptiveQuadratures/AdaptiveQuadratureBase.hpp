@@ -75,7 +75,7 @@ public:
 	 * @param xmax Upper bound of interval.
 	 * @return Approximation of the integral.
 	 */
-	template<class Function> Scalar integrate(const Function& f, const Scalar xmin, const Scalar xmax);
+	template<class Function> LongScalar integrate(const Function& f, const Scalar xmin, const Scalar xmax);
 	
 	/**
 	 * @brief Perform adaptive quadrature on (-inf, xmax].
@@ -92,7 +92,7 @@ public:
 	 * @param xmax Upper bound of interval.
 	 * @return Approximation of the integral.
 	 */
-	template<class Function> Scalar integrateLeftInfinite(const Function& f, const Scalar xmax);
+	template<class Function> LongScalar integrateLeftInfinite(const Function& f, const Scalar xmax);
 	
 	/**
 	 * @brief Perform adaptive quadrature on [xmin, inf).
@@ -109,7 +109,7 @@ public:
 	 * @param xmax Upper bound of interval.
 	 * @return Approximation of the integral.
 	 */
-	template<class Function> Scalar integrateRightInfinite(const Function& f, const Scalar xmin);
+	template<class Function> LongScalar integrateRightInfinite(const Function& f, const Scalar xmin);
 	
 	/**
      * @brief Perform adaptive quadrature on (-inf, inf).
@@ -124,7 +124,7 @@ public:
 	 * \f]
 	 * Finally addapt the quadrature over [xmin, xmax].
      */
-	template<class Function> Scalar integrate(const Function& f);
+	template<class Function> LongScalar integrate(const Function& f);
 	
 	/**
 	 * @brief Perform adaptive quadrature on (-inf, inf) using a coordinate-remapping technique.
@@ -139,9 +139,9 @@ public:
 	 * \int_{-1}^{1} f(x(t))\frac{1 + t^2}{(1 - t^2)^2} dt.
 	 * \f]
 	 */
-	template<class Function> Scalar remapAndIntegrate(const Function& f);
+	template<class Function> LongScalar remapAndIntegrate(const Function& f);
 	
-    constexpr Size   getMaxIt()       const { return m_maxIt; }       ///<  @brief Maximum iterations allowed.
+	constexpr Size   getMaxIt()       const { return m_maxIt; }       ///<  @brief Maximum iterations allowed.
 	constexpr Size   getNits()        const { return m_it; }          ///<  @brief Number of iterations performed.
 	constexpr Scalar getRelativeTol() const { return m_relativeTol; } ///<  @brief Relative tolerance of the quadrature.
 	constexpr Scalar getAbsoluteTol() const { return m_absoluteTol; } ///<  @brief Absolute tolerance of the quadrature.

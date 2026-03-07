@@ -18,25 +18,25 @@ extern template class GaussLaguerreQuadrature<long double, long double>;
 //// method implementations ////
 
 template<typename Scalar, typename LongScalar> template<class Function> 
-constexpr Scalar GaussLaguerreQuadrature<Scalar, LongScalar>::integrateLeftInfinite(const Function& f, const Scalar a) const
+constexpr LongScalar GaussLaguerreQuadrature<Scalar, LongScalar>::integrateLeftInfinite(const Function& f, const Scalar a) const
 {
-	const auto fx = s_xi | std::views::transform([&f, a](const Scalar x) -> Scalar
+	const auto fx = s_xi | std::views::transform([&f, a](const Scalar x) -> LongScalar
 	{
 		return f(a - x); 
 	});
 
-	return Scalar(std::inner_product(std::ranges::begin(s_wi), std::ranges::end(s_wi), std::ranges::begin(fx), LongScalar{}));	
+	return std::inner_product(std::ranges::begin(s_wi), std::ranges::end(s_wi), std::ranges::begin(fx), LongScalar{});	
 }
 
 template<typename Scalar, typename LongScalar> template<class Function> 
-constexpr Scalar GaussLaguerreQuadrature<Scalar, LongScalar>::integrateRightInfinite(const Function& f, const Scalar a) const
+constexpr LongScalar GaussLaguerreQuadrature<Scalar, LongScalar>::integrateRightInfinite(const Function& f, const Scalar a) const
 {
-	const auto fx = s_xi | std::views::transform([&f, a](const Scalar x) -> Scalar
+	const auto fx = s_xi | std::views::transform([&f, a](const Scalar x) -> LongScalar
 	{
 		return f(x + a); 
 	});
 
-	return Scalar(std::inner_product(std::ranges::begin(s_wi), std::ranges::end(s_wi), std::ranges::begin(fx), LongScalar{}));	
+	return std::inner_product(std::ranges::begin(s_wi), std::ranges::end(s_wi), std::ranges::begin(fx), LongScalar{});	
 }
 
 } // namespace LNIT
