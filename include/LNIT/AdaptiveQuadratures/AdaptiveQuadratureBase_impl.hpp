@@ -178,7 +178,7 @@ auto AdaptiveQuadratureBase<Derived>::remapAndIntegrate(const Function& f) -> Lo
 	
 	const auto fref = [&f](const Scalar t) -> LongScalar
 	{			
-		const Scalar fx = f(t / (1 - t*t));
+		const LongScalar fx = f(t / (1 - t*t));
 			
 		return isnan(fx)
 			? LongScalar{}
