@@ -104,8 +104,8 @@ auto AdaptiveQuadratureBase<Derived>::integrateLeftInfinite(const Function& f, c
 	
 	LongScalar leftIntegral = gLaguerreQuad.integrateLeftInfinite(f);
 	
-	if (not isfinite(leftIntegral))		                  { return NumTraits<LongScalar>::NaN; }	
-	if (abs(leftIntegral) < NumTraits<Scalar>::epsilon) { return integrate(f, Scalar{}, xmax);  }
+	if (not isfinite(leftIntegral))		                      { return NumTraits<LongScalar>::NaN; }	
+	if (abs(leftIntegral) < NumTraits<LongScalar>::epsilon) { return integrate(f, Scalar{}, xmax);  }
 	
 	Scalar xmin = -1;
 	leftIntegral = gLaguerreQuad.integrateLeftInfinite(f, xmin);
@@ -127,8 +127,8 @@ auto AdaptiveQuadratureBase<Derived>::integrateRightInfinite(const Function& f, 
 	
 	LongScalar rightIntegral = gLaguerreQuad.integrateRightInfinite(f);
 	
-	if (not isfinite(rightIntegral))		                 { return NumTraits<LongScalar>::NaN; }	
-	if (abs(rightIntegral) < NumTraits<Scalar>::epsilon) { return integrate(f, xmin, Scalar{});  }
+	if (not isfinite(rightIntegral))		                     { return NumTraits<LongScalar>::NaN; }	
+	if (abs(rightIntegral) < NumTraits<LongScalar>::epsilon) { return integrate(f, xmin, Scalar{});  }
 	
 	Scalar xmax = 1;
 	rightIntegral = gLaguerreQuad.integrateRightInfinite(f, xmax);
