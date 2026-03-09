@@ -12,13 +12,11 @@ namespace misc
 {
 
 template<typename T, size_t N> 
-constexpr T maxDiff(std::span<T, N> x)
+constexpr T maxDiff(const std::span<const T, N> x)
 {
 	using std::abs;
 	
-	using Mutable = std::remove_cv_t<T>;
-	
-	Mutable res = abs(x[1] - x[0]);
+	T res = abs(x[1] - x[0]);
 	for (size_t i=1; i!=size_t(x.size()-1); ++i)
 	{
 		res = std::max(res, abs(x[i+1] - x[i]));
