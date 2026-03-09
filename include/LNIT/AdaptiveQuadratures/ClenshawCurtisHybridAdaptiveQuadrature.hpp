@@ -50,7 +50,7 @@ public:
 	 */
 	template<class Function> constexpr std::pair<LongScalar, LongScalar> estimateIntegralImpl(const Function& f, const Scalar xmin, const Scalar xmax);
 	
-	template<class Function> constexpr std::invoke_result<Function, Scalar> integrateImpl(const Function& f, const Scalar xmin, const Scalar xmax) const;
+	template<class Function> constexpr std::invoke_result_t<Function, Scalar> integrateImpl(const Function& f, const Scalar xmin, const Scalar xmax) const;
 	
 	constexpr Scalar getMaxDeltaXImpl(const Scalar xmin, const Scalar xmax) const { return (xmax - xmin)*misc::maxDiff(std::span{s_xi}); } 
 private:

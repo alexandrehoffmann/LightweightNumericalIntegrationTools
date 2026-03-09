@@ -189,9 +189,9 @@ auto AdaptiveQuadratureBase<Derived>::remapAndIntegrate(const Function& f) -> Lo
 }
 
 template<class Derived>  template<class Function> 
-auto AdaptiveQuadratureBase<Derived>::integrateWithoutAdaptation(const Function& f) const -> std::invoke_result<Function, Scalar>
+auto AdaptiveQuadratureBase<Derived>::integrateWithoutAdaptation(const Function& f) const -> std::invoke_result_t<Function, Scalar>
 {
-	std::invoke_result<Function, Scalar> ret{};
+	std::invoke_result_t<Function, Scalar> ret{};
 	
 	for (const auto& [xmin, xmax] : m_intervals)
 	{

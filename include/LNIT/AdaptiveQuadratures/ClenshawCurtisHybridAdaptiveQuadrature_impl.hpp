@@ -38,15 +38,15 @@ constexpr auto ClenshawCurtisHybridAdaptiveQuadrature<T,TT>::estimateIntegralImp
 }
 
 template<typename T, typename TT> template<class Function>
-constexpr auto ClenshawCurtisHybridAdaptiveQuadrature<T,TT>::integrateImpl(const Function& f, const Scalar xmin, const Scalar xmax) const -> std::invoke_result<Function, Scalar>
+constexpr auto ClenshawCurtisHybridAdaptiveQuadrature<T,TT>::integrateImpl(const Function& f, const Scalar xmin, const Scalar xmax) const -> std::invoke_result_t<Function, Scalar>
 {
-	const auto fx = s_xi | std::views::transform([&f, xmin, xmax](const Scalar xi) -> std::invoke_result<Function, Scalar>
+	const auto fx = s_xi | std::views::transform([&f, xmin, xmax](const Scalar xi) -> std::invoke_result_t<Function, Scalar>
 	{
 		const Scalar x = Scalar(0.5)*(xi*(xmax - xmin) + (xmax + xmin));
 		return f(x); 
 	});
 	
-	return LongScalar(0.5)*LongScalar(xmax - xmin)*std::inner_product(std::ranges::begin(s_wi), std::ranges::end(s_wi), std::ranges::begin(fx), std::invoke_result<Function, Scalar>{});
+	return LongScalar(0.5)*LongScalar(xmax - xmin)*std::inner_product(std::ranges::begin(s_wi), std::ranges::end(s_wi), std::ranges::begin(fx), std::invoke_result_t<Function, Scalar>{});
 }
 
 } // namespace LNIT
