@@ -191,14 +191,12 @@ auto AdaptiveQuadratureBase<Derived>::remapAndIntegrate(const Function& f) -> Lo
 template<class Derived>  template<class Function> 
 auto AdaptiveQuadratureBase<Derived>::integrateWithoutAdaptation(const Function& f) const -> std::invoke_result_t<Function, Scalar>
 {
-	std::invoke_result_t<Function, Scalar> ret{};
-	
-	for (const auto& [xmin, xmax] : m_intervals)
+	const auto localIntegrals = m_intervals | std::views::transform([&self = derived(), &f](const Interval& interval) -> std::invoke_result_t<Function, Scalar>
 	{
-		ret += derived().integrateImpl(f, xmin, xmax);
-	}
+		return self.integrateImpl(f, interval.first, interval.second);
+	});
 	
-	return ret;
+	return std::reduce(std::ranges::begin(localIntegrals), std::ranges::end(localIntegrals));
 }
 
 } // namespace LNIT
