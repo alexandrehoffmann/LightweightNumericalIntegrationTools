@@ -148,10 +148,10 @@ public:
 	
 	constexpr bool hasConverged() const { return m_hasConverged; } ///<  @brief Whether convergence was achieved.
 	
-	constexpr void setMaxIt(const Size maxIt)            { m_maxIt = maxIt; }                          ///<  @brief Set maximum number of iterations.
-	constexpr void setTol(const LongScalar& tol)         { m_absoluteTol = tol; m_relativeTol = tol; } ///<  @brief Set the tolerance of the quadrature.
-	constexpr void setRelativeTol(const LongScalar& tol) { m_relativeTol = tol; }                      ///<  @brief Set the relative tolerance of the quadrature.
-	constexpr void setAbsoluteTol(const LongScalar& tol) { m_absoluteTol = tol; }                      ///<  @brief Set the absolute tolerance of the quadrature.
+	constexpr void setMaxIt(const Size maxIt)        { m_maxIt = maxIt; }                          ///<  @brief Set maximum number of iterations.
+	constexpr void setTol(const Scalar& tol)         { m_absoluteTol = tol; m_relativeTol = tol; } ///<  @brief Set the tolerance of the quadrature.
+	constexpr void setRelativeTol(const Scalar& tol) { m_relativeTol = tol; }                      ///<  @brief Set the relative tolerance of the quadrature.
+	constexpr void setAbsoluteTol(const Scalar& tol) { m_absoluteTol = tol; }                      ///<  @brief Set the absolute tolerance of the quadrature.
 	
 	constexpr void setOutput(std::FILE* out) { m_out = out; } ///<  @brief Redirect output to a file for logging progress.
 
@@ -166,11 +166,11 @@ private:
 	std::vector<LongScalar> m_subIntergrals;
 	std::vector<LongScalar> m_subIntergralsErr;
 
-	Size       m_maxIt;
-	Size       m_it;
-	LongScalar m_relativeTol;
-	LongScalar m_absoluteTol;
-	bool       m_hasConverged;
+	Size   m_maxIt;
+	Size   m_it;
+	Scalar m_relativeTol;
+	Scalar m_absoluteTol;
+	bool   m_hasConverged;
 	
 	std::FILE* m_out = nullptr;
 };
