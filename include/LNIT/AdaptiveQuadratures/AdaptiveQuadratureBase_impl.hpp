@@ -17,14 +17,14 @@ namespace LNIT
 
 template<class Derived>
 AdaptiveQuadratureBase<Derived>::AdaptiveQuadratureBase(const Size maxIt, const Scalar relativeTol, const Scalar absoluteTol) 
-    : m_maxIt(maxIt)
-    , m_it(0)
-    , m_relativeTol(relativeTol)
-    , m_absoluteTol(absoluteTol) 
+	: m_maxIt(maxIt)
+	, m_it(0)
+	, m_relativeTol(relativeTol)
+	, m_absoluteTol(absoluteTol) 
 { 
-    m_intervals.reserve(maxIt); 
-    m_subIntergrals.reserve(maxIt); 
-    m_subIntergralsErr.reserve(maxIt);
+	m_intervals.reserve(maxIt); 
+	m_subIntergrals.reserve(maxIt); 
+	m_subIntergralsErr.reserve(maxIt);
 }
 
 template<class Derived> template<class Function> 
@@ -34,8 +34,8 @@ auto AdaptiveQuadratureBase<Derived>::integrate(const Function& f, const Scalar 
 	using std::abs;
 	using std::isfinite;
 	
-    using const_Iterator = typename std::vector<LongScalar>::const_iterator;
-    
+	using const_Iterator = typename std::vector<LongScalar>::const_iterator;
+	
 	m_hasConverged = false;
 	m_intervals.clear();
 	m_subIntergrals.clear();
@@ -104,7 +104,7 @@ auto AdaptiveQuadratureBase<Derived>::integrateLeftInfinite(const Function& f, c
 	
 	LongScalar leftIntegral = gLaguerreQuad.integrateLeftInfinite(f);
 	
-	if (not isfinite(leftIntegral))		                      { return NumTraits<LongScalar>::NaN; }	
+	if (not isfinite(leftIntegral))							  { return NumTraits<LongScalar>::NaN; }	
 	if (abs(leftIntegral) < NumTraits<LongScalar>::epsilon) { return integrate(f, Scalar{}, xmax);  }
 	
 	Scalar xmin = -1;
@@ -127,7 +127,7 @@ auto AdaptiveQuadratureBase<Derived>::integrateRightInfinite(const Function& f, 
 	
 	LongScalar rightIntegral = gLaguerreQuad.integrateRightInfinite(f);
 	
-	if (not isfinite(rightIntegral))		                     { return NumTraits<LongScalar>::NaN; }	
+	if (not isfinite(rightIntegral))							 { return NumTraits<LongScalar>::NaN; }	
 	if (abs(rightIntegral) < NumTraits<LongScalar>::epsilon) { return integrate(f, xmin, Scalar{});  }
 	
 	Scalar xmax = 1;
@@ -186,6 +186,19 @@ auto AdaptiveQuadratureBase<Derived>::remapAndIntegrate(const Function& f) -> Lo
 	};
 	
 	return integrate(fref, -1, 1);
+}
+
+template<class Derived>  template<class Function> 
+auto AdaptiveQuadratureBase<Derived>::integrateWithoutAdaptation(const Function& f) const -> std::invoke_result<Function, Scalar>
+{
+	std::invoke_result<Function, Scalar> ret{};
+	
+	for (const auto& [xmin, xmax] : m_intervals)
+	{
+		ret += derived().integrateImpl(f, xmin, xmax);
+	}
+	
+	return ret;
 }
 
 } // namespace LNIT

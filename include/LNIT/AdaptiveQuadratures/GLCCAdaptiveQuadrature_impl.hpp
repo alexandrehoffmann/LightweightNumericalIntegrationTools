@@ -24,13 +24,13 @@ constexpr auto GLCCAdaptiveQuadrature<T,TT>::estimateIntegralImpl(const Function
 {
 	using std::abs;
 	
-    const auto fx_gl = s_xi_gl | std::views::transform([&f, xmin, xmax](const Scalar xi) -> LongScalar
+	const auto fx_gl = s_xi_gl | std::views::transform([&f, xmin, xmax](const Scalar xi) -> LongScalar
 	{
 		const Scalar x = Scalar(0.5)*(xi*(xmax - xmin) + (xmax + xmin));
 		return f(x); 
 	});
 	
-    const auto fx_cc = s_xi_cc | std::views::transform([&f, xmin, xmax](const Scalar xi) -> LongScalar
+	const auto fx_cc = s_xi_cc | std::views::transform([&f, xmin, xmax](const Scalar xi) -> LongScalar
 	{
 		const Scalar x = Scalar(0.5)*(xi*(xmax - xmin) + (xmax + xmin));
 		return f(x); 
@@ -40,6 +40,18 @@ constexpr auto GLCCAdaptiveQuadrature<T,TT>::estimateIntegralImpl(const Function
 	const LongScalar I_cc = LongScalar(0.5)*LongScalar(xmax - xmin)*std::inner_product(std::ranges::begin(s_wi_cc), std::ranges::end(s_wi_cc), std::ranges::begin(fx_cc), LongScalar{});
 	
 	return std::make_pair(I_gl, abs(I_cc - I_gl));
+}
+
+template<typename T, typename TT> template<class Function>
+constexpr auto GLCCAdaptiveQuadrature<T,TT>::integrateImpl(const Function& f, const Scalar xmin, const Scalar xmax) const -> std::invoke_result<Function, Scalar>
+{
+	const auto fx = s_xi_gl | std::views::transform([&f, xmin, xmax](const Scalar xi) -> std::invoke_result<Function, Scalar>
+	{
+		const Scalar x = Scalar(0.5)*(xi*(xmax - xmin) + (xmax + xmin));
+		return f(x); 
+	});
+	
+	return LongScalar(0.5)*LongScalar(xmax - xmin)*std::inner_product(std::ranges::begin(s_wi_gl), std::ranges::end(s_wi_gl), std::ranges::begin(fx), std::invoke_result<Function, Scalar>{});
 }
 
 } // namespace LNIT
