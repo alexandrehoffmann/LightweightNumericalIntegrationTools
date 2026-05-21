@@ -164,7 +164,7 @@ public:
 	constexpr LongScalar getEstimatedIntegral() const { return std::reduce(std::ranges::begin(m_subIntergrals),    std::ranges::end(m_subIntergrals)); }
 	constexpr LongScalar getEstimatedError()    const { return std::reduce(std::ranges::begin(m_subIntergralsErr), std::ranges::end(m_subIntergralsErr)); }
 	
-	constexpr std::span<Interval> getSubIntervals() const { return std::span(m_intervals); }
+	constexpr std::span<const Interval> getSubIntervals() const { return m_intervals; }
 private:
 	std::vector<Interval>   m_intervals;
 	std::vector<LongScalar> m_subIntergrals;
