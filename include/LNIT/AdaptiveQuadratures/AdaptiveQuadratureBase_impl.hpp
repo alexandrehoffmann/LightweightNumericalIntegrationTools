@@ -176,7 +176,7 @@ auto AdaptiveQuadratureBase<Derived>::remapAndIntegrate(const Function& f) -> Lo
 {		
 	using std::isnan;
 	
-	constexpr Scalar eps = NumTraits<LongScalar>::epsilon;
+	constexpr Scalar eps = {};
 	
 	const auto fref = [&f](const Scalar t) -> LongScalar
 	{			
