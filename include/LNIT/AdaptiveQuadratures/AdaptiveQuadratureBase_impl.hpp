@@ -182,7 +182,7 @@ auto AdaptiveQuadratureBase<Derived>::remapAndIntegrate(const Function& f) -> Lo
 	{			
 		const LongScalar fx = f(t / (1 - t*t));
 			
-		return isnan(fx)
+		return t == 0 or t == 1
 			? LongScalar{}
 			: fx*LongScalar(1 + t*t) / LongScalar((1 - t*t)*(1 - t*t));	
 	};
