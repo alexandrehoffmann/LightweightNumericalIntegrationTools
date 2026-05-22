@@ -102,10 +102,10 @@ auto AdaptiveQuadratureBase<Derived>::integrateLeftInfinite(const Function& f, c
 	
 	GaussLaguerreQuadrature<Scalar,LongScalar> gLaguerreQuad;
 	
-	LongScalar leftIntegral = gLaguerreQuad.integrateLeftInfinite(f);
+	//~ LongScalar leftIntegral = gLaguerreQuad.integrateLeftInfinite(f);
 	
-	if (not isfinite(leftIntegral))							  { return NumTraits<LongScalar>::NaN; }	
-	if (abs(leftIntegral) < NumTraits<LongScalar>::epsilon) { return integrate(f, Scalar{}, xmax);  }
+	//~ if (not isfinite(leftIntegral))                         { return NumTraits<LongScalar>::NaN; }	
+	//~ if (abs(leftIntegral) < NumTraits<LongScalar>::epsilon) { return integrate(f, Scalar{}, xmax);  }
 	
 	Scalar xmin = -1;
 	leftIntegral = gLaguerreQuad.integrateLeftInfinite(f, xmin);
@@ -125,10 +125,10 @@ auto AdaptiveQuadratureBase<Derived>::integrateRightInfinite(const Function& f, 
 	
 	GaussLaguerreQuadrature<Scalar,LongScalar> gLaguerreQuad;
 	
-	LongScalar rightIntegral = gLaguerreQuad.integrateRightInfinite(f);
+	//~ LongScalar rightIntegral = gLaguerreQuad.integrateRightInfinite(f);
 	
-	if (not isfinite(rightIntegral))							 { return NumTraits<LongScalar>::NaN; }	
-	if (abs(rightIntegral) < NumTraits<LongScalar>::epsilon) { return integrate(f, xmin, Scalar{});  }
+	//~ if (not isfinite(rightIntegral))                         { return NumTraits<LongScalar>::NaN; }	
+	//~ if (abs(rightIntegral) < NumTraits<LongScalar>::epsilon) { return integrate(f, xmin, Scalar{}); }
 	
 	Scalar xmax = 1;
 	rightIntegral = gLaguerreQuad.integrateRightInfinite(f, xmax);
@@ -148,17 +148,17 @@ auto AdaptiveQuadratureBase<Derived>::integrate(const Function& f) -> LongScalar
 	
 	GaussLaguerreQuadrature<Scalar,LongScalar> gLaguerreQuad;
 	
-	LongScalar leftIntegral = gLaguerreQuad.integrateLeftInfinite(f);
+	//~ LongScalar leftIntegral = gLaguerreQuad.integrateLeftInfinite(f);
 	
-	if (not isfinite(leftIntegral)) { return NumTraits<LongScalar>::NaN; }	
+	//~ if (not isfinite(leftIntegral)) { return NumTraits<LongScalar>::NaN; }	
 	
-	if (abs(leftIntegral) < NumTraits<LongScalar>::epsilon) 
-	{
-		const LongScalar rightIntegral = gLaguerreQuad.integrateRightInfinite(f); 
+	//~ if (abs(leftIntegral) < NumTraits<LongScalar>::epsilon) 
+	//~ {
+		//~ const LongScalar rightIntegral = gLaguerreQuad.integrateRightInfinite(f); 
 		
-		if (not isfinite(rightIntegral)) { return NumTraits<LongScalar>::NaN; } 
-		return abs(rightIntegral) < NumTraits<LongScalar>::epsilon ? LongScalar{} : integrateRightInfinite(f, Scalar{}); 
-	}
+		//~ if (not isfinite(rightIntegral)) { return NumTraits<LongScalar>::NaN; } 
+		//~ return abs(rightIntegral) < NumTraits<LongScalar>::epsilon ? LongScalar{} : integrateRightInfinite(f, Scalar{}); 
+	//~ }
 	
 	Scalar xmin = -1;
 	leftIntegral = gLaguerreQuad.integrateLeftInfinite(f, xmin);
@@ -176,6 +176,8 @@ auto AdaptiveQuadratureBase<Derived>::remapAndIntegrate(const Function& f) -> Lo
 {		
 	using std::isnan;
 	
+	constexpr Scalar eps = NumTraits<LongScalar>::epsilon;
+	
 	const auto fref = [&f](const Scalar t) -> LongScalar
 	{			
 		const LongScalar fx = f(t / (1 - t*t));
@@ -185,7 +187,7 @@ auto AdaptiveQuadratureBase<Derived>::remapAndIntegrate(const Function& f) -> Lo
 			: fx*LongScalar(1 + t*t) / LongScalar((1 - t*t)*(1 - t*t));	
 	};
 	
-	return integrate(fref, -1, 1);
+	return integrate(fref, -1 + eps, 1 - eps);
 }
 
 template<class Derived>  template<class Function> 
