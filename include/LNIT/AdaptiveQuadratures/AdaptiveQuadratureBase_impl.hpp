@@ -102,11 +102,6 @@ auto AdaptiveQuadratureBase<Derived>::integrateLeftInfinite(const Function& f, c
 	
 	GaussLaguerreQuadrature<Scalar,LongScalar> gLaguerreQuad;
 	
-	//~ LongScalar leftIntegral = gLaguerreQuad.integrateLeftInfinite(f);
-	
-	//~ if (not isfinite(leftIntegral))                         { return NumTraits<LongScalar>::NaN; }	
-	//~ if (abs(leftIntegral) < NumTraits<LongScalar>::epsilon) { return integrate(f, Scalar{}, xmax);  }
-	
 	Scalar xmin = -1;
 	LongScalar leftIntegral = gLaguerreQuad.integrateLeftInfinite(f, xmin);
 	while (isfinite(leftIntegral) and abs(leftIntegral) >= NumTraits<LongScalar>::epsilon)
@@ -125,11 +120,6 @@ auto AdaptiveQuadratureBase<Derived>::integrateRightInfinite(const Function& f, 
 	
 	GaussLaguerreQuadrature<Scalar,LongScalar> gLaguerreQuad;
 	
-	//~ LongScalar rightIntegral = gLaguerreQuad.integrateRightInfinite(f);
-	
-	//~ if (not isfinite(rightIntegral))                         { return NumTraits<LongScalar>::NaN; }	
-	//~ if (abs(rightIntegral) < NumTraits<LongScalar>::epsilon) { return integrate(f, xmin, Scalar{}); }
-	
 	Scalar xmax = 1;
 	LongScalar rightIntegral = gLaguerreQuad.integrateRightInfinite(f, xmax);
 	while (isfinite(rightIntegral) and abs(rightIntegral) >= NumTraits<LongScalar>::epsilon)
@@ -147,18 +137,6 @@ auto AdaptiveQuadratureBase<Derived>::integrate(const Function& f) -> LongScalar
 	using std::abs;
 	
 	GaussLaguerreQuadrature<Scalar,LongScalar> gLaguerreQuad;
-	
-	//~ LongScalar leftIntegral = gLaguerreQuad.integrateLeftInfinite(f);
-	
-	//~ if (not isfinite(leftIntegral)) { return NumTraits<LongScalar>::NaN; }	
-	
-	//~ if (abs(leftIntegral) < NumTraits<LongScalar>::epsilon) 
-	//~ {
-		//~ const LongScalar rightIntegral = gLaguerreQuad.integrateRightInfinite(f); 
-		
-		//~ if (not isfinite(rightIntegral)) { return NumTraits<LongScalar>::NaN; } 
-		//~ return abs(rightIntegral) < NumTraits<LongScalar>::epsilon ? LongScalar{} : integrateRightInfinite(f, Scalar{}); 
-	//~ }
 	
 	Scalar xmin = -1;
 	LongScalar leftIntegral = gLaguerreQuad.integrateLeftInfinite(f, xmin);
