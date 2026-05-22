@@ -185,7 +185,7 @@ auto AdaptiveQuadratureBase<Derived>::remapAndIntegrate(const Function& f) -> Lo
 			
 		return isnan(fx) or isnan(dxdt)
 			? LongScalar{}
-			: fx*dxdt;	
+			: fx*LongScalar(1 + t*t) / LongScalar((1 - t*t)*(1 - t*t));	
 	};
 	
 	return integrate(fref, -1 + eps, 1 - eps);
