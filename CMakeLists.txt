@@ -2,35 +2,65 @@ cmake_minimum_required(VERSION 3.14)
 project(LightweightNumericalIntegrationTools VERSION 1.0.0 LANGUAGES CXX)
 
 # List of compiler flags
-set(LNIT_COMPILE_WARNINGS
-    -fopenmp-simd
-    -Wundef
-    -Wvarargs
-    -Wall
-    -Wextra
-    -Winit-self
-    -Wpedantic
-    -Werror
-    -Wconversion
-    -Wuninitialized
-    -Wmissing-declarations
-    -Wrange-loop-construct
-    -Wsign-conversion
-    -Wshadow
-    -Wnon-virtual-dtor
-    -Wold-style-cast
-    -Wcast-align
-    -Woverloaded-virtual
-    -Wnull-dereference
-    -Wformat=2
-    -flax-vector-conversions
-    -pedantic
-    -pedantic-errors
+set(LNIT_GNU_CXX_COMPILE_OPTIONS
+	-fopenmp-simd
+	-Wundef
+	-Wvarargs
+	-Wall
+	-Wextra
+	-Winit-self
+	-Wpedantic
+	-Werror
+	-Wconversion
+	-Wuninitialized
+	-Wmissing-declarations
+	-Wsign-conversion
+	-Wshadow
+	-Wcast-align
+	-Wnull-dereference
+	-Wformat=2
+	-flax-vector-conversions
+	-pedantic
+	-pedantic-errors
 	-Wno-error=array-bounds
+	-Wno-c99-extensions
 	-Wdouble-promotion
-	-Wswitch-enum 
-	-Wvexing-parse
-)
+	-Wswitch-enum
+	-Wrange-loop-construct
+	-Wnon-virtual-dtor
+	-Wold-style-cast
+	-Woverloaded-virtual
+	-Wvexing-parse)
+
+set(LNIT_Clang_CXX_COMPILE_OPTIONS
+	-fopenmp-simd
+	-Wundef
+	-Wvarargs
+	-Wall
+	-Wextra
+	-Winit-self
+	-Wpedantic
+	-Werror
+	-Wconversion
+	-Wuninitialized
+	-Wmissing-declarations
+	-Wsign-conversion
+	-Wshadow
+	-Wcast-align
+	-Wnull-dereference
+	-Wformat=2
+	-flax-vector-conversions
+	-pedantic
+	-pedantic-errors
+	-Wno-error=array-bounds
+	-Wno-c99-extensions
+	-Wdouble-promotion
+	-Wswitch-enum
+	-Wrange-loop-construct
+	-Wnon-virtual-dtor
+	-Wold-style-cast
+	-Woverloaded-virtual
+	-Wvexing-parse)
 
 # Set default build type if not specified
 if(NOT CMAKE_BUILD_TYPE AND NOT CMAKE_CONFIGURATION_TYPES)
@@ -109,7 +139,8 @@ target_include_directories(LNIT
 target_link_libraries(LNIT PUBLIC fmt::fmt)
 
 target_compile_options(LNIT PRIVATE
-    $<$<COMPILE_LANGUAGE:CXX>:${LNIT_COMPILE_WARNINGS}>
+    $<$<AND:$<COMPILE_LANGUAGE:CXX>,$<CXX_COMPILER_ID:GNU>>:${LNIT_GNU_CXX_COMPILE_OPTIONS}>
+    $<$<AND:$<COMPILE_LANGUAGE:CXX>,$<CXX_COMPILER_ID:Clang>>:${LNIT_Clang_CXX_COMPILE_OPTIONS}>
 )
 
 if(LNIT_NATIVE_OPT)
