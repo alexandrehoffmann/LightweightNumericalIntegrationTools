@@ -17,6 +17,14 @@ template<class Derived> class AdaptiveQuadratureBase;
 
 template<class Derived> struct AdaptiveQuadratureTraits;
 
+template<typename Traits>
+concept CAdaptiveQuadratureTraits = requires
+{
+	typename Traits::Size;
+	typename Traits::Scalar;
+	typename Traits::LongScalar;
+};
+
 /**
  * @class AdaptiveQuadratureBase
  * @brief Base class for all addaptive quadratures classes (implements the Curiously Recurring Template Pattern (CRTP))
@@ -36,7 +44,7 @@ template<class Derived> struct AdaptiveQuadratureTraits;
  * The Derived class must implement the function `estimateIntegralImpl` that returns both the value of the 
  * integral iver a subdomain and the estimated error.
  */
-template<class Derived>
+template<class Derived> requires(CAdaptiveQuadratureTraits< AdaptiveQuadratureTraits<Derived> >)
 class AdaptiveQuadratureBase
 {
 	using DerivedTraits = AdaptiveQuadratureTraits<Derived>;
@@ -182,6 +190,10 @@ private:
 template<class T> struct IsAdaptiveQuadrature : std::bool_constant< std::is_base_of<AdaptiveQuadratureBase<T>, T>::value > {};  ///<  @brief Trait to determine if a type derives from AdaptiveQuadratureBase.
 
 template<class T> concept CAdaptiveQuadrature = IsAdaptiveQuadrature<T>::value;
+
+template<CAdaptiveQuadrature Quadrature> using Quadrature_Size       = typename Quadrature::Size;
+template<CAdaptiveQuadrature Quadrature> using Quadrature_Scalar     = typename Quadrature::Scalar;
+template<CAdaptiveQuadrature Quadrature> using Quadrature_LongScalar = typename Quadrature::LongScalar;
 
 } // namespace LNIT
 
