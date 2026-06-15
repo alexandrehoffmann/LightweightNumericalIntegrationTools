@@ -13,17 +13,7 @@
 namespace LNIT
 {
 
-template<class Derived> class AdaptiveQuadratureBase;
-
 template<class Derived> struct AdaptiveQuadratureTraits;
-
-template<typename Traits>
-concept CAdaptiveQuadratureTraits = requires
-{
-	typename Traits::Size;
-	typename Traits::Scalar;
-	typename Traits::LongScalar;
-};
 
 /**
  * @class AdaptiveQuadratureBase
@@ -44,7 +34,7 @@ concept CAdaptiveQuadratureTraits = requires
  * The Derived class must implement the function `estimateIntegralImpl` that returns both the value of the 
  * integral iver a subdomain and the estimated error.
  */
-template<class Derived> requires(CAdaptiveQuadratureTraits< AdaptiveQuadratureTraits<Derived> >)
+template<class Derived>
 class AdaptiveQuadratureBase
 {
 	using DerivedTraits = AdaptiveQuadratureTraits<Derived>;
