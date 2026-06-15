@@ -13,8 +13,6 @@
 namespace LNIT
 {
 
-template<class Derived> struct AdaptiveQuadratureTraits;
-
 /**
  * @class AdaptiveQuadratureBase
  * @brief Base class for all addaptive quadratures classes (implements the Curiously Recurring Template Pattern (CRTP))
