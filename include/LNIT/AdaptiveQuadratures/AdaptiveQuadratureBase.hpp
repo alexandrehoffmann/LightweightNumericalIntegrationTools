@@ -181,9 +181,9 @@ template<class T> struct IsAdaptiveQuadrature : std::bool_constant< std::is_base
 
 template<class T> concept CAdaptiveQuadrature = IsAdaptiveQuadrature<T>::value;
 
-template<CAdaptiveQuadrature Quadrature> using Quadrature_Size       = typename Quadrature::Size;
-template<CAdaptiveQuadrature Quadrature> using Quadrature_Scalar     = typename Quadrature::Scalar;
-template<CAdaptiveQuadrature Quadrature> using Quadrature_LongScalar = typename Quadrature::LongScalar;
+template<CAdaptiveQuadrature Quadrature> using SizeFor       = typename Quadrature::Size;
+template<CAdaptiveQuadrature Quadrature> using ScalarFor     = typename Quadrature::Scalar;
+template<CAdaptiveQuadrature Quadrature> using LongScalarFor = typename Quadrature::LongScalar;
 
 } // namespace LNIT
 
