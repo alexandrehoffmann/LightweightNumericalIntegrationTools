@@ -155,6 +155,9 @@ public:
 	constexpr void setRelativeTol(const Scalar& tol) { m_relativeTol = tol; }                      ///<  @brief Set the relative tolerance of the quadrature.
 	constexpr void setAbsoluteTol(const Scalar& tol) { m_absoluteTol = tol; }                      ///<  @brief Set the absolute tolerance of the quadrature.
 	
+	constexpr void setRelativeTol(Scalar&& tol) { m_relativeTol = std::move(tol); } ///<  @brief Set the relative tolerance of the quadrature.
+	constexpr void setAbsoluteTol(Scalar&& tol) { m_absoluteTol = std::move(tol); } ///<  @brief Set the absolute tolerance of the quadrature.
+	
 	constexpr void setOutput(std::FILE* out) { m_out = out; } ///<  @brief Redirect output to a file for logging progress.
 
 	constexpr Scalar getMaxDeltaX(const Scalar xmin, const Scalar xmax) const { return derived().getMaxDeltaXImpl(xmin, xmax); } 
