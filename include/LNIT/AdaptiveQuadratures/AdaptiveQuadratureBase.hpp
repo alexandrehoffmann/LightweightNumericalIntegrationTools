@@ -52,7 +52,7 @@ public:
 	 * @param maxIt Maximum number of iterations.
 	 * @param tol Relative tolerance for convergence.
 	 */
-	AdaptiveQuadratureBase(const Size maxIt = 20000, const Scalar relativeTol = NumTraits<Scalar>::epsilon, const Scalar absoluteTol = NumTraits<Scalar>::epsilon);
+	AdaptiveQuadratureBase(const Size& maxIt = 20000, const Scalar& relativeTol = NumTraits<Scalar>::epsilon, const Scalar& absoluteTol = NumTraits<Scalar>::epsilon);
 
 	/**
 	 * @brief Estimate integral and error on [xmin, xmax].
@@ -65,7 +65,7 @@ public:
 	 * 
 	 * @return Pair (integral, estimated error).
 	 */
-	template<class Function> constexpr std::pair<LongScalar, LongScalar> estimateIntegral(const Function& f, const Scalar xmin, const Scalar xmax) { return derived().estimateIntegralImpl(f, xmin, xmax); }
+	template<class Function> constexpr std::pair<LongScalar, LongScalar> estimateIntegral(const Function& f, const Scalar& xmin, const Scalar& xmax) { return derived().estimateIntegralImpl(f, xmin, xmax); }
 
 	/**
 	 * @brief Perform adaptive quadrature on [xmin, xmax].
@@ -75,7 +75,7 @@ public:
 	 * @param xmax Upper bound of interval.
 	 * @return Approximation of the integral.
 	 */
-	template<class Function> LongScalar integrate(const Function& f, const Scalar xmin, const Scalar xmax);
+	template<class Function> LongScalar integrate(const Function& f, const Scalar& xmin, const Scalar& xmax);
 	
 	/**
 	 * @brief Perform adaptive quadrature on (-inf, xmax].
@@ -92,7 +92,7 @@ public:
 	 * @param xmax Upper bound of interval.
 	 * @return Approximation of the integral.
 	 */
-	template<class Function> LongScalar integrateLeftInfinite(const Function& f, const Scalar xmax);
+	template<class Function> LongScalar integrateLeftInfinite(const Function& f, const Scalar& xmax);
 	
 	/**
 	 * @brief Perform adaptive quadrature on [xmin, inf).
@@ -109,7 +109,7 @@ public:
 	 * @param xmax Upper bound of interval.
 	 * @return Approximation of the integral.
 	 */
-	template<class Function> LongScalar integrateRightInfinite(const Function& f, const Scalar xmin);
+	template<class Function> LongScalar integrateRightInfinite(const Function& f, const Scalar& xmin);
 	
 	/**
      * @brief Perform adaptive quadrature on (-inf, inf).
@@ -150,20 +150,21 @@ public:
 	
 	constexpr bool hasConverged() const { return m_hasConverged; } ///<  @brief Whether convergence was achieved.
 	
-	constexpr void setMaxIt(const Size maxIt)        { m_maxIt = maxIt; }                          ///<  @brief Set maximum number of iterations.
+	constexpr void setMaxIt(const Size& maxIt)       { m_maxIt = maxIt; }                          ///<  @brief Set maximum number of iterations.
 	constexpr void setTol(const Scalar& tol)         { m_absoluteTol = tol; m_relativeTol = tol; } ///<  @brief Set the tolerance of the quadrature.
 	constexpr void setRelativeTol(const Scalar& tol) { m_relativeTol = tol; }                      ///<  @brief Set the relative tolerance of the quadrature.
 	constexpr void setAbsoluteTol(const Scalar& tol) { m_absoluteTol = tol; }                      ///<  @brief Set the absolute tolerance of the quadrature.
 	
+	constexpr void setMaxIt(Size&& maxIt)       { m_maxIt = std::move(maxIt); }     ///<  @brief Set maximum number of iterations.
 	constexpr void setRelativeTol(Scalar&& tol) { m_relativeTol = std::move(tol); } ///<  @brief Set the relative tolerance of the quadrature.
 	constexpr void setAbsoluteTol(Scalar&& tol) { m_absoluteTol = std::move(tol); } ///<  @brief Set the absolute tolerance of the quadrature.
 	
 	constexpr void setOutput(std::FILE* out) { m_out = out; } ///<  @brief Redirect output to a file for logging progress.
 
-	constexpr Scalar getMaxDeltaX(const Scalar xmin, const Scalar xmax) const { return derived().getMaxDeltaXImpl(xmin, xmax); } 
+	constexpr Scalar getMaxDeltaX(const Scalar& xmin, const Scalar& xmax) const { return derived().getMaxDeltaXImpl(xmin, xmax); } 
 	
-	constexpr LongScalar getEstimatedIntegral() const { return std::reduce(std::ranges::begin(m_subIntergrals),    std::ranges::end(m_subIntergrals)); }
-	constexpr LongScalar getEstimatedError()    const { return std::reduce(std::ranges::begin(m_subIntergralsErr), std::ranges::end(m_subIntergralsErr)); }
+	constexpr LongScalar getEstimatedIntegral() const { return std::reduce(m_subIntergrals.begin(), m_subIntergrals.end()); }
+	constexpr LongScalar getEstimatedError()    const { return std::reduce(m_subIntergralsErr.begin(), m_subIntergralsErr.end()); }
 	
 	constexpr std::span<const Interval> getSubIntervals() const { return m_intervals; }
 private:
@@ -180,9 +181,9 @@ private:
 	std::FILE* m_out = nullptr;
 };
 
-template<class T> struct IsAdaptiveQuadrature : std::bool_constant< std::is_base_of<AdaptiveQuadratureBase<T>, T>::value > {};  ///<  @brief Trait to determine if a type derives from AdaptiveQuadratureBase.
+template<class T> inline constexpr bool isAdaptiveQuadrature = std::derived_from<T, AdaptiveQuadratureBase<T>>;
 
-template<class T> concept CAdaptiveQuadrature = IsAdaptiveQuadrature<T>::value;
+template<class T> concept CAdaptiveQuadrature = isAdaptiveQuadrature<T>;
 
 template<CAdaptiveQuadrature Quadrature> using SizeFor       = typename Quadrature::Size;
 template<CAdaptiveQuadrature Quadrature> using ScalarFor     = typename Quadrature::Scalar;

@@ -16,7 +16,7 @@ namespace LNIT
 {
 
 template<class Derived>
-AdaptiveQuadratureBase<Derived>::AdaptiveQuadratureBase(const Size maxIt, const Scalar relativeTol, const Scalar absoluteTol) 
+AdaptiveQuadratureBase<Derived>::AdaptiveQuadratureBase(const Size& maxIt, const Scalar& relativeTol, const Scalar& absoluteTol) 
 	: m_maxIt(maxIt)
 	, m_it(0)
 	, m_relativeTol(relativeTol)
@@ -28,7 +28,7 @@ AdaptiveQuadratureBase<Derived>::AdaptiveQuadratureBase(const Size maxIt, const 
 }
 
 template<class Derived> template<class Function> 
-auto AdaptiveQuadratureBase<Derived>::integrate(const Function& f, const Scalar xmin, const Scalar xmax) -> LongScalar
+auto AdaptiveQuadratureBase<Derived>::integrate(const Function& f, const Scalar& xmin, const Scalar& xmax) -> LongScalar
 {	
 	using std::ceil;
 	using std::abs;
@@ -76,17 +76,18 @@ auto AdaptiveQuadratureBase<Derived>::integrate(const Function& f, const Scalar 
 		if (err < abs(I)*LongScalar(m_relativeTol) or err < LongScalar(m_absoluteTol)) { m_hasConverged = true; return I; }
 
 		// we find the interval over which the integral is the least accurate
-		const const_Iterator maxErrIt = std::max_element(std::ranges::cbegin(m_subIntergralsErr), std::ranges::cend(m_subIntergralsErr));
-		const Size maxErrIdx = Size(std::ranges::distance(std::ranges::cbegin(m_subIntergralsErr), maxErrIt));
+		const const_Iterator maxErrIt = std::ranges::max_element(m_subIntergralsErr);
+		const Size maxErrIdx = Size(std::ranges::distance(m_subIntergralsErr.begin(), maxErrIt));
 		// we split it in two
-		const auto [a, b] = m_intervals[maxErrIdx];
-		const Scalar midPoint = std::midpoint(a, b);
+		const auto& [a, b] = m_intervals[maxErrIdx];
+		
+		Scalar midPoint = std::midpoint(a, b); // non-const because I want to move it when I do not need it.
 		// first interval
 		m_intervals[maxErrIdx] = Interval(a, midPoint);
 		std::tie(m_subIntergrals[maxErrIdx], m_subIntergralsErr[maxErrIdx]) = estimateIntegral(f, a, midPoint);
 		// second interval
 		std::tie(res, estimatedErr) = estimateIntegral(f, midPoint, b);
-		m_intervals.emplace_back(midPoint, b);
+		m_intervals.emplace_back(std::move(midPoint), b);
 		m_subIntergrals.push_back(res);
 		m_subIntergralsErr.push_back(estimatedErr);
 	}
@@ -94,7 +95,7 @@ auto AdaptiveQuadratureBase<Derived>::integrate(const Function& f, const Scalar 
 }
 
 template<class Derived> template<class Function>
-auto AdaptiveQuadratureBase<Derived>::integrateLeftInfinite(const Function& f, const Scalar xmax) -> LongScalar
+auto AdaptiveQuadratureBase<Derived>::integrateLeftInfinite(const Function& f, const Scalar& xmax) -> LongScalar
 {
 	using std::isfinite;
 	using std::abs;
@@ -113,7 +114,7 @@ auto AdaptiveQuadratureBase<Derived>::integrateLeftInfinite(const Function& f, c
 }
 
 template<class Derived> template<class Function>
-auto AdaptiveQuadratureBase<Derived>::integrateRightInfinite(const Function& f, const Scalar xmin) -> LongScalar
+auto AdaptiveQuadratureBase<Derived>::integrateRightInfinite(const Function& f, const Scalar& xmin) -> LongScalar
 {
 	using std::isfinite;
 	using std::abs;

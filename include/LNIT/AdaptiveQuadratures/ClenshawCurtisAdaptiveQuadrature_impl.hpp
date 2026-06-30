@@ -21,11 +21,11 @@ extern template class ClenshawCurtisAdaptiveQuadrature<long double, long double>
 //// method implementations ////
 
 template<typename T, typename TT> template<class Function>
-constexpr auto ClenshawCurtisAdaptiveQuadrature<T,TT>::estimateIntegralImpl(const Function& f, const Scalar xmin, const Scalar xmax) -> std::pair<LongScalar, LongScalar>
+constexpr auto ClenshawCurtisAdaptiveQuadrature<T,TT>::estimateIntegralImpl(const Function& f, const Scalar& xmin, const Scalar& xmax) -> std::pair<LongScalar, LongScalar>
 {	
 	using std::abs;
 	
-	const auto fx = s_xi | std::views::transform([&f, xmin, xmax](const Scalar xi) -> LongScalar
+	const auto fx = s_xi | std::views::transform([&f, &xmin, &xmax](const Scalar& xi) -> LongScalar
 	{
 		const Scalar x = Scalar(0.5)*(xi*(xmax - xmin) + (xmax + xmin));
 		return f(x); 
@@ -40,9 +40,9 @@ constexpr auto ClenshawCurtisAdaptiveQuadrature<T,TT>::estimateIntegralImpl(cons
 	const auto fx09 = misc::stride<4>(m_fx33);
 #endif // if using c++23
 
-	const LongScalar I33 = LongScalar(0.5)*LongScalar(xmax - xmin)*std::inner_product(std::ranges::begin(s_wi33), std::ranges::end(s_wi33), std::ranges::begin(m_fx33), LongScalar{});
-	const LongScalar I17 = LongScalar(0.5)*LongScalar(xmax - xmin)*std::inner_product(std::ranges::begin(s_wi17), std::ranges::end(s_wi17), std::ranges::begin(  fx17), LongScalar{});
-	const LongScalar I09 = LongScalar(0.5)*LongScalar(xmax - xmin)*std::inner_product(std::ranges::begin(s_wi09), std::ranges::end(s_wi09), std::ranges::begin(  fx09), LongScalar{});
+	const LongScalar I33 = LongScalar(0.5)*LongScalar(xmax - xmin)*std::inner_product(s_wi33.begin(), s_wi33.end(), m_fx33.begin(), LongScalar{});
+	const LongScalar I17 = LongScalar(0.5)*LongScalar(xmax - xmin)*std::inner_product(s_wi17.begin(), s_wi17.end(),   fx17.begin(), LongScalar{});
+	const LongScalar I09 = LongScalar(0.5)*LongScalar(xmax - xmin)*std::inner_product(s_wi09.begin(), s_wi09.end(),   fx09.begin(), LongScalar{});
 	
 	const LongScalar err1 = abs(I33 - I17);
 	const LongScalar err2 = abs(I33 - I09);
@@ -52,15 +52,15 @@ constexpr auto ClenshawCurtisAdaptiveQuadrature<T,TT>::estimateIntegralImpl(cons
 }
 
 template<typename T, typename TT> template<class Function>
-constexpr auto ClenshawCurtisAdaptiveQuadrature<T,TT>::integrateImpl(const Function& f, const Scalar xmin, const Scalar xmax) const -> std::invoke_result_t<Function, Scalar>
+constexpr auto ClenshawCurtisAdaptiveQuadrature<T,TT>::integrateImpl(const Function& f, const Scalar& xmin, const Scalar& xmax) const -> std::invoke_result_t<Function, Scalar>
 {
-	const auto fx = s_xi | std::views::transform([&f, xmin, xmax](const Scalar xi) -> std::invoke_result_t<Function, Scalar>
+	const auto fx = s_xi | std::views::transform([&f, &xmin, &xmax](const Scalar& xi) -> std::invoke_result_t<Function, Scalar>
 	{
 		const Scalar x = Scalar(0.5)*(xi*(xmax - xmin) + (xmax + xmin));
 		return f(x); 
 	});
 	
-	return LongScalar(0.5)*LongScalar(xmax - xmin)*std::inner_product(std::ranges::begin(s_wi33), std::ranges::end(s_wi33), std::ranges::begin(fx), std::invoke_result_t<Function, Scalar>{});
+	return LongScalar(0.5)*LongScalar(xmax - xmin)*std::inner_product(s_wi33.begin(), s_wi33.end(), fx.begin(), std::invoke_result_t<Function, Scalar>{});
 }
 
 } // namespace LNIT
