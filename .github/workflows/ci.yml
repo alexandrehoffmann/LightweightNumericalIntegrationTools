@@ -1,0 +1,57 @@
+name: C/C++ CI
+
+on:
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
+    
+jobs:
+  build:
+    strategy:
+      matrix:
+        os: [ubuntu-latest]
+        compiler: [g++-12, clang++-15]
+        build_type: [Debug, Release]
+
+    runs-on: ${{ matrix.os }}
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Configure & build demos
+        run: |
+          cmake -B build -DCMAKE_BUILD_TYPE=${{ matrix.build_type }} -DCMAKE_CXX_COMPILER=${{ matrix.compiler }} -DLNIT_BUILD_DEMO
+          cmake --build build --parallel
+
+      - name: Configure & build benchmarks
+        run: |
+          cmake -B build -DCMAKE_BUILD_TYPE=Release -DCMAKE_CXX_COMPILER=${{ matrix.compiler }} -DLNIT_BUILD_BENCHMARK=ON
+          cmake --build build --parallel
+          
+      - name: Run benchmarks
+        run: |
+          ./build/benchmark/benchmark_addaptiveQuadratures --benchmark_format=json --benchmark_out=bench_addaptiveQuadratures_result.json
+          ./build/benchmark/benchmark_LevermoreLikePDF --benchmark_format=json --benchmark_out=bench_LevermoreLikePDF_result.json
+          
+      - name: Store benchmark addaptive quadratures result & detect regressions
+        uses: benchmark-action/github-action-benchmark@v1
+        with:
+          tool: 'googlecpp'
+          output-file-path: bench_addaptiveQuadratures_result.json
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          auto-push: true
+          alert-threshold: '150%'
+          comment-on-alert: true
+          fail-on-alert: true
+
+      - name: Store benchmark Levermore like PDF result & detect regressions
+        uses: benchmark-action/github-action-benchmark@v1
+        with:
+          tool: 'googlecpp'
+          output-file-path: bench_LevermoreLikePDF_result.json
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          auto-push: true
+          alert-threshold: '150%'
+          comment-on-alert: true
+          fail-on-alert: true
