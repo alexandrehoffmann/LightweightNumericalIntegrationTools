@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1784873335102,
+  "lastUpdate": 1784873336331,
   "repoUrl": "https://github.com/alexandrehoffmann/LightweightNumericalIntegrationTools",
   "entries": {
     "Adaptive Quadratures": [
@@ -2472,6 +2472,44 @@ window.BENCHMARK_DATA = {
             "value": 20887.84055230373,
             "unit": "ns/iter",
             "extra": "iterations: 33315\ncpu: 20887.756716193224 ns\nthreads: 1"
+          }
+        ]
+      }
+    ],
+    "Levermore-like PDF": [
+      {
+        "commit": {
+          "author": {
+            "email": "alexandre.hoffmann.etu@gmail.com",
+            "name": "Alexandre Hoffmann",
+            "username": "alexandrehoffmann"
+          },
+          "committer": {
+            "email": "noreply@github.com",
+            "name": "GitHub",
+            "username": "web-flow"
+          },
+          "distinct": true,
+          "id": "2289ee42db5639b2d77843587d076769716a8a8b",
+          "message": "Modify CI workflow for compiler updates and benchmarks\n\nUpdated CI configuration to use newer compilers and added benchmark job.",
+          "timestamp": "2026-07-24T08:02:05+02:00",
+          "tree_id": "55ea0f92d5fad7071c77c7155ac88ca761d8ba19",
+          "url": "https://github.com/alexandrehoffmann/LightweightNumericalIntegrationTools/commit/2289ee42db5639b2d77843587d076769716a8a8b"
+        },
+        "date": 1784873336145,
+        "tool": "googlecpp",
+        "benches": [
+          {
+            "name": "benchmark_integrateLevermoreLikePDF",
+            "value": 5720.036540700492,
+            "unit": "ns/iter",
+            "extra": "iterations: 117677\ncpu: 5719.307426260018 ns\nthreads: 1"
+          },
+          {
+            "name": "benchmark_remapAndIntegrateLevermoreLikePDF",
+            "value": 1516.3411546356351,
+            "unit": "ns/iter",
+            "extra": "iterations: 473067\ncpu: 1516.2178486345485 ns\nthreads: 1"
           }
         ]
       }
