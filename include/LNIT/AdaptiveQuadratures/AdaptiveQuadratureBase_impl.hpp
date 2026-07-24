@@ -147,7 +147,7 @@ auto AdaptiveQuadratureBase<Derived>::integrateWithHints(Function&& f, const std
 	}
 
 	// Second pass: add interval in between the previously computed intervals 
-	for (size_t i=0; i+1<ret.size(); i+=2) // i+=2 because the newly inserted interval will be placed at index i+1
+	for (size_t i=0; i+1<m_intervals.size(); i+=2) // i+=2 because the newly inserted interval will be placed at index i+1
 	{
 		assert(m_intervals[i].second != m_intervals[i+1].first);
 		m_intervals.emplace(std::next(m_intervals.begin(), i + 1), m_intervals[i].second, m_intervals[i+1].first);
