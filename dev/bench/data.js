@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1784889066070,
+  "lastUpdate": 1784889067745,
   "repoUrl": "https://github.com/alexandrehoffmann/LightweightNumericalIntegrationTools",
   "entries": {
     "Adaptive Quadratures": [
@@ -4982,6 +4982,42 @@ window.BENCHMARK_DATA = {
             "value": 1516.3411546356351,
             "unit": "ns/iter",
             "extra": "iterations: 473067\ncpu: 1516.2178486345485 ns\nthreads: 1"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "email": "alexandre.hoffmann.etu@gmail.com",
+            "name": "Alexandre Hoffmann",
+            "username": "alexandrehoffmann"
+          },
+          "committer": {
+            "email": "noreply@github.com",
+            "name": "GitHub",
+            "username": "web-flow"
+          },
+          "distinct": true,
+          "id": "133f4f0144ab7ee45d3067694877af493280bde2",
+          "message": "Merge pull request #1 from alexandrehoffmann/integrate_with_hints\n\nIntegrate with hints",
+          "timestamp": "2026-07-24T12:24:09+02:00",
+          "tree_id": "e8e65877c62f2c8cd67026ffc576e484569d9a56",
+          "url": "https://github.com/alexandrehoffmann/LightweightNumericalIntegrationTools/commit/133f4f0144ab7ee45d3067694877af493280bde2"
+        },
+        "date": 1784889067347,
+        "tool": "googlecpp",
+        "benches": [
+          {
+            "name": "benchmark_integrateLevermoreLikePDF",
+            "value": 6064.275739634425,
+            "unit": "ns/iter",
+            "extra": "iterations: 115192\ncpu: 6064.041461212584 ns\nthreads: 1"
+          },
+          {
+            "name": "benchmark_remapAndIntegrateLevermoreLikePDF",
+            "value": 1749.1507266784668,
+            "unit": "ns/iter",
+            "extra": "iterations: 401966\ncpu: 1748.8245473497755 ns\nthreads: 1"
           }
         ]
       }
