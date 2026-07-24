@@ -20,7 +20,7 @@ extern template class ClenshawCurtisHybridAdaptiveQuadrature<long double, long d
 //// method implementations ////
 
 template<typename T, typename TT> template<class Function>
-constexpr auto ClenshawCurtisHybridAdaptiveQuadrature<T,TT>::estimateIntegralImpl(const Function& f, const Scalar& xmin, const Scalar& xmax) -> std::pair<LongScalar, LongScalar>
+constexpr auto ClenshawCurtisHybridAdaptiveQuadrature<T,TT>::estimateIntegralImpl(Function&& f, const Scalar& xmin, const Scalar& xmax) -> std::pair<LongScalar, LongScalar>
 {	
 	using std::abs;
 	
@@ -38,7 +38,7 @@ constexpr auto ClenshawCurtisHybridAdaptiveQuadrature<T,TT>::estimateIntegralImp
 }
 
 template<typename T, typename TT> template<class Function>
-constexpr auto ClenshawCurtisHybridAdaptiveQuadrature<T,TT>::integrateImpl(const Function& f, const Scalar& xmin, const Scalar& xmax) const -> std::invoke_result_t<Function, Scalar>
+constexpr auto ClenshawCurtisHybridAdaptiveQuadrature<T,TT>::integrateImpl(Function&& f, const Scalar& xmin, const Scalar& xmax) const -> std::invoke_result_t<Function, Scalar>
 {
 	const auto fx = s_xi | std::views::transform([&f, &xmin, &xmax](const Scalar& xi) -> std::invoke_result_t<Function, Scalar>
 	{
