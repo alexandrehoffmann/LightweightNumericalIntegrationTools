@@ -30,6 +30,16 @@ AdaptiveQuadratureBase<Derived>::AdaptiveQuadratureBase(const Size& maxIt, const
 template<class Derived> template<class Function> 
 auto AdaptiveQuadratureBase<Derived>::addaptQuadrature(const Function& func) -> LongScalar
 {
+	using std::abs;
+	using std::isfinite;
+	
+	using const_Iterator = typename std::vector<LongScalar>::const_iterator;
+
+	m_hasConverged = false;
+	
+	if (m_out) { fmt::print(m_out, "#NumericalIntegrator addapting quadrature over [{}, {}]\n", xmin, xmax); }
+	if (m_out) { fmt::print(m_out, "#Iteration integral estimated_error relative_tol absolute_tol\n"); }
+	
 	for (m_it=0; m_it!=m_maxIt; ++m_it)
 	{
 		const LongScalar I   = getEstimatedIntegral();
@@ -63,21 +73,13 @@ template<class Derived> template<class Function>
 auto AdaptiveQuadratureBase<Derived>::integrate(const Function& f, const Scalar& xmin, const Scalar& xmax) -> LongScalar
 {	
 	using std::ceil;
-	using std::abs;
-	using std::isfinite;
 	
-	using const_Iterator = typename std::vector<LongScalar>::const_iterator;
-	
-	m_hasConverged = false;
 	m_intervals.clear();
 	m_subIntergrals.clear();
 	m_subIntergralsErr.clear();
 
 	LongScalar res;
 	LongScalar estimatedErr;
-	
-	if (m_out) { fmt::print(m_out, "#NumericalIntegrator addapting quadrature over [{}, {}]\n", xmin, xmax); }
-	if (m_out) { fmt::print(m_out, "#Iteration integral estimated_error relative_tol absolute_tol\n"); }
 	
 	const Size N = Size(ceil(getMaxDeltaX(xmin, xmax)));
 	
