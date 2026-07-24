@@ -65,7 +65,7 @@ public:
 	 * 
 	 * @return Pair (integral, estimated error).
 	 */
-	template<class Function> constexpr std::pair<LongScalar, LongScalar> estimateIntegral(Function&& f, const Scalar& xmin, const Scalar& xmax) { return derived().estimateIntegralImpl(f, xmin, xmax); }
+	template<class Function> constexpr std::pair<LongScalar, LongScalar> estimateIntegral(Function&& f, const Scalar& xmin, const Scalar& xmax) { return derived().estimateIntegralImpl(std::forward<Function>(f), xmin, xmax); }
 
 	/**
 	 * @brief Perform adaptive quadrature on [xmin, xmax].
