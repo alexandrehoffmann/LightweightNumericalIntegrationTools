@@ -126,7 +126,7 @@ auto AdaptiveQuadratureBase<Derived>::integrateWithHints(Function&& f, const std
 	m_intervals.reserve(2*mu.size() + 2);
 
 	// First pass, we compute intervals near the peaks.
-	for (const double& mu_i : mu)
+	for (const Scalar& mu_i : mu)
 	{
 		Interval curr(mu_i - scal*sigma, mu_i + scal*sigma);
 		
