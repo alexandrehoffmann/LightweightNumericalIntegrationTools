@@ -76,7 +76,9 @@ public:
 	 * @return Approximation of the integral.
 	 */
 	template<class Function> LongScalar integrate(const Function& f, const Scalar& xmin, const Scalar& xmax);
-	
+
+	template<class Function> LongScalar integrateWithHints(const Function& f, const std::span<const Scalar> mu, const Scalar& sigma);
+
 	/**
 	 * @brief Perform adaptive quadrature on (-inf, xmax].
 	 * 
@@ -168,6 +170,8 @@ public:
 	
 	constexpr std::span<const Interval> getSubIntervals() const { return m_intervals; }
 private:
+	template<class Function> LongScalar adaptQuadrature(const Function& func);
+
 	std::vector<Interval>   m_intervals;
 	std::vector<LongScalar> m_subIntergrals;
 	std::vector<LongScalar> m_subIntergralsErr;
