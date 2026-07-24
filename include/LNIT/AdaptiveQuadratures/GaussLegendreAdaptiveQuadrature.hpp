@@ -24,9 +24,9 @@ class GaussLegendreAdaptiveQuadrature : public AdaptiveQuadratureBase< GaussLege
 {
 	using Base = AdaptiveQuadratureBase< GaussLegendreAdaptiveQuadrature<T,TT> >;
 public:
-	using Size       = Base::Size;       ///<  @brief Type for iteration counters.
-	using Scalar     = Base::Scalar;     ///<  @brief Floating point type for integration (e.g., double).
-	using LongScalar = Base::LongScalar; ///<  @brief Higher precision type for accumulation (e.g., long double).	
+	using Size       = typename Base::Size;       ///<  @brief Type for iteration counters.
+	using Scalar     = typename Base::Scalar;     ///<  @brief Floating point type for integration (e.g., double).
+	using LongScalar = typename Base::LongScalar; ///<  @brief Higher precision type for accumulation (e.g., long double).	
 	
 	/**
 	 * @brief Estimate integral and error on [xmin, xmax].
