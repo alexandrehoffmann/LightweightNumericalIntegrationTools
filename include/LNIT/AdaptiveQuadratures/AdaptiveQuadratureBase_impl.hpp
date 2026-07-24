@@ -98,8 +98,8 @@ auto AdaptiveQuadratureBase<Derived>::integrate(const Function& f, const Scalar&
 		m_subIntergralsErr.push_back(estimatedErr);
 	}
 
-	if (m_out) { fmt::print(m_out, "#NumericalIntegrator addapting quadrature over [{}, {}]\n", xmin, xmax); }
-	return addaptQuadrature(f);
+	if (m_out) { fmt::print(m_out, "#NumericalIntegrator adapting quadrature over [{}, {}]\n", xmin, xmax); }
+	return adaptQuadrature(f);
 }
 
 template<class Derived> template<class Function>
