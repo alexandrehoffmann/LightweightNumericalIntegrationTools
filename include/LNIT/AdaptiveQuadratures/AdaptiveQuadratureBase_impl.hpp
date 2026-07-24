@@ -9,6 +9,7 @@
 #include <algorithm>
 #include <ranges>
 #include <cmath>
+#include <utility>
 
 #include <fmt/core.h>
 
@@ -28,7 +29,7 @@ AdaptiveQuadratureBase<Derived>::AdaptiveQuadratureBase(const Size& maxIt, const
 }
 
 template<class Derived> template<class Function> 
-auto AdaptiveQuadratureBase<Derived>::adaptQuadrature(const Function& f) -> LongScalar
+auto AdaptiveQuadratureBase<Derived>::adaptQuadrature(Function&& f) -> LongScalar
 {
 	using std::abs;
 	using std::isfinite;
@@ -72,7 +73,7 @@ auto AdaptiveQuadratureBase<Derived>::adaptQuadrature(const Function& f) -> Long
 }
 
 template<class Derived> template<class Function> 
-auto AdaptiveQuadratureBase<Derived>::integrate(const Function& f, const Scalar& xmin, const Scalar& xmax) -> LongScalar
+auto AdaptiveQuadratureBase<Derived>::integrate(Function&& f, const Scalar& xmin, const Scalar& xmax) -> LongScalar
 {	
 	using std::ceil;
 	
@@ -102,11 +103,11 @@ auto AdaptiveQuadratureBase<Derived>::integrate(const Function& f, const Scalar&
 	}
 
 	if (m_out) { fmt::print(m_out, "#NumericalIntegrator adapting quadrature over [{}, {}]\n", xmin, xmax); }
-	return adaptQuadrature(f);
+	return adaptQuadrature(std::forward<Function>(f));
 }
 
 template<class Derived> template<class Function> 
-auto AdaptiveQuadratureBase<Derived>::integrateWithHints(const Function& f, const std::span<const Scalar> mu, const Scalar& sigma) -> LongScalar
+auto AdaptiveQuadratureBase<Derived>::integrateWithHints(Function&& f, const std::span<const Scalar> mu, const Scalar& sigma) -> LongScalar
 {
 	using std::abs;
 	using std::isfinite;
@@ -182,11 +183,11 @@ auto AdaptiveQuadratureBase<Derived>::integrateWithHints(const Function& f, cons
 	}
 
 	if (m_out) { fmt::print(m_out, "#NumericalIntegrator adapting quadrature over {}\n", m_intervals); }
-	return adaptQuadrature(f); 
+	return adaptQuadrature(std::forward<Function>(f)); 
 }
 
 template<class Derived> template<class Function>
-auto AdaptiveQuadratureBase<Derived>::integrateLeftInfinite(const Function& f, const Scalar& xmax) -> LongScalar
+auto AdaptiveQuadratureBase<Derived>::integrateLeftInfinite(Function&& f, const Scalar& xmax) -> LongScalar
 {
 	using std::isfinite;
 	using std::abs;
@@ -200,11 +201,15 @@ auto AdaptiveQuadratureBase<Derived>::integrateLeftInfinite(const Function& f, c
 		xmin *= 2;
 		leftIntegral = gLaguerreQuad.integrateLeftInfinite(f, xmin);
 	}
-	return isfinite(leftIntegral) ? integrate(f, xmin, xmax) : NumTraits<LongScalar>::NaN;
+	const LongScalar ret = isfinite(leftIntegral) 
+		? integrate(std::forward<Function>(f), xmin, xmax) 
+		: NumTraits<LongScalar>::NaN;
+	
+	return ret;
 }
 
 template<class Derived> template<class Function>
-auto AdaptiveQuadratureBase<Derived>::integrateRightInfinite(const Function& f, const Scalar& xmin) -> LongScalar
+auto AdaptiveQuadratureBase<Derived>::integrateRightInfinite(Function&& f, const Scalar& xmin) -> LongScalar
 {
 	using std::isfinite;
 	using std::abs;
@@ -218,11 +223,15 @@ auto AdaptiveQuadratureBase<Derived>::integrateRightInfinite(const Function& f, 
 		xmax *= 2;
 		rightIntegral = gLaguerreQuad.integrateRightInfinite(f, xmax);
 	}
-	return isfinite(rightIntegral) ? integrate(f, xmin, xmax) : NumTraits<LongScalar>::NaN;
+	const LongScalar ret = isfinite(rightIntegral) 
+		? integrate(std::forward<Function>(f), xmin, xmax) 
+		: NumTraits<LongScalar>::NaN;
+	
+	return ret;
 }
 
 template<class Derived> template<class Function>
-auto AdaptiveQuadratureBase<Derived>::integrate(const Function& f) -> LongScalar
+auto AdaptiveQuadratureBase<Derived>::integrate(Function&& f) -> LongScalar
 {
 	using std::isfinite;
 	using std::abs;
@@ -237,31 +246,32 @@ auto AdaptiveQuadratureBase<Derived>::integrate(const Function& f) -> LongScalar
 		leftIntegral = gLaguerreQuad.integrateLeftInfinite(f, xmin);
 	}
 	
-	return isfinite(leftIntegral) ? integrateRightInfinite(f, xmin) : NumTraits<LongScalar>::NaN;
+	const LongScalar ret = isfinite(leftIntegral) 
+		? integrateRightInfinite(std::forward<Function>(f), xmin) 
+		: NumTraits<LongScalar>::NaN;
+
+	return ret;
 }
 
 template<class Derived> template<class Function>
-auto AdaptiveQuadratureBase<Derived>::remapAndIntegrate(const Function& f) -> LongScalar
+auto AdaptiveQuadratureBase<Derived>::remapAndIntegrate(Function&& f) -> LongScalar
 {		
 	using std::isnan;
 	
-	constexpr Scalar eps = {};
-	
-	const auto fref = [&f](const Scalar t) -> LongScalar
+	return integrate([&f](const Scalar t) -> LongScalar
 	{			
-		const LongScalar fx = f(t / (1 - t*t));
-		const Scalar dxdt = (1 + t*t) / ((1 - t*t)*(1 - t*t));
-			
-		return isnan(fx*dxdt)
+		const LongScalar fx   = f(t / (1 - t*t));
+		const Scalar     dxdt = (1 + t*t) / ((1 - t*t)*(1 - t*t));
+		const LongScalar ret  = isnan(fx*dxdt)
 			? LongScalar{}
 			: fx*dxdt;	
-	};
-	
-	return integrate(fref, -1, 1);
+		
+		return ret;
+	}, -1, 1);
 }
 
 template<class Derived>  template<class Function> 
-auto AdaptiveQuadratureBase<Derived>::integrateWithoutAdaptation(const Function& f) const -> std::invoke_result_t<Function, Scalar>
+auto AdaptiveQuadratureBase<Derived>::integrateWithoutAdaptation(Function&& f) const -> std::invoke_result_t<Function, Scalar>
 {
 	const auto localIntegrals = m_intervals | std::views::transform([&self = derived(), &f](const Interval& interval) -> std::invoke_result_t<Function, Scalar>
 	{

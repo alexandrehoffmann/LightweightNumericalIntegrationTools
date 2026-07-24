@@ -22,14 +22,14 @@ extern template class GaussHermiteQuadrature<long double, long double>;
 //// method implementations ////
 
 template<typename Scalar, typename LongScalar> template<class Function> 
-constexpr LongScalar GaussHermiteQuadrature<Scalar, LongScalar>::integrate(const Function& f) const
+constexpr LongScalar GaussHermiteQuadrature<Scalar, LongScalar>::integrate(Function&& f) const
 {
 	const auto fx = s_xi | std::views::transform([&f](const Scalar& x) -> LongScalar
 	{
 		return f(x); 
 	});
 
-	return std::inner_product(s_wi.begin(), s_wi.end(), fx.end(), LongScalar{});	
+	return std::inner_product(s_wi.begin(), s_wi.end(), fx.begin(), LongScalar{});	
 }
 
 } // namespace LNIT
