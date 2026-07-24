@@ -115,7 +115,7 @@ auto AdaptiveQuadratureBase<Derived>::integrateWithHints(Function&& f, const std
 
 	using Iterator = typename std::vector<Interval>::iterator;
 	
-	const Scalar scal = 2.58;
+	constexpr Scalar scal = Scalar(2.58);
 
 	assert(sigma > Scalar{});
 	
