@@ -38,7 +38,7 @@ public:
 	 * @param a Upper bound of integration (default = 0).
 	 * @return Approximated integral value.
 	 */
-	template<class Function> constexpr LongScalar integrateLeftInfinite  (const Function& f, const Scalar& a = Scalar{}) const;
+	template<class Function> constexpr LongScalar integrateLeftInfinite  (Function&& f, const Scalar& a = Scalar{}) const;
 	/**
 	 * @brief Approximate integral over the right semi-infinite interval.
 	 *
@@ -53,7 +53,7 @@ public:
 	 * @param a Lower bound of integration (default = 0).
 	 * @return Approximated integral value.
 	 */
-	template<class Function> constexpr LongScalar integrateRightInfinite (const Function& f, const Scalar& a = Scalar{}) const;
+	template<class Function> constexpr LongScalar integrateRightInfinite (Function&& f, const Scalar& a = Scalar{}) const;
 private:
 	static constexpr std::array<Scalar, 33> s_wi = {
 		Scalar(0.11077730587320757274), Scalar(0.25810528128189475158), Scalar(0.40622176868437369247), Scalar(0.55526230959922306292), Scalar(0.70555738765958285661), 
