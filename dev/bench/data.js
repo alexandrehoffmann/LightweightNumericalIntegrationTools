@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1784912684677,
+  "lastUpdate": 1784912686045,
   "repoUrl": "https://github.com/alexandrehoffmann/LightweightNumericalIntegrationTools",
   "entries": {
     "Adaptive Quadratures": [
@@ -12506,6 +12506,42 @@ window.BENCHMARK_DATA = {
             "value": 1604.2858506980476,
             "unit": "ns/iter",
             "extra": "iterations: 435654\ncpu: 1604.2103940282884 ns\nthreads: 1"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "email": "alexandre.hoffmann.etu@gmail.com",
+            "name": "Alexandre Hoffmann",
+            "username": "alexandrehoffmann"
+          },
+          "committer": {
+            "email": "noreply@github.com",
+            "name": "GitHub",
+            "username": "web-flow"
+          },
+          "distinct": true,
+          "id": "a709e36d1a52653d152bca2bb32bfafa0539cd67",
+          "message": "Merge pull request #4 from alexandrehoffmann/refacto-integrate-with-hints\n\nRefactor adaptive quadrature interval handling",
+          "timestamp": "2026-07-24T18:57:31+02:00",
+          "tree_id": "43423c076839e93bb7cd2e39a66e6100bc4d5f52",
+          "url": "https://github.com/alexandrehoffmann/LightweightNumericalIntegrationTools/commit/a709e36d1a52653d152bca2bb32bfafa0539cd67"
+        },
+        "date": 1784912685861,
+        "tool": "googlecpp",
+        "benches": [
+          {
+            "name": "benchmark_integrateLevermoreLikePDF",
+            "value": 6490.139464578586,
+            "unit": "ns/iter",
+            "extra": "iterations: 107504\ncpu: 6489.642794686711 ns\nthreads: 1"
+          },
+          {
+            "name": "benchmark_remapAndIntegrateLevermoreLikePDF",
+            "value": 1602.5372931006114,
+            "unit": "ns/iter",
+            "extra": "iterations: 434571\ncpu: 1602.5376773875846 ns\nthreads: 1"
           }
         ]
       }
