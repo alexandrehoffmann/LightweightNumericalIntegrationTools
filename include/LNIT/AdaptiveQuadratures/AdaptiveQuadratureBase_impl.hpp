@@ -28,43 +28,8 @@ AdaptiveQuadratureBase<Derived>::AdaptiveQuadratureBase(const Size& maxIt, const
 }
 
 template<class Derived> template<class Function> 
-auto AdaptiveQuadratureBase<Derived>::integrate(const Function& f, const Scalar& xmin, const Scalar& xmax) -> LongScalar
-{	
-	using std::ceil;
-	using std::abs;
-	using std::isfinite;
-	
-	using const_Iterator = typename std::vector<LongScalar>::const_iterator;
-	
-	m_hasConverged = false;
-	m_intervals.clear();
-	m_subIntergrals.clear();
-	m_subIntergralsErr.clear();
-
-	LongScalar res;
-	LongScalar estimatedErr;
-	
-	if (m_out) { fmt::print(m_out, "#NumericalIntegrator addapting quadrature over [{}, {}]\n", xmin, xmax); }
-	if (m_out) { fmt::print(m_out, "#Iteration integral estimated_error relative_tol absolute_tol\n"); }
-	
-	const Size N = Size(ceil(getMaxDeltaX(xmin, xmax)));
-	
-	m_intervals.reserve(N);
-	m_subIntergrals.reserve(N);
-	m_subIntergralsErr.reserve(N);
-	
-	for (Size i=0; i!=N; ++i)
-	{
-		const Scalar x_i   = xmin + Scalar(i)*(xmax - xmin) / Scalar(N);
-		const Scalar x_ip1 = xmin + Scalar(i+1)*(xmax - xmin) / Scalar(N);
-		
-		std::tie(res, estimatedErr) = estimateIntegral(f, x_i, x_ip1);
-		
-		m_intervals.emplace_back(x_i, x_ip1);
-		m_subIntergrals.push_back(res);
-		m_subIntergralsErr.push_back(estimatedErr);
-	}
-	
+auto AdaptiveQuadratureBase<Derived>::addaptQuadrature(const Function& func) -> LongScalar
+{
 	for (m_it=0; m_it!=m_maxIt; ++m_it)
 	{
 		const LongScalar I   = getEstimatedIntegral();
@@ -92,6 +57,47 @@ auto AdaptiveQuadratureBase<Derived>::integrate(const Function& f, const Scalar&
 		m_subIntergralsErr.push_back(estimatedErr);
 	}
 	return getEstimatedIntegral();
+}
+
+template<class Derived> template<class Function> 
+auto AdaptiveQuadratureBase<Derived>::integrate(const Function& f, const Scalar& xmin, const Scalar& xmax) -> LongScalar
+{	
+	using std::ceil;
+	using std::abs;
+	using std::isfinite;
+	
+	using const_Iterator = typename std::vector<LongScalar>::const_iterator;
+	
+	m_hasConverged = false;
+	m_intervals.clear();
+	m_subIntergrals.clear();
+	m_subIntergralsErr.clear();
+
+	LongScalar res;
+	LongScalar estimatedErr;
+	
+	if (m_out) { fmt::print(m_out, "#NumericalIntegrator addapting quadrature over [{}, {}]\n", xmin, xmax); }
+	if (m_out) { fmt::print(m_out, "#Iteration integral estimated_error relative_tol absolute_tol\n"); }
+	
+	const Size N = Size(ceil(getMaxDeltaX(xmin, xmax)));
+	
+	m_intervals.reserve(N);
+	m_subIntergrals.reserve(N);
+	m_subIntergralsErr.reserve(N);
+
+	for (Size i=0; i!=N; ++i)
+	{
+		const Scalar x_i   = xmin + Scalar(i)*(xmax - xmin) / Scalar(N);
+		const Scalar x_ip1 = xmin + Scalar(i+1)*(xmax - xmin) / Scalar(N);
+		
+		std::tie(res, estimatedErr) = estimateIntegral(f, x_i, x_ip1);
+		
+		m_intervals.emplace_back(x_i, x_ip1);
+		m_subIntergrals.push_back(res);
+		m_subIntergralsErr.push_back(estimatedErr);
+	}
+
+	return addaptQuadrature(func);
 }
 
 template<class Derived> template<class Function>
