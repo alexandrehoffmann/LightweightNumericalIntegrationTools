@@ -150,7 +150,7 @@ auto AdaptiveQuadratureBase<Derived>::integrateWithHints(Function&& f, const std
 	for (size_t i=0; i+1!=m_intervals.size(); ++i)
 	{
 		assert(m_intervals[i].second != m_intervals[i+1].first);
-		ret.emplace(std::next(m_intervals.begin(), i + 1), m_intervals[i].second, m_intervals[i+1].first);
+		m_intervals.emplace(std::next(m_intervals.begin(), i + 1), m_intervals[i].second, m_intervals[i+1].first);
 	}
 	
 	// now add interval at the front and rear to ensure we capture the whole support
@@ -189,9 +189,9 @@ auto AdaptiveQuadratureBase<Derived>::integrateWithHints(Function&& f, const std
 	m_subIntergrals.reserve(m_intervals.size());
 	m_subIntergralsErr.reserve(m_intervals.size());
 	
-	for (const auto& [xmin, xmax] : m_intervals)
+	for (const auto& [a, b] : m_intervals)
 	{
-		std::tie(res, estimatedErr) = estimateIntegral(f, xmin, xmax);
+		std::tie(res, estimatedErr) = estimateIntegral(f, a, b);
 		
 		m_subIntergrals.push_back(res);
 		m_subIntergralsErr.push_back(estimatedErr);
