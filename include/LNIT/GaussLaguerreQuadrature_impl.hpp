@@ -18,7 +18,7 @@ extern template class GaussLaguerreQuadrature<long double, long double>;
 //// method implementations ////
 
 template<typename Scalar, typename LongScalar> template<class Function> 
-constexpr LongScalar GaussLaguerreQuadrature<Scalar, LongScalar>::integrateLeftInfinite(const Function& f, const Scalar& a) const
+constexpr LongScalar GaussLaguerreQuadrature<Scalar, LongScalar>::integrateLeftInfinite(Function&& f, const Scalar& a) const
 {
 	const auto fx = s_xi | std::views::transform([&f, &a](const Scalar& x) -> LongScalar
 	{
@@ -29,7 +29,7 @@ constexpr LongScalar GaussLaguerreQuadrature<Scalar, LongScalar>::integrateLeftI
 }
 
 template<typename Scalar, typename LongScalar> template<class Function> 
-constexpr LongScalar GaussLaguerreQuadrature<Scalar, LongScalar>::integrateRightInfinite(const Function& f, const Scalar& a) const
+constexpr LongScalar GaussLaguerreQuadrature<Scalar, LongScalar>::integrateRightInfinite(Function&& f, const Scalar& a) const
 {
 	const auto fx = s_xi | std::views::transform([&f, &a](const Scalar& x) -> LongScalar
 	{
