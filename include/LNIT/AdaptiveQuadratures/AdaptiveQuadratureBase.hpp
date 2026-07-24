@@ -168,6 +168,8 @@ public:
 	
 	constexpr std::span<const Interval> getSubIntervals() const { return m_intervals; }
 private:
+	template<class Function> LongScalar addaptQuadrature(const Function& func);
+
 	std::vector<Interval>   m_intervals;
 	std::vector<LongScalar> m_subIntergrals;
 	std::vector<LongScalar> m_subIntergralsErr;
