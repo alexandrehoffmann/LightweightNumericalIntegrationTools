@@ -28,7 +28,7 @@ AdaptiveQuadratureBase<Derived>::AdaptiveQuadratureBase(const Size& maxIt, const
 }
 
 template<class Derived> template<class Function> 
-auto AdaptiveQuadratureBase<Derived>::addaptQuadrature(const Function& func) -> LongScalar
+auto AdaptiveQuadratureBase<Derived>::addaptQuadrature(const Function& f) -> LongScalar
 {
 	using std::abs;
 	using std::isfinite;
@@ -99,7 +99,7 @@ auto AdaptiveQuadratureBase<Derived>::integrate(const Function& f, const Scalar&
 	}
 
 	if (m_out) { fmt::print(m_out, "#NumericalIntegrator addapting quadrature over [{}, {}]\n", xmin, xmax); }
-	return addaptQuadrature(func);
+	return addaptQuadrature(f);
 }
 
 template<class Derived> template<class Function>
