@@ -123,6 +123,8 @@ auto AdaptiveQuadratureBase<Derived>::integrateWithHints(Function&& f, const std
 	m_subIntergrals.clear();
 	m_subIntergralsErr.clear();
 
+	if (mu.empty()) { return integrate(std::forward<Function>(f)); }
+
 	m_intervals.reserve(2*mu.size() + 2);
 
 	// First pass, we compute intervals near the peaks.
