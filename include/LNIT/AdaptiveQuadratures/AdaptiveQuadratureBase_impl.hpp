@@ -115,44 +115,24 @@ auto AdaptiveQuadratureBase<Derived>::integrateWithHints(Function&& f, const std
 
 	using Iterator = typename std::vector<Interval>::iterator;
 	
-	constexpr Size scal = 3;
+	constexpr Scalar scal = Scalar(2.58);
 
 	assert(sigma > Scalar{});
-
-	GaussLaguerreQuadrature<Scalar,LongScalar> gLaguerreQuad;
 	
 	m_intervals.clear();
 	m_subIntergrals.clear();
 	m_subIntergralsErr.clear();
 
-	m_intervals.reserve(2*mu.size());
+	if (mu.empty()) { return integrate(std::forward<Function>(f)); }
 
-	// First pass, we compute intervals near the peaks on which the function is not null.
-	for (const double& mu_i : mu)
+	m_intervals.reserve(2*mu.size() + 2);
+
+	// First pass, we compute intervals near the peaks.
+	for (const Scalar& mu_i : mu)
 	{
 		Interval curr(mu_i - scal*sigma, mu_i + scal*sigma);
 		
 		if (curr.first > curr.second) { swap(curr.first, curr.second); }
-
-		LongScalar leftIntegral = gLaguerreQuad.integrateLeftInfinite(f, curr.first);
-		while (isfinite(leftIntegral) and abs(leftIntegral) >= NumTraits<LongScalar>::epsilon)
-		{
-			curr.first -= scal*sigma;
-			leftIntegral = gLaguerreQuad.integrateLeftInfinite(f, curr.first);
-			assert(curr.first <= curr.second);
-		}
-
-		if (not isfinite(leftIntegral)) { return NumTraits<LongScalar>::NaN; }
-
-		LongScalar rightIntegral = gLaguerreQuad.integrateRightInfinite(f, curr.second);
-		while (isfinite(rightIntegral) and abs(rightIntegral) >= NumTraits<LongScalar>::epsilon)
-		{
-			curr.second += scal*sigma;
-			rightIntegral = gLaguerreQuad.integrateRightInfinite(f, curr.second);
-			assert(curr.first <= curr.second);
-		}
-
-		if (not isfinite(rightIntegral)) { return NumTraits<LongScalar>::NaN; }
 
 		Iterator firstInterval = m_intervals.begin();
 		while (firstInterval != m_intervals.end() and firstInterval->second < curr.first) { ++firstInterval; }
@@ -168,15 +148,52 @@ auto AdaptiveQuadratureBase<Derived>::integrateWithHints(Function&& f, const std
 		m_intervals.insert(it, curr);
 	}
 
+	// Second pass: add interval in between the previously computed intervals 
+	for (size_t i=0; i+1<m_intervals.size(); i+=2) // i+=2 because the newly inserted interval will be placed at index i+1
+	{
+		assert(m_intervals[i].second != m_intervals[i+1].first);
+		m_intervals.emplace(std::next(m_intervals.begin(), i + 1), m_intervals[i].second, m_intervals[i+1].first);
+	}
+	
+	// now add interval at the front and rear to ensure we capture the whole support
+	GaussLaguerreQuadrature<Scalar,LongScalar> gLaguerreQuad;
+
+	Scalar xmin = m_intervals.front().first - sigma;
+	LongScalar leftIntegral = gLaguerreQuad.integrateLeftInfinite(f, xmin);
+
+	while (isfinite(leftIntegral) and abs(leftIntegral) >= NumTraits<LongScalar>::epsilon)
+	{
+		xmin -= sigma;
+		leftIntegral = gLaguerreQuad.integrateLeftInfinite(f, xmin);
+	}
+
+	if (not isfinite(leftIntegral)) { return NumTraits<LongScalar>::NaN; }
+
+	m_intervals.emplace(m_intervals.begin(), xmin, m_intervals.front().first);
+
+	Scalar xmax = m_intervals.back().second + sigma;
+	LongScalar rightIntegral = gLaguerreQuad.integrateRightInfinite(f, xmax);
+	while (isfinite(rightIntegral) and abs(rightIntegral) >= NumTraits<LongScalar>::epsilon)
+	{
+		xmax += sigma;
+		rightIntegral = gLaguerreQuad.integrateRightInfinite(f, xmax);
+	}
+
+	if (not isfinite(rightIntegral)) { return NumTraits<LongScalar>::NaN; }
+
+	m_intervals.emplace_back(m_intervals.back().second, xmax);
+
+	// Finally setup the adaptive quadrature.
+	
 	LongScalar res;
 	LongScalar estimatedErr;	
 
 	m_subIntergrals.reserve(m_intervals.size());
 	m_subIntergralsErr.reserve(m_intervals.size());
 	
-	for (const auto& [xmin, xmax] : m_intervals)
+	for (const auto& [a, b] : m_intervals)
 	{
-		std::tie(res, estimatedErr) = estimateIntegral(f, xmin, xmax);
+		std::tie(res, estimatedErr) = estimateIntegral(f, a, b);
 		
 		m_subIntergrals.push_back(res);
 		m_subIntergralsErr.push_back(estimatedErr);
@@ -201,11 +218,10 @@ auto AdaptiveQuadratureBase<Derived>::integrateLeftInfinite(Function&& f, const 
 		xmin *= 2;
 		leftIntegral = gLaguerreQuad.integrateLeftInfinite(f, xmin);
 	}
-	const LongScalar ret = isfinite(leftIntegral) 
+	
+	return isfinite(leftIntegral) 
 		? integrate(std::forward<Function>(f), xmin, xmax) 
 		: NumTraits<LongScalar>::NaN;
-	
-	return ret;
 }
 
 template<class Derived> template<class Function>
@@ -223,11 +239,9 @@ auto AdaptiveQuadratureBase<Derived>::integrateRightInfinite(Function&& f, const
 		xmax *= 2;
 		rightIntegral = gLaguerreQuad.integrateRightInfinite(f, xmax);
 	}
-	const LongScalar ret = isfinite(rightIntegral) 
+	return isfinite(rightIntegral) 
 		? integrate(std::forward<Function>(f), xmin, xmax) 
 		: NumTraits<LongScalar>::NaN;
-	
-	return ret;
 }
 
 template<class Derived> template<class Function>
@@ -246,11 +260,9 @@ auto AdaptiveQuadratureBase<Derived>::integrate(Function&& f) -> LongScalar
 		leftIntegral = gLaguerreQuad.integrateLeftInfinite(f, xmin);
 	}
 	
-	const LongScalar ret = isfinite(leftIntegral) 
+	return isfinite(leftIntegral) 
 		? integrateRightInfinite(std::forward<Function>(f), xmin) 
 		: NumTraits<LongScalar>::NaN;
-
-	return ret;
 }
 
 template<class Derived> template<class Function>
@@ -262,11 +274,9 @@ auto AdaptiveQuadratureBase<Derived>::remapAndIntegrate(Function&& f) -> LongSca
 	{			
 		const LongScalar fx   = f(t / (1 - t*t));
 		const Scalar     dxdt = (1 + t*t) / ((1 - t*t)*(1 - t*t));
-		const LongScalar ret  = isnan(fx*dxdt)
+		return isnan(fx*dxdt)
 			? LongScalar{}
-			: fx*dxdt;	
-		
-		return ret;
+			: fx*dxdt;
 	}, -1, 1);
 }
 
