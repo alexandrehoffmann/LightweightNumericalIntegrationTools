@@ -11,7 +11,7 @@ jobs:
     strategy:
       matrix:
         os: [ubuntu-latest]
-        compiler: [g++-12, clang++-15]
+        compiler: [g++-14, clang++-18]
         build_type: [Debug, Release]
 
     runs-on: ${{ matrix.os }}
