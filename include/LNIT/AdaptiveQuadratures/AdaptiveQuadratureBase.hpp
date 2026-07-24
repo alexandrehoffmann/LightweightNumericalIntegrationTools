@@ -65,7 +65,7 @@ public:
 	 * 
 	 * @return Pair (integral, estimated error).
 	 */
-	template<class Function> constexpr std::pair<LongScalar, LongScalar> estimateIntegral(const Function& f, const Scalar& xmin, const Scalar& xmax) { return derived().estimateIntegralImpl(f, xmin, xmax); }
+	template<class Function> constexpr std::pair<LongScalar, LongScalar> estimateIntegral(Function&& f, const Scalar& xmin, const Scalar& xmax) { return derived().estimateIntegralImpl(f, xmin, xmax); }
 
 	/**
 	 * @brief Perform adaptive quadrature on [xmin, xmax].
@@ -75,9 +75,9 @@ public:
 	 * @param xmax Upper bound of interval.
 	 * @return Approximation of the integral.
 	 */
-	template<class Function> LongScalar integrate(const Function& f, const Scalar& xmin, const Scalar& xmax);
+	template<class Function> LongScalar integrate(Function&& f, const Scalar& xmin, const Scalar& xmax);
 
-	template<class Function> LongScalar integrateWithHints(const Function& f, const std::span<const Scalar> mu, const Scalar& sigma);
+	template<class Function> LongScalar integrateWithHints(Function&& f, const std::span<const Scalar> mu, const Scalar& sigma);
 
 	/**
 	 * @brief Perform adaptive quadrature on (-inf, xmax].
@@ -94,7 +94,7 @@ public:
 	 * @param xmax Upper bound of interval.
 	 * @return Approximation of the integral.
 	 */
-	template<class Function> LongScalar integrateLeftInfinite(const Function& f, const Scalar& xmax);
+	template<class Function> LongScalar integrateLeftInfinite(Function&& f, const Scalar& xmax);
 	
 	/**
 	 * @brief Perform adaptive quadrature on [xmin, inf).
@@ -111,7 +111,7 @@ public:
 	 * @param xmax Upper bound of interval.
 	 * @return Approximation of the integral.
 	 */
-	template<class Function> LongScalar integrateRightInfinite(const Function& f, const Scalar& xmin);
+	template<class Function> LongScalar integrateRightInfinite(Function&& f, const Scalar& xmin);
 	
 	/**
      * @brief Perform adaptive quadrature on (-inf, inf).
@@ -126,7 +126,7 @@ public:
 	 * \f]
 	 * Finally addapt the quadrature over [xmin, xmax].
      */
-	template<class Function> LongScalar integrate(const Function& f);
+	template<class Function> LongScalar integrate(Function&& f);
 	
 	/**
 	 * @brief Perform adaptive quadrature on (-inf, inf) using a coordinate-remapping technique.
@@ -141,9 +141,9 @@ public:
 	 * \int_{-1}^{1} f(x(t))\frac{1 + t^2}{(1 - t^2)^2} dt.
 	 * \f]
 	 */
-	template<class Function> LongScalar remapAndIntegrate(const Function& f);
+	template<class Function> LongScalar remapAndIntegrate(Function&& f);
 
-	template<class Function> std::invoke_result_t<Function, Scalar> integrateWithoutAdaptation(const Function& f) const;
+	template<class Function> std::invoke_result_t<Function, Scalar> integrateWithoutAdaptation(Function&& f) const;
 	
 	constexpr Size   getMaxIt()       const { return m_maxIt; }       ///<  @brief Maximum iterations allowed.
 	constexpr Size   getNits()        const { return m_it; }          ///<  @brief Number of iterations performed.
@@ -170,7 +170,7 @@ public:
 	
 	constexpr std::span<const Interval> getSubIntervals() const { return m_intervals; }
 private:
-	template<class Function> LongScalar adaptQuadrature(const Function& func);
+	template<class Function> LongScalar adaptQuadrature(Function&& func);
 
 	std::vector<Interval>   m_intervals;
 	std::vector<LongScalar> m_subIntergrals;
