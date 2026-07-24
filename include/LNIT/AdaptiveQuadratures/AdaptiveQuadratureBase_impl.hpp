@@ -257,7 +257,7 @@ auto AdaptiveQuadratureBase<Derived>::remapAndIntegrate(const Function& f) -> Lo
 			: fx*dxdt;	
 	};
 	
-	return integrate(fref, -1 + eps, 1 - eps);
+	return integrate(fref, -1, 1);
 }
 
 template<class Derived>  template<class Function> 
