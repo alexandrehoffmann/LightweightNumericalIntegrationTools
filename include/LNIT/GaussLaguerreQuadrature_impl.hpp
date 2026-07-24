@@ -20,23 +20,23 @@ extern template class GaussLaguerreQuadrature<long double, long double>;
 template<typename Scalar, typename LongScalar> template<class Function> 
 constexpr LongScalar GaussLaguerreQuadrature<Scalar, LongScalar>::integrateLeftInfinite(Function&& f, const Scalar& a) const
 {
-	const auto fx = s_xi | std::views::transform([&f, &a](const Scalar& x) -> LongScalar
+	const auto fx = s_xi | std::views::transform([&&f, &a](const Scalar& x) -> LongScalar
 	{
 		return f(a - x); 
 	});
 
-	return std::inner_product(s_wi.begin(), s_wi.end(), fx.end(), LongScalar{});	
+	return std::inner_product(s_wi.begin(), s_wi.end(), fx.begin(), LongScalar{});	
 }
 
 template<typename Scalar, typename LongScalar> template<class Function> 
 constexpr LongScalar GaussLaguerreQuadrature<Scalar, LongScalar>::integrateRightInfinite(Function&& f, const Scalar& a) const
 {
-	const auto fx = s_xi | std::views::transform([&f, &a](const Scalar& x) -> LongScalar
+	const auto fx = s_xi | std::views::transform([&&f, &a](const Scalar& x) -> LongScalar
 	{
 		return f(x + a); 
 	});
 
-	return std::inner_product(s_wi.begin(), s_wi.end(), fx.end(), LongScalar{});	
+	return std::inner_product(s_wi.begin(), s_wi.end(), fx.begin(), LongScalar{});	
 }
 
 } // namespace LNIT
