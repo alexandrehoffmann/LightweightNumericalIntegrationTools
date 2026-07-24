@@ -113,6 +113,8 @@ auto AdaptiveQuadratureBase<Derived>::integrateWithHints(const Function& f, cons
 	
 	constexpr Size scal = 3;
 
+	assert(sigma > Scalar{});
+
 	GaussLaguerreQuadrature<Scalar,LongScalar> gLaguerreQuad;
 	
 	m_intervals.clear();
