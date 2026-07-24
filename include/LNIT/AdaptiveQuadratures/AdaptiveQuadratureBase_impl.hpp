@@ -28,7 +28,7 @@ AdaptiveQuadratureBase<Derived>::AdaptiveQuadratureBase(const Size& maxIt, const
 }
 
 template<class Derived> template<class Function> 
-auto AdaptiveQuadratureBase<Derived>::addaptQuadrature(const Function& f) -> LongScalar
+auto AdaptiveQuadratureBase<Derived>::adaptQuadrature(const Function& f) -> LongScalar
 {
 	using std::abs;
 	using std::isfinite;
