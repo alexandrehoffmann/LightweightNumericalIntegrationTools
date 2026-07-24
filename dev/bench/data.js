@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1784892827479,
+  "lastUpdate": 1784892828850,
   "repoUrl": "https://github.com/alexandrehoffmann/LightweightNumericalIntegrationTools",
   "entries": {
     "Adaptive Quadratures": [
@@ -7490,6 +7490,42 @@ window.BENCHMARK_DATA = {
             "value": 1749.1507266784668,
             "unit": "ns/iter",
             "extra": "iterations: 401966\ncpu: 1748.8245473497755 ns\nthreads: 1"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "email": "alexandre.hoffmann.etu@gmail.com",
+            "name": "Alexandre Hoffmann",
+            "username": "alexandrehoffmann"
+          },
+          "committer": {
+            "email": "noreply@github.com",
+            "name": "GitHub",
+            "username": "web-flow"
+          },
+          "distinct": true,
+          "id": "a50c81f7d62022b69ed9554dc970c2e8ad633aef",
+          "message": "Merge pull request #2 from alexandrehoffmann/perfs\n\nRefactor integral estimation and error handling",
+          "timestamp": "2026-07-24T13:26:56+02:00",
+          "tree_id": "06e9bfe8d70df8c47eb19c9f925a3746394c9390",
+          "url": "https://github.com/alexandrehoffmann/LightweightNumericalIntegrationTools/commit/a50c81f7d62022b69ed9554dc970c2e8ad633aef"
+        },
+        "date": 1784892828656,
+        "tool": "googlecpp",
+        "benches": [
+          {
+            "name": "benchmark_integrateLevermoreLikePDF",
+            "value": 6078.118504734814,
+            "unit": "ns/iter",
+            "extra": "iterations: 114468\ncpu: 6077.171183212776 ns\nthreads: 1"
+          },
+          {
+            "name": "benchmark_remapAndIntegrateLevermoreLikePDF",
+            "value": 1764.2133836789724,
+            "unit": "ns/iter",
+            "extra": "iterations: 395930\ncpu: 1764.0986866365267 ns\nthreads: 1"
           }
         ]
       }
