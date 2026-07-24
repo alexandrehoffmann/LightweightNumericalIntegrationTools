@@ -21,7 +21,7 @@ jobs:
 
       - name: Configure & build demos
         run: |
-          cmake -B build -DCMAKE_BUILD_TYPE=${{ matrix.build_type }} -DCMAKE_CXX_COMPILER=${{ matrix.compiler }} -DLNIT_BUILD_DEMO
+          cmake -B build -DCMAKE_BUILD_TYPE=${{ matrix.build_type }} -DCMAKE_CXX_COMPILER=${{ matrix.compiler }} -DLNIT_BUILD_DEMO=ON
           cmake --build build --parallel
 
       - name: Configure & build benchmarks
