@@ -5,7 +5,7 @@ on:
     branches: [ "main" ]
   pull_request:
     branches: [ "main" ]
-    
+
 jobs:
   build:
     strategy:
@@ -22,27 +22,50 @@ jobs:
       - name: Install toolchain and dependencies
         run: |
           sudo apt-get update
-          sudo apt-get install -y clang-15 libfmt-dev
+          sudo apt-get install -y g++-14 clang-18 libfmt-dev
 
-      - name: Configure & build demos
+      - name: Configure & build
         run: |
-          cmake -B build -DCMAKE_BUILD_TYPE=${{ matrix.build_type }} -DCMAKE_CXX_COMPILER=${{ matrix.compiler }} -DLNIT_BUILD_DEMO=ON
+          cmake -B build \
+            -DCMAKE_BUILD_TYPE=${{ matrix.build_type }} \
+            -DCMAKE_CXX_COMPILER=${{ matrix.compiler }} \
+            -DLNIT_BUILD_DEMO=ON \
+            -DLNIT_BUILD_BENCHMARK=ON
           cmake --build build --parallel
+
+  benchmark:
+    # only track regressions from main; PRs/forks shouldn't push to gh-pages
+    if: github.event_name == 'push' && github.ref == 'refs/heads/main'
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Install toolchain and dependencies
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y g++-14 libfmt-dev
 
       - name: Configure & build benchmarks
         run: |
-          cmake -B build -DCMAKE_BUILD_TYPE=Release -DCMAKE_CXX_COMPILER=${{ matrix.compiler }} -DLNIT_BUILD_BENCHMARK=ON
+          cmake -B build \
+            -DCMAKE_BUILD_TYPE=Release \
+            -DCMAKE_CXX_COMPILER=g++-14 \
+            -DLNIT_BUILD_BENCHMARK=ON
           cmake --build build --parallel
-          
+
       - name: Run benchmarks
         run: |
           ./build/benchmark/benchmark_addaptiveQuadratures --benchmark_format=json --benchmark_out=bench_addaptiveQuadratures_result.json
           ./build/benchmark/benchmark_LevermoreLikePDF --benchmark_format=json --benchmark_out=bench_LevermoreLikePDF_result.json
-          
-      - name: Store benchmark addaptive quadratures result & detect regressions
+
+      - name: Store adaptive quadratures benchmark & detect regressions
         uses: benchmark-action/github-action-benchmark@v1
         with:
           tool: 'googlecpp'
+          name: 'Adaptive Quadratures'
           output-file-path: bench_addaptiveQuadratures_result.json
           github-token: ${{ secrets.GITHUB_TOKEN }}
           auto-push: true
@@ -50,10 +73,11 @@ jobs:
           comment-on-alert: true
           fail-on-alert: true
 
-      - name: Store benchmark Levermore like PDF result & detect regressions
+      - name: Store Levermore-like PDF benchmark & detect regressions
         uses: benchmark-action/github-action-benchmark@v1
         with:
           tool: 'googlecpp'
+          name: 'Levermore-like PDF'
           output-file-path: bench_LevermoreLikePDF_result.json
           github-token: ${{ secrets.GITHUB_TOKEN }}
           auto-push: true
