@@ -60,7 +60,7 @@ auto AdaptiveQuadratureBase<Derived>::addaptQuadrature(const Function& f) -> Lon
 		m_intervals[maxErrIdx] = Interval(a, midPoint);
 		std::tie(m_subIntergrals[maxErrIdx], m_subIntergralsErr[maxErrIdx]) = estimateIntegral(f, a, midPoint);
 		// second interval
-		std::tie(res, estimatedErr) = estimateIntegral(f, midPoint, b);
+		const auto [res, estimatedErr] = estimateIntegral(f, midPoint, b);
 		m_intervals.emplace_back(std::move(midPoint), b);
 		m_subIntergrals.push_back(res);
 		m_subIntergralsErr.push_back(estimatedErr);
