@@ -9,6 +9,7 @@
 #include <algorithm>
 #include <ranges>
 #include <cmath>
+#include <utility>
 
 #include <fmt/core.h>
 
@@ -200,7 +201,11 @@ auto AdaptiveQuadratureBase<Derived>::integrateLeftInfinite(Function&& f, const 
 		xmin *= 2;
 		leftIntegral = gLaguerreQuad.integrateLeftInfinite(f, xmin);
 	}
-	return isfinite(leftIntegral) ? integrate(std::forward<Function>(f), xmin, xmax) : NumTraits<LongScalar>::NaN;
+	const LongScalar ret = isfinite(leftIntegral) 
+		? integrate(std::forward<Function>(f), xmin, xmax) 
+		: NumTraits<LongScalar>::NaN;
+	
+	return ret;
 }
 
 template<class Derived> template<class Function>
@@ -255,12 +260,13 @@ auto AdaptiveQuadratureBase<Derived>::remapAndIntegrate(Function&& f) -> LongSca
 	
 	return integrate([&f](const Scalar t) -> LongScalar
 	{			
-		const LongScalar fx = f(t / (1 - t*t));
-		const Scalar dxdt = (1 + t*t) / ((1 - t*t)*(1 - t*t));
-			
-		return isnan(fx*dxdt)
+		const LongScalar fx   = f(t / (1 - t*t));
+		const Scalar     dxdt = (1 + t*t) / ((1 - t*t)*(1 - t*t));
+		const LongScalar ret  = isnan(fx*dxdt)
 			? LongScalar{}
 			: fx*dxdt;	
+		
+		return ret;
 	}, -1, 1);
 }
 
