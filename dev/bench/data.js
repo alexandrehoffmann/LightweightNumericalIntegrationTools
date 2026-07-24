@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1784873336331,
+  "lastUpdate": 1784889066070,
   "repoUrl": "https://github.com/alexandrehoffmann/LightweightNumericalIntegrationTools",
   "entries": {
     "Adaptive Quadratures": [
@@ -2472,6 +2472,2478 @@ window.BENCHMARK_DATA = {
             "value": 20887.84055230373,
             "unit": "ns/iter",
             "extra": "iterations: 33315\ncpu: 20887.756716193224 ns\nthreads: 1"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "email": "alexandre.hoffmann.etu@gmail.com",
+            "name": "Alexandre Hoffmann",
+            "username": "alexandrehoffmann"
+          },
+          "committer": {
+            "email": "noreply@github.com",
+            "name": "GitHub",
+            "username": "web-flow"
+          },
+          "distinct": true,
+          "id": "133f4f0144ab7ee45d3067694877af493280bde2",
+          "message": "Merge pull request #1 from alexandrehoffmann/integrate_with_hints\n\nIntegrate with hints",
+          "timestamp": "2026-07-24T12:24:09+02:00",
+          "tree_id": "e8e65877c62f2c8cd67026ffc576e484569d9a56",
+          "url": "https://github.com/alexandrehoffmann/LightweightNumericalIntegrationTools/commit/133f4f0144ab7ee45d3067694877af493280bde2"
+        },
+        "date": 1784889065234,
+        "tool": "googlecpp",
+        "benches": [
+          {
+            "name": "benchmark_GaussLegendreAdaptiveQuadrature/0",
+            "value": 5091.939600900948,
+            "unit": "ns/iter",
+            "extra": "iterations: 138512\ncpu: 5091.768352200532 ns\nthreads: 1"
+          },
+          {
+            "name": "benchmark_GaussLegendreAdaptiveQuadrature/2",
+            "value": 10436.340020805545,
+            "unit": "ns/iter",
+            "extra": "iterations: 67290\ncpu: 10435.270322484768 ns\nthreads: 1"
+          },
+          {
+            "name": "benchmark_GaussLegendreAdaptiveQuadrature/4",
+            "value": 10469.262758743833,
+            "unit": "ns/iter",
+            "extra": "iterations: 67248\ncpu: 10468.376561384726 ns\nthreads: 1"
+          },
+          {
+            "name": "benchmark_GaussLegendreAdaptiveQuadrature/6",
+            "value": 11881.625448546802,
+            "unit": "ns/iter",
+            "extra": "iterations: 58801\ncpu: 11879.790989949157 ns\nthreads: 1"
+          },
+          {
+            "name": "benchmark_GaussLegendreAdaptiveQuadrature/8",
+            "value": 11895.69887964701,
+            "unit": "ns/iter",
+            "extra": "iterations: 58910\ncpu: 11894.509879477175 ns\nthreads: 1"
+          },
+          {
+            "name": "benchmark_GaussLegendreAdaptiveQuadrature/10",
+            "value": 12654.408707458388,
+            "unit": "ns/iter",
+            "extra": "iterations: 55240\ncpu: 12653.598859522082 ns\nthreads: 1"
+          },
+          {
+            "name": "benchmark_GaussLegendreAdaptiveQuadrature/12",
+            "value": 11175.64531948898,
+            "unit": "ns/iter",
+            "extra": "iterations: 62600\ncpu: 11174.667539936108 ns\nthreads: 1"
+          },
+          {
+            "name": "benchmark_GaussLegendreAdaptiveQuadrature/14",
+            "value": 11902.34342226617,
+            "unit": "ns/iter",
+            "extra": "iterations: 58546\ncpu: 11902.176459536091 ns\nthreads: 1"
+          },
+          {
+            "name": "benchmark_GaussLegendreAdaptiveQuadrature/16",
+            "value": 11916.62799802557,
+            "unit": "ns/iter",
+            "extra": "iterations: 58747\ncpu: 11915.497710521378 ns\nthreads: 1"
+          },
+          {
+            "name": "benchmark_GaussLegendreAdaptiveQuadrature/18",
+            "value": 12686.100962322755,
+            "unit": "ns/iter",
+            "extra": "iterations: 55179\ncpu: 12685.520397252558 ns\nthreads: 1"
+          },
+          {
+            "name": "benchmark_GaussLegendreAdaptiveQuadrature/20",
+            "value": 11920.515477747173,
+            "unit": "ns/iter",
+            "extra": "iterations: 58891\ncpu: 11919.13120850384 ns\nthreads: 1"
+          },
+          {
+            "name": "benchmark_GaussLegendreAdaptiveQuadrature/22",
+            "value": 12548.173676696711,
+            "unit": "ns/iter",
+            "extra": "iterations: 54636\ncpu: 12547.093784318055 ns\nthreads: 1"
+          },
+          {
+            "name": "benchmark_GaussLegendreAdaptiveQuadrature/24",
+            "value": 13321.249242785127,
+            "unit": "ns/iter",
+            "extra": "iterations: 52495\ncpu: 13320.882331650626 ns\nthreads: 1"
+          },
+          {
+            "name": "benchmark_GaussLegendreAdaptiveQuadrature/26",
+            "value": 13336.36457619363,
+            "unit": "ns/iter",
+            "extra": "iterations: 52524\ncpu: 13334.459351915335 ns\nthreads: 1"
+          },
+          {
+            "name": "benchmark_GaussLegendreAdaptiveQuadrature/28",
+            "value": 12542.062087281085,
+            "unit": "ns/iter",
+            "extra": "iterations: 55728\ncpu: 12541.545488802763 ns\nthreads: 1"
+          },
+          {
+            "name": "benchmark_GaussLegendreAdaptiveQuadrature/30",
+            "value": 12331.420013039009,
+            "unit": "ns/iter",
+            "extra": "iterations: 56753\ncpu: 12329.49907493876 ns\nthreads: 1"
+          },
+          {
+            "name": "benchmark_GaussLegendreAdaptiveQuadrature/32",
+            "value": 15423.815734083588,
+            "unit": "ns/iter",
+            "extra": "iterations: 47985\ncpu: 15421.71962071479 ns\nthreads: 1"
+          },
+          {
+            "name": "benchmark_GaussLegendreAdaptiveQuadrature/34",
+            "value": 14580.717322818195,
+            "unit": "ns/iter",
+            "extra": "iterations: 47931\ncpu: 14579.243349815348 ns\nthreads: 1"
+          },
+          {
+            "name": "benchmark_GaussLegendreAdaptiveQuadrature/36",
+            "value": 15374.530427342801,
+            "unit": "ns/iter",
+            "extra": "iterations: 45584\ncpu: 15372.994954369939 ns\nthreads: 1"
+          },
+          {
+            "name": "benchmark_GaussLegendreAdaptiveQuadrature/38",
+            "value": 17609.45686201308,
+            "unit": "ns/iter",
+            "extra": "iterations: 40185\ncpu: 17608.944382232192 ns\nthreads: 1"
+          },
+          {
+            "name": "benchmark_GaussLegendreAdaptiveQuadrature/40",
+            "value": 15935.85543267591,
+            "unit": "ns/iter",
+            "extra": "iterations: 43855\ncpu: 15934.197195302697 ns\nthreads: 1"
+          },
+          {
+            "name": "benchmark_GaussLegendreAdaptiveQuadrature/42",
+            "value": 16750.483981255948,
+            "unit": "ns/iter",
+            "extra": "iterations: 41826\ncpu: 16749.988476067476 ns\nthreads: 1"
+          },
+          {
+            "name": "benchmark_GaussLegendreAdaptiveQuadrature/44",
+            "value": 16725.806477036425,
+            "unit": "ns/iter",
+            "extra": "iterations: 41871\ncpu: 16724.252250961305 ns\nthreads: 1"
+          },
+          {
+            "name": "benchmark_GaussLegendreAdaptiveQuadrature/46",
+            "value": 16738.09148951433,
+            "unit": "ns/iter",
+            "extra": "iterations: 41819\ncpu: 16737.417513570344 ns\nthreads: 1"
+          },
+          {
+            "name": "benchmark_GaussLegendreAdaptiveQuadrature/48",
+            "value": 16730.1922608094,
+            "unit": "ns/iter",
+            "extra": "iterations: 41839\ncpu: 16727.664714739785 ns\nthreads: 1"
+          },
+          {
+            "name": "benchmark_GaussLegendreAdaptiveQuadrature/50",
+            "value": 16006.389870409035,
+            "unit": "ns/iter",
+            "extra": "iterations: 43753\ncpu: 16004.83930244782 ns\nthreads: 1"
+          },
+          {
+            "name": "benchmark_GaussLegendreAdaptiveQuadrature/52",
+            "value": 16010.135070277669,
+            "unit": "ns/iter",
+            "extra": "iterations: 43755\ncpu: 16008.026008456229 ns\nthreads: 1"
+          },
+          {
+            "name": "benchmark_GaussLegendreAdaptiveQuadrature/54",
+            "value": 15952.98643820979,
+            "unit": "ns/iter",
+            "extra": "iterations: 43947\ncpu: 15951.116321933281 ns\nthreads: 1"
+          },
+          {
+            "name": "benchmark_GaussLegendreAdaptiveQuadrature/56",
+            "value": 15947.441197239112,
+            "unit": "ns/iter",
+            "extra": "iterations: 43901\ncpu: 15946.435935400154 ns\nthreads: 1"
+          },
+          {
+            "name": "benchmark_GaussLegendreAdaptiveQuadrature/58",
+            "value": 15945.802440468147,
+            "unit": "ns/iter",
+            "extra": "iterations: 43926\ncpu: 15944.14920548193 ns\nthreads: 1"
+          },
+          {
+            "name": "benchmark_GaussLegendreAdaptiveQuadrature/60",
+            "value": 15945.827477928524,
+            "unit": "ns/iter",
+            "extra": "iterations: 43948\ncpu: 15945.653431327903 ns\nthreads: 1"
+          },
+          {
+            "name": "benchmark_GaussLegendreAdaptiveQuadrature/62",
+            "value": 15217.84461474828,
+            "unit": "ns/iter",
+            "extra": "iterations: 45931\ncpu: 15216.755002068347 ns\nthreads: 1"
+          },
+          {
+            "name": "benchmark_GaussLegendreAdaptiveQuadrature/64",
+            "value": 15943.063280751448,
+            "unit": "ns/iter",
+            "extra": "iterations: 43868\ncpu: 15942.275280386551 ns\nthreads: 1"
+          },
+          {
+            "name": "benchmark_GaussLegendreAdaptiveQuadrature/66",
+            "value": 16731.219185615686,
+            "unit": "ns/iter",
+            "extra": "iterations: 41823\ncpu: 16728.688998876205 ns\nthreads: 1"
+          },
+          {
+            "name": "benchmark_GaussLegendreAdaptiveQuadrature/68",
+            "value": 15954.348128391202,
+            "unit": "ns/iter",
+            "extra": "iterations: 43866\ncpu: 15953.09360324623 ns\nthreads: 1"
+          },
+          {
+            "name": "benchmark_GaussLegendreAdaptiveQuadrature/70",
+            "value": 15943.189913916152,
+            "unit": "ns/iter",
+            "extra": "iterations: 43446\ncpu: 15942.209041108492 ns\nthreads: 1"
+          },
+          {
+            "name": "benchmark_GaussLegendreAdaptiveQuadrature/72",
+            "value": 15943.271831503482,
+            "unit": "ns/iter",
+            "extra": "iterations: 43538\ncpu: 15941.699389039393 ns\nthreads: 1"
+          },
+          {
+            "name": "benchmark_GaussLegendreAdaptiveQuadrature/74",
+            "value": 14499.265920006776,
+            "unit": "ns/iter",
+            "extra": "iterations: 48304\ncpu: 14498.575086949237 ns\nthreads: 1"
+          },
+          {
+            "name": "benchmark_GaussLegendreAdaptiveQuadrature/76",
+            "value": 15239.540452370673,
+            "unit": "ns/iter",
+            "extra": "iterations: 45980\ncpu: 15237.61826881258 ns\nthreads: 1"
+          },
+          {
+            "name": "benchmark_GaussLegendreAdaptiveQuadrature/78",
+            "value": 15218.930931844203,
+            "unit": "ns/iter",
+            "extra": "iterations: 46027\ncpu: 15217.98748560633 ns\nthreads: 1"
+          },
+          {
+            "name": "benchmark_GaussLegendreAdaptiveQuadrature/80",
+            "value": 15933.88094204727,
+            "unit": "ns/iter",
+            "extra": "iterations: 43777\ncpu: 15932.275784087486 ns\nthreads: 1"
+          },
+          {
+            "name": "benchmark_GaussLegendreAdaptiveQuadrature/82",
+            "value": 15939.21775571092,
+            "unit": "ns/iter",
+            "extra": "iterations: 43907\ncpu: 15937.617168105324 ns\nthreads: 1"
+          },
+          {
+            "name": "benchmark_GaussLegendreAdaptiveQuadrature/84",
+            "value": 15938.325573986785,
+            "unit": "ns/iter",
+            "extra": "iterations: 43947\ncpu: 15937.295810863106 ns\nthreads: 1"
+          },
+          {
+            "name": "benchmark_GaussLegendreAdaptiveQuadrature/86",
+            "value": 15939.246899815747,
+            "unit": "ns/iter",
+            "extra": "iterations: 43949\ncpu: 15937.98086418347 ns\nthreads: 1"
+          },
+          {
+            "name": "benchmark_GaussLegendreAdaptiveQuadrature/88",
+            "value": 16008.798690895868,
+            "unit": "ns/iter",
+            "extra": "iterations: 43694\ncpu: 16008.112212203014 ns\nthreads: 1"
+          },
+          {
+            "name": "benchmark_GaussLegendreAdaptiveQuadrature/90",
+            "value": 16001.627793774991,
+            "unit": "ns/iter",
+            "extra": "iterations: 43758\ncpu: 15999.460715754693 ns\nthreads: 1"
+          },
+          {
+            "name": "benchmark_GaussLegendreAdaptiveQuadrature/92",
+            "value": 15999.251056925285,
+            "unit": "ns/iter",
+            "extra": "iterations: 43759\ncpu: 15998.842478118691 ns\nthreads: 1"
+          },
+          {
+            "name": "benchmark_GaussLegendreAdaptiveQuadrature/94",
+            "value": 15209.658738096543,
+            "unit": "ns/iter",
+            "extra": "iterations: 45994\ncpu: 15207.878462408178 ns\nthreads: 1"
+          },
+          {
+            "name": "benchmark_GaussLegendreAdaptiveQuadrature/96",
+            "value": 15932.435476890058,
+            "unit": "ns/iter",
+            "extra": "iterations: 43899\ncpu: 15931.292489578389 ns\nthreads: 1"
+          },
+          {
+            "name": "benchmark_GaussLegendreAdaptiveQuadrature/98",
+            "value": 15957.267977131469,
+            "unit": "ns/iter",
+            "extra": "iterations: 43903\ncpu: 15952.903810673577 ns\nthreads: 1"
+          },
+          {
+            "name": "benchmark_GaussLegendreAdaptiveQuadrature/100",
+            "value": 15242.123037446214,
+            "unit": "ns/iter",
+            "extra": "iterations: 45986\ncpu: 15237.649632496808 ns\nthreads: 1"
+          },
+          {
+            "name": "benchmark_ClenshawCurtisAdaptiveQuadrature/0",
+            "value": 5363.685814539343,
+            "unit": "ns/iter",
+            "extra": "iterations: 131381\ncpu: 5363.327429384781 ns\nthreads: 1"
+          },
+          {
+            "name": "benchmark_ClenshawCurtisAdaptiveQuadrature/2",
+            "value": 12418.00864118661,
+            "unit": "ns/iter",
+            "extra": "iterations: 56358\ncpu: 12416.087174846554 ns\nthreads: 1"
+          },
+          {
+            "name": "benchmark_ClenshawCurtisAdaptiveQuadrature/4",
+            "value": 14058.960124798803,
+            "unit": "ns/iter",
+            "extra": "iterations: 49680\ncpu: 14058.457669082118 ns\nthreads: 1"
+          },
+          {
+            "name": "benchmark_ClenshawCurtisAdaptiveQuadrature/6",
+            "value": 12401.51100478463,
+            "unit": "ns/iter",
+            "extra": "iterations: 56430\ncpu: 12400.092486266158 ns\nthreads: 1"
+          },
+          {
+            "name": "benchmark_ClenshawCurtisAdaptiveQuadrature/8",
+            "value": 14096.121606709212,
+            "unit": "ns/iter",
+            "extra": "iterations: 49841\ncpu: 14094.400593888535 ns\nthreads: 1"
+          },
+          {
+            "name": "benchmark_ClenshawCurtisAdaptiveQuadrature/10",
+            "value": 12416.002444814923,
+            "unit": "ns/iter",
+            "extra": "iterations: 56446\ncpu: 12414.302944407067 ns\nthreads: 1"
+          },
+          {
+            "name": "benchmark_ClenshawCurtisAdaptiveQuadrature/12",
+            "value": 14062.753635688643,
+            "unit": "ns/iter",
+            "extra": "iterations: 49853\ncpu: 14061.231340139982 ns\nthreads: 1"
+          },
+          {
+            "name": "benchmark_ClenshawCurtisAdaptiveQuadrature/14",
+            "value": 14055.648841139644,
+            "unit": "ns/iter",
+            "extra": "iterations: 49704\ncpu: 14054.784464027025 ns\nthreads: 1"
+          },
+          {
+            "name": "benchmark_ClenshawCurtisAdaptiveQuadrature/16",
+            "value": 14056.580315356136,
+            "unit": "ns/iter",
+            "extra": "iterations: 49785\ncpu: 14054.293522145226 ns\nthreads: 1"
+          },
+          {
+            "name": "benchmark_ClenshawCurtisAdaptiveQuadrature/18",
+            "value": 14047.182890618187,
+            "unit": "ns/iter",
+            "extra": "iterations: 49844\ncpu: 14046.58741272772 ns\nthreads: 1"
+          },
+          {
+            "name": "benchmark_ClenshawCurtisAdaptiveQuadrature/20",
+            "value": 14052.00303109371,
+            "unit": "ns/iter",
+            "extra": "iterations: 49817\ncpu: 14050.171547865244 ns\nthreads: 1"
+          },
+          {
+            "name": "benchmark_ClenshawCurtisAdaptiveQuadrature/22",
+            "value": 12428.160134021071,
+            "unit": "ns/iter",
+            "extra": "iterations: 56409\ncpu: 12426.341895796697 ns\nthreads: 1"
+          },
+          {
+            "name": "benchmark_ClenshawCurtisAdaptiveQuadrature/24",
+            "value": 14102.907056107662,
+            "unit": "ns/iter",
+            "extra": "iterations: 49815\ncpu: 14101.151580849233 ns\nthreads: 1"
+          },
+          {
+            "name": "benchmark_ClenshawCurtisAdaptiveQuadrature/26",
+            "value": 10906.079193371763,
+            "unit": "ns/iter",
+            "extra": "iterations: 63970\ncpu: 10904.706659371572 ns\nthreads: 1"
+          },
+          {
+            "name": "benchmark_ClenshawCurtisAdaptiveQuadrature/28",
+            "value": 14081.87838641551,
+            "unit": "ns/iter",
+            "extra": "iterations: 48761\ncpu: 14081.207030208532 ns\nthreads: 1"
+          },
+          {
+            "name": "benchmark_ClenshawCurtisAdaptiveQuadrature/30",
+            "value": 14067.658414845233,
+            "unit": "ns/iter",
+            "extra": "iterations: 49686\ncpu: 14066.401602060923 ns\nthreads: 1"
+          },
+          {
+            "name": "benchmark_ClenshawCurtisAdaptiveQuadrature/32",
+            "value": 14064.71186882344,
+            "unit": "ns/iter",
+            "extra": "iterations: 49887\ncpu: 14063.964740313006 ns\nthreads: 1"
+          },
+          {
+            "name": "benchmark_ClenshawCurtisAdaptiveQuadrature/34",
+            "value": 14056.005220673349,
+            "unit": "ns/iter",
+            "extra": "iterations: 49802\ncpu: 14052.378378378386 ns\nthreads: 1"
+          },
+          {
+            "name": "benchmark_ClenshawCurtisAdaptiveQuadrature/36",
+            "value": 15562.11681474906,
+            "unit": "ns/iter",
+            "extra": "iterations: 45020\ncpu: 15560.160151044 ns\nthreads: 1"
+          },
+          {
+            "name": "benchmark_ClenshawCurtisAdaptiveQuadrature/38",
+            "value": 16697.443127057446,
+            "unit": "ns/iter",
+            "extra": "iterations: 41918\ncpu: 16695.675962593563 ns\nthreads: 1"
+          },
+          {
+            "name": "benchmark_ClenshawCurtisAdaptiveQuadrature/40",
+            "value": 16765.632117554593,
+            "unit": "ns/iter",
+            "extra": "iterations: 41921\ncpu: 16763.962739438455 ns\nthreads: 1"
+          },
+          {
+            "name": "benchmark_ClenshawCurtisAdaptiveQuadrature/42",
+            "value": 16707.752793696174,
+            "unit": "ns/iter",
+            "extra": "iterations: 41880\ncpu: 16706.618290353497 ns\nthreads: 1"
+          },
+          {
+            "name": "benchmark_ClenshawCurtisAdaptiveQuadrature/44",
+            "value": 15198.483180428624,
+            "unit": "ns/iter",
+            "extra": "iterations: 46107\ncpu: 15196.240028629107 ns\nthreads: 1"
+          },
+          {
+            "name": "benchmark_ClenshawCurtisAdaptiveQuadrature/46",
+            "value": 16709.104954461054,
+            "unit": "ns/iter",
+            "extra": "iterations: 41942\ncpu: 16707.203948309456 ns\nthreads: 1"
+          },
+          {
+            "name": "benchmark_ClenshawCurtisAdaptiveQuadrature/48",
+            "value": 16699.048975214344,
+            "unit": "ns/iter",
+            "extra": "iterations: 41960\ncpu: 16697.023117254317 ns\nthreads: 1"
+          },
+          {
+            "name": "benchmark_ClenshawCurtisAdaptiveQuadrature/50",
+            "value": 16700.412179272807,
+            "unit": "ns/iter",
+            "extra": "iterations: 41858\ncpu: 16699.667088728387 ns\nthreads: 1"
+          },
+          {
+            "name": "benchmark_ClenshawCurtisAdaptiveQuadrature/52",
+            "value": 18223.266409969398,
+            "unit": "ns/iter",
+            "extra": "iterations: 38437\ncpu: 18220.435023545175 ns\nthreads: 1"
+          },
+          {
+            "name": "benchmark_ClenshawCurtisAdaptiveQuadrature/54",
+            "value": 16701.5561357078,
+            "unit": "ns/iter",
+            "extra": "iterations: 41943\ncpu: 16699.506282335762 ns\nthreads: 1"
+          },
+          {
+            "name": "benchmark_ClenshawCurtisAdaptiveQuadrature/56",
+            "value": 16699.218676968343,
+            "unit": "ns/iter",
+            "extra": "iterations: 41934\ncpu: 16696.48821958313 ns\nthreads: 1"
+          },
+          {
+            "name": "benchmark_ClenshawCurtisAdaptiveQuadrature/58",
+            "value": 16688.12471947662,
+            "unit": "ns/iter",
+            "extra": "iterations: 41886\ncpu: 16686.531370863606 ns\nthreads: 1"
+          },
+          {
+            "name": "benchmark_ClenshawCurtisAdaptiveQuadrature/60",
+            "value": 16681.16416165674,
+            "unit": "ns/iter",
+            "extra": "iterations: 41916\ncpu: 16680.04707033102 ns\nthreads: 1"
+          },
+          {
+            "name": "benchmark_ClenshawCurtisAdaptiveQuadrature/62",
+            "value": 16696.32225374982,
+            "unit": "ns/iter",
+            "extra": "iterations: 41939\ncpu: 16692.952740885805 ns\nthreads: 1"
+          },
+          {
+            "name": "benchmark_ClenshawCurtisAdaptiveQuadrature/64",
+            "value": 16692.072332515054,
+            "unit": "ns/iter",
+            "extra": "iterations: 41959\ncpu: 16691.291713339124 ns\nthreads: 1"
+          },
+          {
+            "name": "benchmark_ClenshawCurtisAdaptiveQuadrature/66",
+            "value": 16690.135892733266,
+            "unit": "ns/iter",
+            "extra": "iterations: 41989\ncpu: 16688.02784062468 ns\nthreads: 1"
+          },
+          {
+            "name": "benchmark_ClenshawCurtisAdaptiveQuadrature/68",
+            "value": 16695.695032232084,
+            "unit": "ns/iter",
+            "extra": "iterations: 41729\ncpu: 16694.70792494405 ns\nthreads: 1"
+          },
+          {
+            "name": "benchmark_ClenshawCurtisAdaptiveQuadrature/70",
+            "value": 16698.49342686016,
+            "unit": "ns/iter",
+            "extra": "iterations: 41913\ncpu: 16695.510486006853 ns\nthreads: 1"
+          },
+          {
+            "name": "benchmark_ClenshawCurtisAdaptiveQuadrature/72",
+            "value": 16814.325981093723,
+            "unit": "ns/iter",
+            "extra": "iterations: 41892\ncpu: 16812.483027785976 ns\nthreads: 1"
+          },
+          {
+            "name": "benchmark_ClenshawCurtisAdaptiveQuadrature/74",
+            "value": 16690.33475556018,
+            "unit": "ns/iter",
+            "extra": "iterations: 41953\ncpu: 16688.707815889207 ns\nthreads: 1"
+          },
+          {
+            "name": "benchmark_ClenshawCurtisAdaptiveQuadrature/76",
+            "value": 17483.908485021948,
+            "unit": "ns/iter",
+            "extra": "iterations: 41862\ncpu: 17481.909010558287 ns\nthreads: 1"
+          },
+          {
+            "name": "benchmark_ClenshawCurtisAdaptiveQuadrature/78",
+            "value": 17474.82313705844,
+            "unit": "ns/iter",
+            "extra": "iterations: 41829\ncpu: 17471.466900953834 ns\nthreads: 1"
+          },
+          {
+            "name": "benchmark_ClenshawCurtisAdaptiveQuadrature/80",
+            "value": 16700.35897374713,
+            "unit": "ns/iter",
+            "extra": "iterations: 41939\ncpu: 16697.459810677323 ns\nthreads: 1"
+          },
+          {
+            "name": "benchmark_ClenshawCurtisAdaptiveQuadrature/82",
+            "value": 16694.311331998484,
+            "unit": "ns/iter",
+            "extra": "iterations: 41952\ncpu: 16693.217820366193 ns\nthreads: 1"
+          },
+          {
+            "name": "benchmark_ClenshawCurtisAdaptiveQuadrature/84",
+            "value": 16700.41665475718,
+            "unit": "ns/iter",
+            "extra": "iterations: 41982\ncpu: 16697.90010004304 ns\nthreads: 1"
+          },
+          {
+            "name": "benchmark_ClenshawCurtisAdaptiveQuadrature/86",
+            "value": 16684.402133957086,
+            "unit": "ns/iter",
+            "extra": "iterations: 41894\ncpu: 16682.882369790397 ns\nthreads: 1"
+          },
+          {
+            "name": "benchmark_ClenshawCurtisAdaptiveQuadrature/88",
+            "value": 16692.30880076187,
+            "unit": "ns/iter",
+            "extra": "iterations: 41985\ncpu: 16688.646421340814 ns\nthreads: 1"
+          },
+          {
+            "name": "benchmark_ClenshawCurtisAdaptiveQuadrature/90",
+            "value": 16704.362988220746,
+            "unit": "ns/iter",
+            "extra": "iterations: 41938\ncpu: 16702.61295245347 ns\nthreads: 1"
+          },
+          {
+            "name": "benchmark_ClenshawCurtisAdaptiveQuadrature/92",
+            "value": 16685.947339576356,
+            "unit": "ns/iter",
+            "extra": "iterations: 41967\ncpu: 16683.436176043073 ns\nthreads: 1"
+          },
+          {
+            "name": "benchmark_ClenshawCurtisAdaptiveQuadrature/94",
+            "value": 16687.49367058384,
+            "unit": "ns/iter",
+            "extra": "iterations: 41868\ncpu: 16686.063485239294 ns\nthreads: 1"
+          },
+          {
+            "name": "benchmark_ClenshawCurtisAdaptiveQuadrature/96",
+            "value": 16689.326818779184,
+            "unit": "ns/iter",
+            "extra": "iterations: 41855\ncpu: 16688.315255047164 ns\nthreads: 1"
+          },
+          {
+            "name": "benchmark_ClenshawCurtisAdaptiveQuadrature/98",
+            "value": 16693.585954278573,
+            "unit": "ns/iter",
+            "extra": "iterations: 41906\ncpu: 16691.12356225832 ns\nthreads: 1"
+          },
+          {
+            "name": "benchmark_ClenshawCurtisAdaptiveQuadrature/100",
+            "value": 16698.019502658553,
+            "unit": "ns/iter",
+            "extra": "iterations: 41943\ncpu: 16696.37097966286 ns\nthreads: 1"
+          },
+          {
+            "name": "benchmark_ClenshawCurtisHybridAdaptiveQuadrature/0",
+            "value": 8566.834844535771,
+            "unit": "ns/iter",
+            "extra": "iterations: 81723\ncpu: 8565.815902499942 ns\nthreads: 1"
+          },
+          {
+            "name": "benchmark_ClenshawCurtisHybridAdaptiveQuadrature/2",
+            "value": 17592.224943481626,
+            "unit": "ns/iter",
+            "extra": "iterations: 39810\ncpu: 17590.472971615407 ns\nthreads: 1"
+          },
+          {
+            "name": "benchmark_ClenshawCurtisHybridAdaptiveQuadrature/4",
+            "value": 17582.429612321288,
+            "unit": "ns/iter",
+            "extra": "iterations: 39801\ncpu: 17579.770382653965 ns\nthreads: 1"
+          },
+          {
+            "name": "benchmark_ClenshawCurtisHybridAdaptiveQuadrature/6",
+            "value": 18298.224883617662,
+            "unit": "ns/iter",
+            "extra": "iterations: 38451\ncpu: 18295.8322800446 ns\nthreads: 1"
+          },
+          {
+            "name": "benchmark_ClenshawCurtisHybridAdaptiveQuadrature/8",
+            "value": 18895.255559153637,
+            "unit": "ns/iter",
+            "extra": "iterations: 37056\ncpu: 18893.1367389896 ns\nthreads: 1"
+          },
+          {
+            "name": "benchmark_ClenshawCurtisHybridAdaptiveQuadrature/10",
+            "value": 20332.00968712076,
+            "unit": "ns/iter",
+            "extra": "iterations: 34582\ncpu: 20330.21699149847 ns\nthreads: 1"
+          },
+          {
+            "name": "benchmark_ClenshawCurtisHybridAdaptiveQuadrature/12",
+            "value": 20832.805487769023,
+            "unit": "ns/iter",
+            "extra": "iterations: 33602\ncpu: 20830.9237842984 ns\nthreads: 1"
+          },
+          {
+            "name": "benchmark_ClenshawCurtisHybridAdaptiveQuadrature/14",
+            "value": 20867.02481507936,
+            "unit": "ns/iter",
+            "extra": "iterations: 33528\ncpu: 20864.259723216364 ns\nthreads: 1"
+          },
+          {
+            "name": "benchmark_ClenshawCurtisHybridAdaptiveQuadrature/16",
+            "value": 20197.024780291154,
+            "unit": "ns/iter",
+            "extra": "iterations: 34705\ncpu: 20195.969399221733 ns\nthreads: 1"
+          },
+          {
+            "name": "benchmark_ClenshawCurtisHybridAdaptiveQuadrature/18",
+            "value": 20174.965889414583,
+            "unit": "ns/iter",
+            "extra": "iterations: 34652\ncpu: 20171.479452845506 ns\nthreads: 1"
+          },
+          {
+            "name": "benchmark_ClenshawCurtisHybridAdaptiveQuadrature/20",
+            "value": 20159.867277019763,
+            "unit": "ns/iter",
+            "extra": "iterations: 34734\ncpu: 20158.36865895088 ns\nthreads: 1"
+          },
+          {
+            "name": "benchmark_ClenshawCurtisHybridAdaptiveQuadrature/22",
+            "value": 20177.3413377093,
+            "unit": "ns/iter",
+            "extra": "iterations: 34731\ncpu: 20175.052805850755 ns\nthreads: 1"
+          },
+          {
+            "name": "benchmark_ClenshawCurtisHybridAdaptiveQuadrature/24",
+            "value": 20152.387299573293,
+            "unit": "ns/iter",
+            "extra": "iterations: 34676\ncpu: 20150.775752681715 ns\nthreads: 1"
+          },
+          {
+            "name": "benchmark_ClenshawCurtisHybridAdaptiveQuadrature/26",
+            "value": 20848.34536082478,
+            "unit": "ns/iter",
+            "extra": "iterations: 33562\ncpu: 20846.11521959329 ns\nthreads: 1"
+          },
+          {
+            "name": "benchmark_ClenshawCurtisHybridAdaptiveQuadrature/28",
+            "value": 19526.472781527526,
+            "unit": "ns/iter",
+            "extra": "iterations: 35858\ncpu: 19522.25341625283 ns\nthreads: 1"
+          },
+          {
+            "name": "benchmark_ClenshawCurtisHybridAdaptiveQuadrature/30",
+            "value": 19629.97673505971,
+            "unit": "ns/iter",
+            "extra": "iterations: 35676\ncpu: 19626.158790223122 ns\nthreads: 1"
+          },
+          {
+            "name": "benchmark_ClenshawCurtisHybridAdaptiveQuadrature/32",
+            "value": 22470.05622051712,
+            "unit": "ns/iter",
+            "extra": "iterations: 31163\ncpu: 22467.092674004554 ns\nthreads: 1"
+          },
+          {
+            "name": "benchmark_ClenshawCurtisHybridAdaptiveQuadrature/34",
+            "value": 21820.066848098184,
+            "unit": "ns/iter",
+            "extra": "iterations: 31968\ncpu: 21815.63153778808 ns\nthreads: 1"
+          },
+          {
+            "name": "benchmark_ClenshawCurtisHybridAdaptiveQuadrature/36",
+            "value": 21852.373775504002,
+            "unit": "ns/iter",
+            "extra": "iterations: 32054\ncpu: 21850.48748986112 ns\nthreads: 1"
+          },
+          {
+            "name": "benchmark_ClenshawCurtisHybridAdaptiveQuadrature/38",
+            "value": 24205.676673483656,
+            "unit": "ns/iter",
+            "extra": "iterations: 28847\ncpu: 24203.548861233492 ns\nthreads: 1"
+          },
+          {
+            "name": "benchmark_ClenshawCurtisHybridAdaptiveQuadrature/40",
+            "value": 24196.179593674,
+            "unit": "ns/iter",
+            "extra": "iterations: 28893\ncpu: 24193.808154224294 ns\nthreads: 1"
+          },
+          {
+            "name": "benchmark_ClenshawCurtisHybridAdaptiveQuadrature/42",
+            "value": 24198.87462335034,
+            "unit": "ns/iter",
+            "extra": "iterations: 28873\ncpu: 24196.637135039517 ns\nthreads: 1"
+          },
+          {
+            "name": "benchmark_ClenshawCurtisHybridAdaptiveQuadrature/44",
+            "value": 24206.13497420972,
+            "unit": "ns/iter",
+            "extra": "iterations: 28887\ncpu: 24202.959047322238 ns\nthreads: 1"
+          },
+          {
+            "name": "benchmark_ClenshawCurtisHybridAdaptiveQuadrature/46",
+            "value": 24214.259337536547,
+            "unit": "ns/iter",
+            "extra": "iterations: 28862\ncpu: 24212.730164229717 ns\nthreads: 1"
+          },
+          {
+            "name": "benchmark_ClenshawCurtisHybridAdaptiveQuadrature/48",
+            "value": 24218.244641305504,
+            "unit": "ns/iter",
+            "extra": "iterations: 28785\ncpu: 24213.8410630533 ns\nthreads: 1"
+          },
+          {
+            "name": "benchmark_ClenshawCurtisHybridAdaptiveQuadrature/50",
+            "value": 25564.206641525907,
+            "unit": "ns/iter",
+            "extra": "iterations: 27313\ncpu: 25561.85450151929 ns\nthreads: 1"
+          },
+          {
+            "name": "benchmark_ClenshawCurtisHybridAdaptiveQuadrature/52",
+            "value": 24912.96589576863,
+            "unit": "ns/iter",
+            "extra": "iterations: 28149\ncpu: 24909.610749937572 ns\nthreads: 1"
+          },
+          {
+            "name": "benchmark_ClenshawCurtisHybridAdaptiveQuadrature/54",
+            "value": 25590.84936764324,
+            "unit": "ns/iter",
+            "extra": "iterations: 27358\ncpu: 25588.221032239562 ns\nthreads: 1"
+          },
+          {
+            "name": "benchmark_ClenshawCurtisHybridAdaptiveQuadrature/56",
+            "value": 24237.07703488381,
+            "unit": "ns/iter",
+            "extra": "iterations: 28896\ncpu: 24232.934593023372 ns\nthreads: 1"
+          },
+          {
+            "name": "benchmark_ClenshawCurtisHybridAdaptiveQuadrature/58",
+            "value": 25543.804639625978,
+            "unit": "ns/iter",
+            "extra": "iterations: 27416\ncpu: 25542.680624453173 ns\nthreads: 1"
+          },
+          {
+            "name": "benchmark_ClenshawCurtisHybridAdaptiveQuadrature/60",
+            "value": 25548.565575873017,
+            "unit": "ns/iter",
+            "extra": "iterations: 27289\ncpu: 25544.18168492767 ns\nthreads: 1"
+          },
+          {
+            "name": "benchmark_ClenshawCurtisHybridAdaptiveQuadrature/62",
+            "value": 25551.576200722146,
+            "unit": "ns/iter",
+            "extra": "iterations: 27421\ncpu: 25549.981692863556 ns\nthreads: 1"
+          },
+          {
+            "name": "benchmark_ClenshawCurtisHybridAdaptiveQuadrature/64",
+            "value": 25553.5322486503,
+            "unit": "ns/iter",
+            "extra": "iterations: 27412\ncpu: 25549.17689333127 ns\nthreads: 1"
+          },
+          {
+            "name": "benchmark_ClenshawCurtisHybridAdaptiveQuadrature/66",
+            "value": 24193.482508547695,
+            "unit": "ns/iter",
+            "extra": "iterations: 28957\ncpu: 24192.039023379486 ns\nthreads: 1"
+          },
+          {
+            "name": "benchmark_ClenshawCurtisHybridAdaptiveQuadrature/68",
+            "value": 24198.93030805357,
+            "unit": "ns/iter",
+            "extra": "iterations: 28956\ncpu: 24195.515195469077 ns\nthreads: 1"
+          },
+          {
+            "name": "benchmark_ClenshawCurtisHybridAdaptiveQuadrature/70",
+            "value": 24211.798363146663,
+            "unit": "ns/iter",
+            "extra": "iterations: 28958\ncpu: 24210.06233165243 ns\nthreads: 1"
+          },
+          {
+            "name": "benchmark_ClenshawCurtisHybridAdaptiveQuadrature/72",
+            "value": 24257.369098563922,
+            "unit": "ns/iter",
+            "extra": "iterations: 28976\ncpu: 24254.017669795696 ns\nthreads: 1"
+          },
+          {
+            "name": "benchmark_ClenshawCurtisHybridAdaptiveQuadrature/74",
+            "value": 24188.651923010424,
+            "unit": "ns/iter",
+            "extra": "iterations: 28939\ncpu: 24186.93662531539 ns\nthreads: 1"
+          },
+          {
+            "name": "benchmark_ClenshawCurtisHybridAdaptiveQuadrature/76",
+            "value": 23481.494649267035,
+            "unit": "ns/iter",
+            "extra": "iterations: 29809\ncpu: 23478.725116575602 ns\nthreads: 1"
+          },
+          {
+            "name": "benchmark_ClenshawCurtisHybridAdaptiveQuadrature/78",
+            "value": 23475.779717345577,
+            "unit": "ns/iter",
+            "extra": "iterations: 29789\ncpu: 23475.42257209029 ns\nthreads: 1"
+          },
+          {
+            "name": "benchmark_ClenshawCurtisHybridAdaptiveQuadrature/80",
+            "value": 23485.06711611901,
+            "unit": "ns/iter",
+            "extra": "iterations: 29814\ncpu: 23482.338968269567 ns\nthreads: 1"
+          },
+          {
+            "name": "benchmark_ClenshawCurtisHybridAdaptiveQuadrature/82",
+            "value": 23480.303462389624,
+            "unit": "ns/iter",
+            "extra": "iterations: 29806\ncpu: 23479.524189760436 ns\nthreads: 1"
+          },
+          {
+            "name": "benchmark_ClenshawCurtisHybridAdaptiveQuadrature/84",
+            "value": 23491.429257480726,
+            "unit": "ns/iter",
+            "extra": "iterations: 29777\ncpu: 23487.542734324765 ns\nthreads: 1"
+          },
+          {
+            "name": "benchmark_ClenshawCurtisHybridAdaptiveQuadrature/86",
+            "value": 22858.757257485846,
+            "unit": "ns/iter",
+            "extra": "iterations: 30658\ncpu: 22856.764368190936 ns\nthreads: 1"
+          },
+          {
+            "name": "benchmark_ClenshawCurtisHybridAdaptiveQuadrature/88",
+            "value": 23483.81634875468,
+            "unit": "ns/iter",
+            "extra": "iterations: 28467\ncpu: 23481.24607440192 ns\nthreads: 1"
+          },
+          {
+            "name": "benchmark_ClenshawCurtisHybridAdaptiveQuadrature/90",
+            "value": 23487.69440627465,
+            "unit": "ns/iter",
+            "extra": "iterations: 29837\ncpu: 23484.450011730314 ns\nthreads: 1"
+          },
+          {
+            "name": "benchmark_ClenshawCurtisHybridAdaptiveQuadrature/92",
+            "value": 23863.578331432574,
+            "unit": "ns/iter",
+            "extra": "iterations: 29822\ncpu: 23859.496210851386 ns\nthreads: 1"
+          },
+          {
+            "name": "benchmark_ClenshawCurtisHybridAdaptiveQuadrature/94",
+            "value": 23576.62489526428,
+            "unit": "ns/iter",
+            "extra": "iterations: 29837\ncpu: 23573.800851292584 ns\nthreads: 1"
+          },
+          {
+            "name": "benchmark_ClenshawCurtisHybridAdaptiveQuadrature/96",
+            "value": 22843.251488582282,
+            "unit": "ns/iter",
+            "extra": "iterations: 30566\ncpu: 22839.63168226156 ns\nthreads: 1"
+          },
+          {
+            "name": "benchmark_ClenshawCurtisHybridAdaptiveQuadrature/98",
+            "value": 22839.718347604085,
+            "unit": "ns/iter",
+            "extra": "iterations: 30598\ncpu: 22835.59229361348 ns\nthreads: 1"
+          },
+          {
+            "name": "benchmark_ClenshawCurtisHybridAdaptiveQuadrature/100",
+            "value": 23616.079780242264,
+            "unit": "ns/iter",
+            "extra": "iterations: 29669\ncpu: 23613.604738953592 ns\nthreads: 1"
+          },
+          {
+            "name": "benchmark_GLCCAdaptiveQuadrature/0",
+            "value": 8485.68922618461,
+            "unit": "ns/iter",
+            "extra": "iterations: 82552\ncpu: 8484.35596957067 ns\nthreads: 1"
+          },
+          {
+            "name": "benchmark_GLCCAdaptiveQuadrature/2",
+            "value": 16748.42368427341,
+            "unit": "ns/iter",
+            "extra": "iterations: 41859\ncpu: 16747.125588284624 ns\nthreads: 1"
+          },
+          {
+            "name": "benchmark_GLCCAdaptiveQuadrature/4",
+            "value": 16727.418136200584,
+            "unit": "ns/iter",
+            "extra": "iterations: 41850\ncpu: 16725.925185185126 ns\nthreads: 1"
+          },
+          {
+            "name": "benchmark_GLCCAdaptiveQuadrature/6",
+            "value": 16727.409429577187,
+            "unit": "ns/iter",
+            "extra": "iterations: 41741\ncpu: 16726.258642582063 ns\nthreads: 1"
+          },
+          {
+            "name": "benchmark_GLCCAdaptiveQuadrature/8",
+            "value": 16733.706025999963,
+            "unit": "ns/iter",
+            "extra": "iterations: 41769\ncpu: 16731.17273576136 ns\nthreads: 1"
+          },
+          {
+            "name": "benchmark_GLCCAdaptiveQuadrature/10",
+            "value": 17021.205865426648,
+            "unit": "ns/iter",
+            "extra": "iterations: 41702\ncpu: 17018.76413601247 ns\nthreads: 1"
+          },
+          {
+            "name": "benchmark_GLCCAdaptiveQuadrature/12",
+            "value": 16734.497981318615,
+            "unit": "ns/iter",
+            "extra": "iterations: 41859\ncpu: 16731.599488760123 ns\nthreads: 1"
+          },
+          {
+            "name": "benchmark_GLCCAdaptiveQuadrature/14",
+            "value": 17356.119672209592,
+            "unit": "ns/iter",
+            "extra": "iterations: 41856\ncpu: 17351.503058103983 ns\nthreads: 1"
+          },
+          {
+            "name": "benchmark_GLCCAdaptiveQuadrature/16",
+            "value": 16725.585999488198,
+            "unit": "ns/iter",
+            "extra": "iterations: 39070\ncpu: 16723.425287945076 ns\nthreads: 1"
+          },
+          {
+            "name": "benchmark_GLCCAdaptiveQuadrature/18",
+            "value": 16776.552556784027,
+            "unit": "ns/iter",
+            "extra": "iterations: 41869\ncpu: 16774.505266426488 ns\nthreads: 1"
+          },
+          {
+            "name": "benchmark_GLCCAdaptiveQuadrature/20",
+            "value": 16724.609399740893,
+            "unit": "ns/iter",
+            "extra": "iterations: 41682\ncpu: 16723.560721654 ns\nthreads: 1"
+          },
+          {
+            "name": "benchmark_GLCCAdaptiveQuadrature/22",
+            "value": 16731.105839938624,
+            "unit": "ns/iter",
+            "extra": "iterations: 41884\ncpu: 16729.045649890035 ns\nthreads: 1"
+          },
+          {
+            "name": "benchmark_GLCCAdaptiveQuadrature/24",
+            "value": 18891.462557324016,
+            "unit": "ns/iter",
+            "extra": "iterations: 37070\ncpu: 18890.647666576828 ns\nthreads: 1"
+          },
+          {
+            "name": "benchmark_GLCCAdaptiveQuadrature/26",
+            "value": 18889.604284865203,
+            "unit": "ns/iter",
+            "extra": "iterations: 37014\ncpu: 18886.37553358188 ns\nthreads: 1"
+          },
+          {
+            "name": "benchmark_GLCCAdaptiveQuadrature/28",
+            "value": 18895.665299625183,
+            "unit": "ns/iter",
+            "extra": "iterations: 37063\ncpu: 18894.27496425008 ns\nthreads: 1"
+          },
+          {
+            "name": "benchmark_GLCCAdaptiveQuadrature/30",
+            "value": 18908.372231065598,
+            "unit": "ns/iter",
+            "extra": "iterations: 37063\ncpu: 18905.579041091863 ns\nthreads: 1"
+          },
+          {
+            "name": "benchmark_GLCCAdaptiveQuadrature/32",
+            "value": 23169.157732777625,
+            "unit": "ns/iter",
+            "extra": "iterations: 30222\ncpu: 23166.274634372694 ns\nthreads: 1"
+          },
+          {
+            "name": "benchmark_GLCCAdaptiveQuadrature/34",
+            "value": 23161.59641344619,
+            "unit": "ns/iter",
+            "extra": "iterations: 30224\ncpu: 23158.639194017847 ns\nthreads: 1"
+          },
+          {
+            "name": "benchmark_GLCCAdaptiveQuadrature/36",
+            "value": 23170.999636014847,
+            "unit": "ns/iter",
+            "extra": "iterations: 30221\ncpu: 23167.979749181482 ns\nthreads: 1"
+          },
+          {
+            "name": "benchmark_GLCCAdaptiveQuadrature/38",
+            "value": 25217.025174018443,
+            "unit": "ns/iter",
+            "extra": "iterations: 27727\ncpu: 25214.503408230405 ns\nthreads: 1"
+          },
+          {
+            "name": "benchmark_GLCCAdaptiveQuadrature/40",
+            "value": 25274.496789785113,
+            "unit": "ns/iter",
+            "extra": "iterations: 27724\ncpu: 25271.667796855105 ns\nthreads: 1"
+          },
+          {
+            "name": "benchmark_GLCCAdaptiveQuadrature/42",
+            "value": 25435.821250090594,
+            "unit": "ns/iter",
+            "extra": "iterations: 27614\ncpu: 25433.060476569466 ns\nthreads: 1"
+          },
+          {
+            "name": "benchmark_GLCCAdaptiveQuadrature/44",
+            "value": 25353.318979903175,
+            "unit": "ns/iter",
+            "extra": "iterations: 27566\ncpu: 25350.931654937427 ns\nthreads: 1"
+          },
+          {
+            "name": "benchmark_GLCCAdaptiveQuadrature/46",
+            "value": 25339.58548060203,
+            "unit": "ns/iter",
+            "extra": "iterations: 27632\ncpu: 25336.664483208122 ns\nthreads: 1"
+          },
+          {
+            "name": "benchmark_GLCCAdaptiveQuadrature/48",
+            "value": 25353.792113656153,
+            "unit": "ns/iter",
+            "extra": "iterations: 27592\ncpu: 25350.625471151994 ns\nthreads: 1"
+          },
+          {
+            "name": "benchmark_GLCCAdaptiveQuadrature/50",
+            "value": 25295.961992326436,
+            "unit": "ns/iter",
+            "extra": "iterations: 27626\ncpu: 25293.830666763137 ns\nthreads: 1"
+          },
+          {
+            "name": "benchmark_GLCCAdaptiveQuadrature/52",
+            "value": 25318.358606705442,
+            "unit": "ns/iter",
+            "extra": "iterations: 27618\ncpu: 25314.997356796353 ns\nthreads: 1"
+          },
+          {
+            "name": "benchmark_GLCCAdaptiveQuadrature/54",
+            "value": 27439.692467716526,
+            "unit": "ns/iter",
+            "extra": "iterations: 25477\ncpu: 27437.36884248513 ns\nthreads: 1"
+          },
+          {
+            "name": "benchmark_GLCCAdaptiveQuadrature/56",
+            "value": 25490.015827025425,
+            "unit": "ns/iter",
+            "extra": "iterations: 27611\ncpu: 25486.3913657608 ns\nthreads: 1"
+          },
+          {
+            "name": "benchmark_GLCCAdaptiveQuadrature/58",
+            "value": 25403.08874836471,
+            "unit": "ns/iter",
+            "extra": "iterations: 27516\ncpu: 25400.74371274845 ns\nthreads: 1"
+          },
+          {
+            "name": "benchmark_GLCCAdaptiveQuadrature/60",
+            "value": 27512.05899960599,
+            "unit": "ns/iter",
+            "extra": "iterations: 25390\ncpu: 27507.882197716208 ns\nthreads: 1"
+          },
+          {
+            "name": "benchmark_GLCCAdaptiveQuadrature/62",
+            "value": 21983.424788767752,
+            "unit": "ns/iter",
+            "extra": "iterations: 31837\ncpu: 21980.803373433202 ns\nthreads: 1"
+          },
+          {
+            "name": "benchmark_GLCCAdaptiveQuadrature/64",
+            "value": 21992.424865747133,
+            "unit": "ns/iter",
+            "extra": "iterations: 31843\ncpu: 21989.600131897256 ns\nthreads: 1"
+          },
+          {
+            "name": "benchmark_GLCCAdaptiveQuadrature/66",
+            "value": 21993.67674418654,
+            "unit": "ns/iter",
+            "extra": "iterations: 31820\ncpu: 21991.979541169265 ns\nthreads: 1"
+          },
+          {
+            "name": "benchmark_GLCCAdaptiveQuadrature/68",
+            "value": 21999.581504160793,
+            "unit": "ns/iter",
+            "extra": "iterations: 31845\ncpu: 21996.04013188824 ns\nthreads: 1"
+          },
+          {
+            "name": "benchmark_GLCCAdaptiveQuadrature/70",
+            "value": 21992.613811630497,
+            "unit": "ns/iter",
+            "extra": "iterations: 31640\ncpu: 21991.660366623997 ns\nthreads: 1"
+          },
+          {
+            "name": "benchmark_GLCCAdaptiveQuadrature/72",
+            "value": 22004.04617970724,
+            "unit": "ns/iter",
+            "extra": "iterations: 31529\ncpu: 22001.46109930516 ns\nthreads: 1"
+          },
+          {
+            "name": "benchmark_GLCCAdaptiveQuadrature/74",
+            "value": 21998.216070138547,
+            "unit": "ns/iter",
+            "extra": "iterations: 31823\ncpu: 21997.409232316622 ns\nthreads: 1"
+          },
+          {
+            "name": "benchmark_GLCCAdaptiveQuadrature/76",
+            "value": 21993.19654706114,
+            "unit": "ns/iter",
+            "extra": "iterations: 31799\ncpu: 21990.340388062632 ns\nthreads: 1"
+          },
+          {
+            "name": "benchmark_GLCCAdaptiveQuadrature/78",
+            "value": 21986.810502139102,
+            "unit": "ns/iter",
+            "extra": "iterations: 31784\ncpu: 21985.749056128676 ns\nthreads: 1"
+          },
+          {
+            "name": "benchmark_GLCCAdaptiveQuadrature/80",
+            "value": 21988.001695766514,
+            "unit": "ns/iter",
+            "extra": "iterations: 31844\ncpu: 21985.89891345313 ns\nthreads: 1"
+          },
+          {
+            "name": "benchmark_GLCCAdaptiveQuadrature/82",
+            "value": 21990.759864394833,
+            "unit": "ns/iter",
+            "extra": "iterations: 31857\ncpu: 21989.589195467783 ns\nthreads: 1"
+          },
+          {
+            "name": "benchmark_GLCCAdaptiveQuadrature/84",
+            "value": 21993.37080874148,
+            "unit": "ns/iter",
+            "extra": "iterations: 31852\ncpu: 21989.325536857814 ns\nthreads: 1"
+          },
+          {
+            "name": "benchmark_GLCCAdaptiveQuadrature/86",
+            "value": 22001.223391225736,
+            "unit": "ns/iter",
+            "extra": "iterations: 31841\ncpu: 21998.458716748522 ns\nthreads: 1"
+          },
+          {
+            "name": "benchmark_GLCCAdaptiveQuadrature/88",
+            "value": 21991.23090937695,
+            "unit": "ns/iter",
+            "extra": "iterations: 31835\ncpu: 21987.559635620655 ns\nthreads: 1"
+          },
+          {
+            "name": "benchmark_GLCCAdaptiveQuadrature/90",
+            "value": 21995.026015647658,
+            "unit": "ns/iter",
+            "extra": "iterations: 31827\ncpu: 21992.189870236503 ns\nthreads: 1"
+          },
+          {
+            "name": "benchmark_GLCCAdaptiveQuadrature/92",
+            "value": 21980.905107882976,
+            "unit": "ns/iter",
+            "extra": "iterations: 31794\ncpu: 21978.723186764488 ns\nthreads: 1"
+          },
+          {
+            "name": "benchmark_GLCCAdaptiveQuadrature/94",
+            "value": 21990.017354670676,
+            "unit": "ns/iter",
+            "extra": "iterations: 31807\ncpu: 21987.79605118419 ns\nthreads: 1"
+          },
+          {
+            "name": "benchmark_GLCCAdaptiveQuadrature/96",
+            "value": 22000.610987075426,
+            "unit": "ns/iter",
+            "extra": "iterations: 31801\ncpu: 21998.81230149993 ns\nthreads: 1"
+          },
+          {
+            "name": "benchmark_GLCCAdaptiveQuadrature/98",
+            "value": 22026.473828247515,
+            "unit": "ns/iter",
+            "extra": "iterations: 31790\ncpu: 22023.55331865406 ns\nthreads: 1"
+          },
+          {
+            "name": "benchmark_GLCCAdaptiveQuadrature/100",
+            "value": 22024.74337145002,
+            "unit": "ns/iter",
+            "extra": "iterations: 31832\ncpu: 22022.699641869378 ns\nthreads: 1"
+          },
+          {
+            "name": "benchmark_RemapGaussLegendreAdaptiveQuadrature/0",
+            "value": 2550.193289296962,
+            "unit": "ns/iter",
+            "extra": "iterations: 262208\ncpu: 2549.7393367097825 ns\nthreads: 1"
+          },
+          {
+            "name": "benchmark_RemapGaussLegendreAdaptiveQuadrature/2",
+            "value": 3995.5475124747636,
+            "unit": "ns/iter",
+            "extra": "iterations: 175154\ncpu: 3995.208821950903 ns\nthreads: 1"
+          },
+          {
+            "name": "benchmark_RemapGaussLegendreAdaptiveQuadrature/4",
+            "value": 3996.171824607274,
+            "unit": "ns/iter",
+            "extra": "iterations: 174876\ncpu: 3995.6864921430138 ns\nthreads: 1"
+          },
+          {
+            "name": "benchmark_RemapGaussLegendreAdaptiveQuadrature/6",
+            "value": 6119.110308184522,
+            "unit": "ns/iter",
+            "extra": "iterations: 114996\ncpu: 6118.500904379324 ns\nthreads: 1"
+          },
+          {
+            "name": "benchmark_RemapGaussLegendreAdaptiveQuadrature/8",
+            "value": 6096.769077476294,
+            "unit": "ns/iter",
+            "extra": "iterations: 114913\ncpu: 6095.9875296964965 ns\nthreads: 1"
+          },
+          {
+            "name": "benchmark_RemapGaussLegendreAdaptiveQuadrature/10",
+            "value": 6100.6764698165925,
+            "unit": "ns/iter",
+            "extra": "iterations: 114351\ncpu: 6100.069758900148 ns\nthreads: 1"
+          },
+          {
+            "name": "benchmark_RemapGaussLegendreAdaptiveQuadrature/12",
+            "value": 6093.847717773668,
+            "unit": "ns/iter",
+            "extra": "iterations: 114603\ncpu: 6093.133958098839 ns\nthreads: 1"
+          },
+          {
+            "name": "benchmark_RemapGaussLegendreAdaptiveQuadrature/14",
+            "value": 6039.565995036861,
+            "unit": "ns/iter",
+            "extra": "iterations: 114448\ncpu: 6038.522245910837 ns\nthreads: 1"
+          },
+          {
+            "name": "benchmark_RemapGaussLegendreAdaptiveQuadrature/16",
+            "value": 5977.288039989196,
+            "unit": "ns/iter",
+            "extra": "iterations: 116831\ncpu: 5976.698222218536 ns\nthreads: 1"
+          },
+          {
+            "name": "benchmark_RemapGaussLegendreAdaptiveQuadrature/18",
+            "value": 5985.631998975336,
+            "unit": "ns/iter",
+            "extra": "iterations: 117160\ncpu: 5984.807553772633 ns\nthreads: 1"
+          },
+          {
+            "name": "benchmark_RemapGaussLegendreAdaptiveQuadrature/20",
+            "value": 5978.682957382769,
+            "unit": "ns/iter",
+            "extra": "iterations: 117347\ncpu: 5977.932328904853 ns\nthreads: 1"
+          },
+          {
+            "name": "benchmark_RemapGaussLegendreAdaptiveQuadrature/22",
+            "value": 5993.985622266191,
+            "unit": "ns/iter",
+            "extra": "iterations: 117056\ncpu: 5993.296490568614 ns\nthreads: 1"
+          },
+          {
+            "name": "benchmark_RemapGaussLegendreAdaptiveQuadrature/24",
+            "value": 5980.144327605596,
+            "unit": "ns/iter",
+            "extra": "iterations: 116970\ncpu: 5979.16280242775 ns\nthreads: 1"
+          },
+          {
+            "name": "benchmark_RemapGaussLegendreAdaptiveQuadrature/26",
+            "value": 5983.489339065383,
+            "unit": "ns/iter",
+            "extra": "iterations: 114671\ncpu: 5983.344568373838 ns\nthreads: 1"
+          },
+          {
+            "name": "benchmark_RemapGaussLegendreAdaptiveQuadrature/28",
+            "value": 6099.201714041271,
+            "unit": "ns/iter",
+            "extra": "iterations: 114583\ncpu: 6098.358473769926 ns\nthreads: 1"
+          },
+          {
+            "name": "benchmark_RemapGaussLegendreAdaptiveQuadrature/30",
+            "value": 5981.840443179771,
+            "unit": "ns/iter",
+            "extra": "iterations: 114536\ncpu: 5980.921317315144 ns\nthreads: 1"
+          },
+          {
+            "name": "benchmark_RemapGaussLegendreAdaptiveQuadrature/32",
+            "value": 5998.121665538048,
+            "unit": "ns/iter",
+            "extra": "iterations: 116623\ncpu: 5997.716685388031 ns\nthreads: 1"
+          },
+          {
+            "name": "benchmark_RemapGaussLegendreAdaptiveQuadrature/34",
+            "value": 5984.378709401884,
+            "unit": "ns/iter",
+            "extra": "iterations: 98466\ncpu: 5983.851156744265 ns\nthreads: 1"
+          },
+          {
+            "name": "benchmark_RemapGaussLegendreAdaptiveQuadrature/36",
+            "value": 5987.844238806245,
+            "unit": "ns/iter",
+            "extra": "iterations: 117250\ncpu: 5987.087334754773 ns\nthreads: 1"
+          },
+          {
+            "name": "benchmark_RemapGaussLegendreAdaptiveQuadrature/38",
+            "value": 6046.25310498093,
+            "unit": "ns/iter",
+            "extra": "iterations: 114735\ncpu: 6045.51594543951 ns\nthreads: 1"
+          },
+          {
+            "name": "benchmark_RemapGaussLegendreAdaptiveQuadrature/40",
+            "value": 5992.713775379374,
+            "unit": "ns/iter",
+            "extra": "iterations: 116730\ncpu: 5991.471815300124 ns\nthreads: 1"
+          },
+          {
+            "name": "benchmark_RemapGaussLegendreAdaptiveQuadrature/42",
+            "value": 7088.245542851418,
+            "unit": "ns/iter",
+            "extra": "iterations: 98830\ncpu: 7087.954001821365 ns\nthreads: 1"
+          },
+          {
+            "name": "benchmark_RemapGaussLegendreAdaptiveQuadrature/44",
+            "value": 7084.8267794665935,
+            "unit": "ns/iter",
+            "extra": "iterations: 97754\ncpu: 7083.844845223512 ns\nthreads: 1"
+          },
+          {
+            "name": "benchmark_RemapGaussLegendreAdaptiveQuadrature/46",
+            "value": 7089.594062113792,
+            "unit": "ns/iter",
+            "extra": "iterations: 98722\ncpu: 7088.782328153987 ns\nthreads: 1"
+          },
+          {
+            "name": "benchmark_RemapGaussLegendreAdaptiveQuadrature/48",
+            "value": 7082.939269041005,
+            "unit": "ns/iter",
+            "extra": "iterations: 98747\ncpu: 7082.351656252612 ns\nthreads: 1"
+          },
+          {
+            "name": "benchmark_RemapGaussLegendreAdaptiveQuadrature/50",
+            "value": 7084.567414425343,
+            "unit": "ns/iter",
+            "extra": "iterations: 99007\ncpu: 7083.728221236803 ns\nthreads: 1"
+          },
+          {
+            "name": "benchmark_RemapGaussLegendreAdaptiveQuadrature/52",
+            "value": 7086.075462906853,
+            "unit": "ns/iter",
+            "extra": "iterations: 98724\ncpu: 7085.841234147654 ns\nthreads: 1"
+          },
+          {
+            "name": "benchmark_RemapGaussLegendreAdaptiveQuadrature/54",
+            "value": 7090.067357987049,
+            "unit": "ns/iter",
+            "extra": "iterations: 98459\ncpu: 7089.479295950481 ns\nthreads: 1"
+          },
+          {
+            "name": "benchmark_RemapGaussLegendreAdaptiveQuadrature/56",
+            "value": 7318.691213564291,
+            "unit": "ns/iter",
+            "extra": "iterations: 95545\ncpu: 7317.284912868198 ns\nthreads: 1"
+          },
+          {
+            "name": "benchmark_RemapGaussLegendreAdaptiveQuadrature/58",
+            "value": 7327.10894643491,
+            "unit": "ns/iter",
+            "extra": "iterations: 95267\ncpu: 7326.0907974431675 ns\nthreads: 1"
+          },
+          {
+            "name": "benchmark_RemapGaussLegendreAdaptiveQuadrature/60",
+            "value": 7114.947707295081,
+            "unit": "ns/iter",
+            "extra": "iterations: 95673\ncpu: 7114.186729798203 ns\nthreads: 1"
+          },
+          {
+            "name": "benchmark_RemapGaussLegendreAdaptiveQuadrature/62",
+            "value": 7232.028284754744,
+            "unit": "ns/iter",
+            "extra": "iterations: 98569\ncpu: 7231.179143544151 ns\nthreads: 1"
+          },
+          {
+            "name": "benchmark_RemapGaussLegendreAdaptiveQuadrature/64",
+            "value": 7103.761747515803,
+            "unit": "ns/iter",
+            "extra": "iterations: 98723\ncpu: 7102.99408445831 ns\nthreads: 1"
+          },
+          {
+            "name": "benchmark_RemapGaussLegendreAdaptiveQuadrature/66",
+            "value": 7304.644773569688,
+            "unit": "ns/iter",
+            "extra": "iterations: 96012\ncpu: 7303.511102778651 ns\nthreads: 1"
+          },
+          {
+            "name": "benchmark_RemapGaussLegendreAdaptiveQuadrature/68",
+            "value": 7222.403509503736,
+            "unit": "ns/iter",
+            "extra": "iterations: 95854\ncpu: 7221.66533477994 ns\nthreads: 1"
+          },
+          {
+            "name": "benchmark_RemapGaussLegendreAdaptiveQuadrature/70",
+            "value": 7114.826226771738,
+            "unit": "ns/iter",
+            "extra": "iterations: 98266\ncpu: 7113.8686727861095 ns\nthreads: 1"
+          },
+          {
+            "name": "benchmark_RemapGaussLegendreAdaptiveQuadrature/72",
+            "value": 7138.056902528446,
+            "unit": "ns/iter",
+            "extra": "iterations: 98080\ncpu: 7137.2624694127435 ns\nthreads: 1"
+          },
+          {
+            "name": "benchmark_RemapGaussLegendreAdaptiveQuadrature/74",
+            "value": 7150.701880321211,
+            "unit": "ns/iter",
+            "extra": "iterations: 97377\ncpu: 7149.917649958495 ns\nthreads: 1"
+          },
+          {
+            "name": "benchmark_RemapGaussLegendreAdaptiveQuadrature/76",
+            "value": 7171.024392532466,
+            "unit": "ns/iter",
+            "extra": "iterations: 95931\ncpu: 7169.889066099425 ns\nthreads: 1"
+          },
+          {
+            "name": "benchmark_RemapGaussLegendreAdaptiveQuadrature/78",
+            "value": 7148.108917164782,
+            "unit": "ns/iter",
+            "extra": "iterations: 97845\ncpu: 7147.957136286831 ns\nthreads: 1"
+          },
+          {
+            "name": "benchmark_RemapGaussLegendreAdaptiveQuadrature/80",
+            "value": 7169.3933670132,
+            "unit": "ns/iter",
+            "extra": "iterations: 97784\ncpu: 7168.558240612014 ns\nthreads: 1"
+          },
+          {
+            "name": "benchmark_RemapGaussLegendreAdaptiveQuadrature/82",
+            "value": 7167.697086463219,
+            "unit": "ns/iter",
+            "extra": "iterations: 97579\ncpu: 7166.3898379775665 ns\nthreads: 1"
+          },
+          {
+            "name": "benchmark_RemapGaussLegendreAdaptiveQuadrature/84",
+            "value": 7285.415045287954,
+            "unit": "ns/iter",
+            "extra": "iterations: 96163\ncpu: 7284.402670466027 ns\nthreads: 1"
+          },
+          {
+            "name": "benchmark_RemapGaussLegendreAdaptiveQuadrature/86",
+            "value": 7287.643994241487,
+            "unit": "ns/iter",
+            "extra": "iterations: 95858\ncpu: 7286.5110475911115 ns\nthreads: 1"
+          },
+          {
+            "name": "benchmark_RemapGaussLegendreAdaptiveQuadrature/88",
+            "value": 7183.401122540904,
+            "unit": "ns/iter",
+            "extra": "iterations: 96923\ncpu: 7182.877170537412 ns\nthreads: 1"
+          },
+          {
+            "name": "benchmark_RemapGaussLegendreAdaptiveQuadrature/90",
+            "value": 7177.6123290200185,
+            "unit": "ns/iter",
+            "extra": "iterations: 97526\ncpu: 7176.808112708374 ns\nthreads: 1"
+          },
+          {
+            "name": "benchmark_RemapGaussLegendreAdaptiveQuadrature/92",
+            "value": 7174.3802978822305,
+            "unit": "ns/iter",
+            "extra": "iterations: 97421\ncpu: 7173.571416840547 ns\nthreads: 1"
+          },
+          {
+            "name": "benchmark_RemapGaussLegendreAdaptiveQuadrature/94",
+            "value": 7198.18405646487,
+            "unit": "ns/iter",
+            "extra": "iterations: 97193\ncpu: 7197.738520263868 ns\nthreads: 1"
+          },
+          {
+            "name": "benchmark_RemapGaussLegendreAdaptiveQuadrature/96",
+            "value": 7231.280645393975,
+            "unit": "ns/iter",
+            "extra": "iterations: 97119\ncpu: 7230.230202123278 ns\nthreads: 1"
+          },
+          {
+            "name": "benchmark_RemapGaussLegendreAdaptiveQuadrature/98",
+            "value": 7229.463660267712,
+            "unit": "ns/iter",
+            "extra": "iterations: 96217\ncpu: 7228.691572175388 ns\nthreads: 1"
+          },
+          {
+            "name": "benchmark_RemapGaussLegendreAdaptiveQuadrature/100",
+            "value": 7230.310271563793,
+            "unit": "ns/iter",
+            "extra": "iterations: 96957\ncpu: 7228.903885227483 ns\nthreads: 1"
+          },
+          {
+            "name": "benchmark_RemapClenshawCurtisAdaptiveQuadrature/0",
+            "value": 2819.6220529928587,
+            "unit": "ns/iter",
+            "extra": "iterations: 247921\ncpu: 2819.273595217746 ns\nthreads: 1"
+          },
+          {
+            "name": "benchmark_RemapClenshawCurtisAdaptiveQuadrature/2",
+            "value": 6243.164029149574,
+            "unit": "ns/iter",
+            "extra": "iterations: 111974\ncpu: 6242.78578955826 ns\nthreads: 1"
+          },
+          {
+            "name": "benchmark_RemapClenshawCurtisAdaptiveQuadrature/4",
+            "value": 8197.335588887116,
+            "unit": "ns/iter",
+            "extra": "iterations: 85271\ncpu: 8196.082583762221 ns\nthreads: 1"
+          },
+          {
+            "name": "benchmark_RemapClenshawCurtisAdaptiveQuadrature/6",
+            "value": 8196.175682794594,
+            "unit": "ns/iter",
+            "extra": "iterations: 85421\ncpu: 8195.396635487523 ns\nthreads: 1"
+          },
+          {
+            "name": "benchmark_RemapClenshawCurtisAdaptiveQuadrature/8",
+            "value": 8222.480338721532,
+            "unit": "ns/iter",
+            "extra": "iterations: 85498\ncpu: 8221.36062831901 ns\nthreads: 1"
+          },
+          {
+            "name": "benchmark_RemapClenshawCurtisAdaptiveQuadrature/10",
+            "value": 10300.512148085505,
+            "unit": "ns/iter",
+            "extra": "iterations: 68447\ncpu: 10299.416161409263 ns\nthreads: 1"
+          },
+          {
+            "name": "benchmark_RemapClenshawCurtisAdaptiveQuadrature/12",
+            "value": 8215.95328090173,
+            "unit": "ns/iter",
+            "extra": "iterations: 85190\ncpu: 8215.753140039831 ns\nthreads: 1"
+          },
+          {
+            "name": "benchmark_RemapClenshawCurtisAdaptiveQuadrature/14",
+            "value": 8221.00546377604,
+            "unit": "ns/iter",
+            "extra": "iterations: 85289\ncpu: 8219.381620138798 ns\nthreads: 1"
+          },
+          {
+            "name": "benchmark_RemapClenshawCurtisAdaptiveQuadrature/16",
+            "value": 10257.986236181188,
+            "unit": "ns/iter",
+            "extra": "iterations: 68295\ncpu: 10257.59300095201 ns\nthreads: 1"
+          },
+          {
+            "name": "benchmark_RemapClenshawCurtisAdaptiveQuadrature/18",
+            "value": 10268.716283628462,
+            "unit": "ns/iter",
+            "extra": "iterations: 68357\ncpu: 10267.115101599185 ns\nthreads: 1"
+          },
+          {
+            "name": "benchmark_RemapClenshawCurtisAdaptiveQuadrature/20",
+            "value": 10264.213677593149,
+            "unit": "ns/iter",
+            "extra": "iterations: 68243\ncpu: 10262.661166713358 ns\nthreads: 1"
+          },
+          {
+            "name": "benchmark_RemapClenshawCurtisAdaptiveQuadrature/22",
+            "value": 10256.337000161715,
+            "unit": "ns/iter",
+            "extra": "iterations: 67997\ncpu: 10255.683353677254 ns\nthreads: 1"
+          },
+          {
+            "name": "benchmark_RemapClenshawCurtisAdaptiveQuadrature/24",
+            "value": 10263.779335067453,
+            "unit": "ns/iter",
+            "extra": "iterations: 68067\ncpu: 10261.535516476164 ns\nthreads: 1"
+          },
+          {
+            "name": "benchmark_RemapClenshawCurtisAdaptiveQuadrature/26",
+            "value": 10251.213008581493,
+            "unit": "ns/iter",
+            "extra": "iterations: 68401\ncpu: 10250.979181590737 ns\nthreads: 1"
+          },
+          {
+            "name": "benchmark_RemapClenshawCurtisAdaptiveQuadrature/28",
+            "value": 12346.904969807962,
+            "unit": "ns/iter",
+            "extra": "iterations: 56803\ncpu: 12345.539073640633 ns\nthreads: 1"
+          },
+          {
+            "name": "benchmark_RemapClenshawCurtisAdaptiveQuadrature/30",
+            "value": 12336.288307377336,
+            "unit": "ns/iter",
+            "extra": "iterations: 56634\ncpu: 12334.846505632755 ns\nthreads: 1"
+          },
+          {
+            "name": "benchmark_RemapClenshawCurtisAdaptiveQuadrature/32",
+            "value": 12378.637121669168,
+            "unit": "ns/iter",
+            "extra": "iterations: 56366\ncpu: 12376.430472270798 ns\nthreads: 1"
+          },
+          {
+            "name": "benchmark_RemapClenshawCurtisAdaptiveQuadrature/34",
+            "value": 10306.821041834484,
+            "unit": "ns/iter",
+            "extra": "iterations: 68245\ncpu: 10305.165418712151 ns\nthreads: 1"
+          },
+          {
+            "name": "benchmark_RemapClenshawCurtisAdaptiveQuadrature/36",
+            "value": 10260.00376281056,
+            "unit": "ns/iter",
+            "extra": "iterations: 68300\ncpu: 10259.474421668749 ns\nthreads: 1"
+          },
+          {
+            "name": "benchmark_RemapClenshawCurtisAdaptiveQuadrature/38",
+            "value": 12373.348809629528,
+            "unit": "ns/iter",
+            "extra": "iterations: 56495\ncpu: 12372.047632533831 ns\nthreads: 1"
+          },
+          {
+            "name": "benchmark_RemapClenshawCurtisAdaptiveQuadrature/40",
+            "value": 12409.043366129688,
+            "unit": "ns/iter",
+            "extra": "iterations: 56611\ncpu: 12408.185370334371 ns\nthreads: 1"
+          },
+          {
+            "name": "benchmark_RemapClenshawCurtisAdaptiveQuadrature/42",
+            "value": 12398.336104597023,
+            "unit": "ns/iter",
+            "extra": "iterations: 56292\ncpu: 12396.722713707415 ns\nthreads: 1"
+          },
+          {
+            "name": "benchmark_RemapClenshawCurtisAdaptiveQuadrature/44",
+            "value": 14685.062167483475,
+            "unit": "ns/iter",
+            "extra": "iterations: 47742\ncpu: 14683.542080348596 ns\nthreads: 1"
+          },
+          {
+            "name": "benchmark_RemapClenshawCurtisAdaptiveQuadrature/46",
+            "value": 14718.862400202142,
+            "unit": "ns/iter",
+            "extra": "iterations: 47471\ncpu: 14717.08994965372 ns\nthreads: 1"
+          },
+          {
+            "name": "benchmark_RemapClenshawCurtisAdaptiveQuadrature/48",
+            "value": 14879.115859926938,
+            "unit": "ns/iter",
+            "extra": "iterations: 47661\ncpu: 14875.867774490778 ns\nthreads: 1"
+          },
+          {
+            "name": "benchmark_RemapClenshawCurtisAdaptiveQuadrature/50",
+            "value": 15019.543849610001,
+            "unit": "ns/iter",
+            "extra": "iterations: 47184\ncpu: 15017.421498813332 ns\nthreads: 1"
+          },
+          {
+            "name": "benchmark_RemapClenshawCurtisAdaptiveQuadrature/52",
+            "value": 15081.84887895251,
+            "unit": "ns/iter",
+            "extra": "iterations: 46519\ncpu: 15079.987209527733 ns\nthreads: 1"
+          },
+          {
+            "name": "benchmark_RemapClenshawCurtisAdaptiveQuadrature/54",
+            "value": 15143.798069942839,
+            "unit": "ns/iter",
+            "extra": "iterations: 46838\ncpu: 15142.723365643418 ns\nthreads: 1"
+          },
+          {
+            "name": "benchmark_RemapClenshawCurtisAdaptiveQuadrature/56",
+            "value": 15081.725775318599,
+            "unit": "ns/iter",
+            "extra": "iterations: 46626\ncpu: 15078.252820315163 ns\nthreads: 1"
+          },
+          {
+            "name": "benchmark_RemapClenshawCurtisAdaptiveQuadrature/58",
+            "value": 15100.855896231684,
+            "unit": "ns/iter",
+            "extra": "iterations: 46411\ncpu: 15098.490487169352 ns\nthreads: 1"
+          },
+          {
+            "name": "benchmark_RemapClenshawCurtisAdaptiveQuadrature/60",
+            "value": 15047.92356507876,
+            "unit": "ns/iter",
+            "extra": "iterations: 46013\ncpu: 15045.549931540905 ns\nthreads: 1"
+          },
+          {
+            "name": "benchmark_RemapClenshawCurtisAdaptiveQuadrature/62",
+            "value": 14776.669294190442,
+            "unit": "ns/iter",
+            "extra": "iterations: 46939\ncpu: 14774.279788661901 ns\nthreads: 1"
+          },
+          {
+            "name": "benchmark_RemapClenshawCurtisAdaptiveQuadrature/64",
+            "value": 14788.28566893101,
+            "unit": "ns/iter",
+            "extra": "iterations: 47247\ncpu: 14787.431582957839 ns\nthreads: 1"
+          },
+          {
+            "name": "benchmark_RemapClenshawCurtisAdaptiveQuadrature/66",
+            "value": 14810.305911944244,
+            "unit": "ns/iter",
+            "extra": "iterations: 47311\ncpu: 14808.416266830069 ns\nthreads: 1"
+          },
+          {
+            "name": "benchmark_RemapClenshawCurtisAdaptiveQuadrature/68",
+            "value": 14819.772695508222,
+            "unit": "ns/iter",
+            "extra": "iterations: 47223\ncpu: 14818.58837854452 ns\nthreads: 1"
+          },
+          {
+            "name": "benchmark_RemapClenshawCurtisAdaptiveQuadrature/70",
+            "value": 14878.711024368706,
+            "unit": "ns/iter",
+            "extra": "iterations: 47395\ncpu: 14876.489882899385 ns\nthreads: 1"
+          },
+          {
+            "name": "benchmark_RemapClenshawCurtisAdaptiveQuadrature/72",
+            "value": 14842.60170477414,
+            "unit": "ns/iter",
+            "extra": "iterations: 47279\ncpu: 14840.596628523606 ns\nthreads: 1"
+          },
+          {
+            "name": "benchmark_RemapClenshawCurtisAdaptiveQuadrature/74",
+            "value": 15123.639823183947,
+            "unit": "ns/iter",
+            "extra": "iterations: 45697\ncpu: 15086.653653412597 ns\nthreads: 1"
+          },
+          {
+            "name": "benchmark_RemapClenshawCurtisAdaptiveQuadrature/76",
+            "value": 14847.212317699901,
+            "unit": "ns/iter",
+            "extra": "iterations: 47038\ncpu: 14844.989434074867 ns\nthreads: 1"
+          },
+          {
+            "name": "benchmark_RemapClenshawCurtisAdaptiveQuadrature/78",
+            "value": 14869.056628984205,
+            "unit": "ns/iter",
+            "extra": "iterations: 47149\ncpu: 14867.5098941656 ns\nthreads: 1"
+          },
+          {
+            "name": "benchmark_RemapClenshawCurtisAdaptiveQuadrature/80",
+            "value": 14847.503553494133,
+            "unit": "ns/iter",
+            "extra": "iterations: 46996\ncpu: 14845.100966040662 ns\nthreads: 1"
+          },
+          {
+            "name": "benchmark_RemapClenshawCurtisAdaptiveQuadrature/82",
+            "value": 14854.38323099753,
+            "unit": "ns/iter",
+            "extra": "iterations: 47230\ncpu: 14853.800211730017 ns\nthreads: 1"
+          },
+          {
+            "name": "benchmark_RemapClenshawCurtisAdaptiveQuadrature/84",
+            "value": 14858.111618618768,
+            "unit": "ns/iter",
+            "extra": "iterations: 47071\ncpu: 14856.44558220566 ns\nthreads: 1"
+          },
+          {
+            "name": "benchmark_RemapClenshawCurtisAdaptiveQuadrature/86",
+            "value": 14891.077967903579,
+            "unit": "ns/iter",
+            "extra": "iterations: 47045\ncpu: 14889.66814751811 ns\nthreads: 1"
+          },
+          {
+            "name": "benchmark_RemapClenshawCurtisAdaptiveQuadrature/88",
+            "value": 14885.648072504975,
+            "unit": "ns/iter",
+            "extra": "iterations: 47004\ncpu: 14883.39809377938 ns\nthreads: 1"
+          },
+          {
+            "name": "benchmark_RemapClenshawCurtisAdaptiveQuadrature/90",
+            "value": 14880.870443275791,
+            "unit": "ns/iter",
+            "extra": "iterations: 46991\ncpu: 14878.85678108548 ns\nthreads: 1"
+          },
+          {
+            "name": "benchmark_RemapClenshawCurtisAdaptiveQuadrature/92",
+            "value": 14934.261925042158,
+            "unit": "ns/iter",
+            "extra": "iterations: 46960\ncpu: 14932.680302384671 ns\nthreads: 1"
+          },
+          {
+            "name": "benchmark_RemapClenshawCurtisAdaptiveQuadrature/94",
+            "value": 15187.35394538032,
+            "unit": "ns/iter",
+            "extra": "iterations: 46979\ncpu: 15185.452819345508 ns\nthreads: 1"
+          },
+          {
+            "name": "benchmark_RemapClenshawCurtisAdaptiveQuadrature/96",
+            "value": 14979.419345892213,
+            "unit": "ns/iter",
+            "extra": "iterations: 46873\ncpu: 14977.80880250864 ns\nthreads: 1"
+          },
+          {
+            "name": "benchmark_RemapClenshawCurtisAdaptiveQuadrature/98",
+            "value": 14966.170498164873,
+            "unit": "ns/iter",
+            "extra": "iterations: 46892\ncpu: 14964.301650601245 ns\nthreads: 1"
+          },
+          {
+            "name": "benchmark_RemapClenshawCurtisAdaptiveQuadrature/100",
+            "value": 14975.328200833417,
+            "unit": "ns/iter",
+            "extra": "iterations: 46566\ncpu: 14974.089335566568 ns\nthreads: 1"
+          },
+          {
+            "name": "benchmark_RemapClenshawCurtisHybridAdaptiveQuadrature/0",
+            "value": 2586.4772621929383,
+            "unit": "ns/iter",
+            "extra": "iterations: 271838\ncpu: 2585.950676505982 ns\nthreads: 1"
+          },
+          {
+            "name": "benchmark_RemapClenshawCurtisHybridAdaptiveQuadrature/2",
+            "value": 4059.9463349718076,
+            "unit": "ns/iter",
+            "extra": "iterations: 172086\ncpu: 4059.625756888926 ns\nthreads: 1"
+          },
+          {
+            "name": "benchmark_RemapClenshawCurtisHybridAdaptiveQuadrature/4",
+            "value": 4061.3238561214143,
+            "unit": "ns/iter",
+            "extra": "iterations: 170866\ncpu: 4060.682921119541 ns\nthreads: 1"
+          },
+          {
+            "name": "benchmark_RemapClenshawCurtisHybridAdaptiveQuadrature/6",
+            "value": 4060.0890101541113,
+            "unit": "ns/iter",
+            "extra": "iterations: 172441\ncpu: 4059.8056320712544 ns\nthreads: 1"
+          },
+          {
+            "name": "benchmark_RemapClenshawCurtisHybridAdaptiveQuadrature/8",
+            "value": 4937.356052402512,
+            "unit": "ns/iter",
+            "extra": "iterations: 141291\ncpu: 4936.767699287184 ns\nthreads: 1"
+          },
+          {
+            "name": "benchmark_RemapClenshawCurtisHybridAdaptiveQuadrature/10",
+            "value": 4933.767558799712,
+            "unit": "ns/iter",
+            "extra": "iterations: 141795\ncpu: 4933.207172325917 ns\nthreads: 1"
+          },
+          {
+            "name": "benchmark_RemapClenshawCurtisHybridAdaptiveQuadrature/12",
+            "value": 4936.278639390436,
+            "unit": "ns/iter",
+            "extra": "iterations: 141466\ncpu: 4936.169842930674 ns\nthreads: 1"
+          },
+          {
+            "name": "benchmark_RemapClenshawCurtisHybridAdaptiveQuadrature/14",
+            "value": 4956.918681396786,
+            "unit": "ns/iter",
+            "extra": "iterations: 141210\ncpu: 4956.09522696691 ns\nthreads: 1"
+          },
+          {
+            "name": "benchmark_RemapClenshawCurtisHybridAdaptiveQuadrature/16",
+            "value": 4933.407920568275,
+            "unit": "ns/iter",
+            "extra": "iterations: 141606\ncpu: 4932.96115277599 ns\nthreads: 1"
+          },
+          {
+            "name": "benchmark_RemapClenshawCurtisHybridAdaptiveQuadrature/18",
+            "value": 4933.79457635237,
+            "unit": "ns/iter",
+            "extra": "iterations: 141639\ncpu: 4933.44176392077 ns\nthreads: 1"
+          },
+          {
+            "name": "benchmark_RemapClenshawCurtisHybridAdaptiveQuadrature/20",
+            "value": 4930.607611973859,
+            "unit": "ns/iter",
+            "extra": "iterations: 141908\ncpu: 4929.6614849055695 ns\nthreads: 1"
+          },
+          {
+            "name": "benchmark_RemapClenshawCurtisHybridAdaptiveQuadrature/22",
+            "value": 4927.374919781834,
+            "unit": "ns/iter",
+            "extra": "iterations: 141801\ncpu: 4927.171000204663 ns\nthreads: 1"
+          },
+          {
+            "name": "benchmark_RemapClenshawCurtisHybridAdaptiveQuadrature/24",
+            "value": 4928.287300358953,
+            "unit": "ns/iter",
+            "extra": "iterations: 142130\ncpu: 4927.448110884233 ns\nthreads: 1"
+          },
+          {
+            "name": "benchmark_RemapClenshawCurtisHybridAdaptiveQuadrature/26",
+            "value": 4924.805280899773,
+            "unit": "ns/iter",
+            "extra": "iterations: 142097\ncpu: 4924.08975558955 ns\nthreads: 1"
+          },
+          {
+            "name": "benchmark_RemapClenshawCurtisHybridAdaptiveQuadrature/28",
+            "value": 4929.1120133426975,
+            "unit": "ns/iter",
+            "extra": "iterations: 141501\ncpu: 4928.948791881317 ns\nthreads: 1"
+          },
+          {
+            "name": "benchmark_RemapClenshawCurtisHybridAdaptiveQuadrature/30",
+            "value": 4927.050440448157,
+            "unit": "ns/iter",
+            "extra": "iterations: 142128\ncpu: 4926.322589496871 ns\nthreads: 1"
+          },
+          {
+            "name": "benchmark_RemapClenshawCurtisHybridAdaptiveQuadrature/32",
+            "value": 4921.77725398584,
+            "unit": "ns/iter",
+            "extra": "iterations: 142126\ncpu: 4921.406547711174 ns\nthreads: 1"
+          },
+          {
+            "name": "benchmark_RemapClenshawCurtisHybridAdaptiveQuadrature/34",
+            "value": 4922.831032007645,
+            "unit": "ns/iter",
+            "extra": "iterations: 142092\ncpu: 4922.398924640163 ns\nthreads: 1"
+          },
+          {
+            "name": "benchmark_RemapClenshawCurtisHybridAdaptiveQuadrature/36",
+            "value": 4920.979844743678,
+            "unit": "ns/iter",
+            "extra": "iterations: 142345\ncpu: 4920.298169939284 ns\nthreads: 1"
+          },
+          {
+            "name": "benchmark_RemapClenshawCurtisHybridAdaptiveQuadrature/38",
+            "value": 4920.145655997337,
+            "unit": "ns/iter",
+            "extra": "iterations: 142150\ncpu: 4919.924234963118 ns\nthreads: 1"
+          },
+          {
+            "name": "benchmark_RemapClenshawCurtisHybridAdaptiveQuadrature/40",
+            "value": 4925.768259890126,
+            "unit": "ns/iter",
+            "extra": "iterations: 142060\ncpu: 4924.933746304617 ns\nthreads: 1"
+          },
+          {
+            "name": "benchmark_RemapClenshawCurtisHybridAdaptiveQuadrature/42",
+            "value": 5949.4202412585355,
+            "unit": "ns/iter",
+            "extra": "iterations: 117799\ncpu: 5948.847613307353 ns\nthreads: 1"
+          },
+          {
+            "name": "benchmark_RemapClenshawCurtisHybridAdaptiveQuadrature/44",
+            "value": 5938.93119308657,
+            "unit": "ns/iter",
+            "extra": "iterations: 118491\ncpu: 5938.308985492413 ns\nthreads: 1"
+          },
+          {
+            "name": "benchmark_RemapClenshawCurtisHybridAdaptiveQuadrature/46",
+            "value": 5948.568140073004,
+            "unit": "ns/iter",
+            "extra": "iterations: 117596\ncpu: 5947.970024490657 ns\nthreads: 1"
+          },
+          {
+            "name": "benchmark_RemapClenshawCurtisHybridAdaptiveQuadrature/48",
+            "value": 5944.476937449824,
+            "unit": "ns/iter",
+            "extra": "iterations: 117745\ncpu: 5943.715886024864 ns\nthreads: 1"
+          },
+          {
+            "name": "benchmark_RemapClenshawCurtisHybridAdaptiveQuadrature/50",
+            "value": 5941.7051916208475,
+            "unit": "ns/iter",
+            "extra": "iterations: 117863\ncpu: 5940.748648855015 ns\nthreads: 1"
+          },
+          {
+            "name": "benchmark_RemapClenshawCurtisHybridAdaptiveQuadrature/52",
+            "value": 5948.103565970415,
+            "unit": "ns/iter",
+            "extra": "iterations: 117780\ncpu: 5947.831151299107 ns\nthreads: 1"
+          },
+          {
+            "name": "benchmark_RemapClenshawCurtisHybridAdaptiveQuadrature/54",
+            "value": 5947.147430954085,
+            "unit": "ns/iter",
+            "extra": "iterations: 118001\ncpu: 5946.226938754846 ns\nthreads: 1"
+          },
+          {
+            "name": "benchmark_RemapClenshawCurtisHybridAdaptiveQuadrature/56",
+            "value": 5938.035868248558,
+            "unit": "ns/iter",
+            "extra": "iterations: 118071\ncpu: 5937.073404985362 ns\nthreads: 1"
+          },
+          {
+            "name": "benchmark_RemapClenshawCurtisHybridAdaptiveQuadrature/58",
+            "value": 5942.786223458755,
+            "unit": "ns/iter",
+            "extra": "iterations: 118259\ncpu: 5942.194742049514 ns\nthreads: 1"
+          },
+          {
+            "name": "benchmark_RemapClenshawCurtisHybridAdaptiveQuadrature/60",
+            "value": 5945.205212697023,
+            "unit": "ns/iter",
+            "extra": "iterations: 117444\ncpu: 5944.096360818774 ns\nthreads: 1"
+          },
+          {
+            "name": "benchmark_RemapClenshawCurtisHybridAdaptiveQuadrature/62",
+            "value": 5969.632346932051,
+            "unit": "ns/iter",
+            "extra": "iterations: 117464\ncpu: 5969.204956411913 ns\nthreads: 1"
+          },
+          {
+            "name": "benchmark_RemapClenshawCurtisHybridAdaptiveQuadrature/64",
+            "value": 5939.365762093204,
+            "unit": "ns/iter",
+            "extra": "iterations: 117735\ncpu: 5938.480749140033 ns\nthreads: 1"
+          },
+          {
+            "name": "benchmark_RemapClenshawCurtisHybridAdaptiveQuadrature/66",
+            "value": 5938.106042208237,
+            "unit": "ns/iter",
+            "extra": "iterations: 116944\ncpu: 5937.286025790082 ns\nthreads: 1"
+          },
+          {
+            "name": "benchmark_RemapClenshawCurtisHybridAdaptiveQuadrature/68",
+            "value": 5939.577620644909,
+            "unit": "ns/iter",
+            "extra": "iterations: 118654\ncpu: 5939.169939487706 ns\nthreads: 1"
+          },
+          {
+            "name": "benchmark_RemapClenshawCurtisHybridAdaptiveQuadrature/70",
+            "value": 5936.152953470006,
+            "unit": "ns/iter",
+            "extra": "iterations: 117709\ncpu: 5935.58789897129 ns\nthreads: 1"
+          },
+          {
+            "name": "benchmark_RemapClenshawCurtisHybridAdaptiveQuadrature/72",
+            "value": 5940.898608601572,
+            "unit": "ns/iter",
+            "extra": "iterations: 118442\ncpu: 5940.180569392667 ns\nthreads: 1"
+          },
+          {
+            "name": "benchmark_RemapClenshawCurtisHybridAdaptiveQuadrature/74",
+            "value": 5949.239452766623,
+            "unit": "ns/iter",
+            "extra": "iterations: 117756\ncpu: 5948.677273344835 ns\nthreads: 1"
+          },
+          {
+            "name": "benchmark_RemapClenshawCurtisHybridAdaptiveQuadrature/76",
+            "value": 5948.171711237585,
+            "unit": "ns/iter",
+            "extra": "iterations: 117453\ncpu: 5947.182626242353 ns\nthreads: 1"
+          },
+          {
+            "name": "benchmark_RemapClenshawCurtisHybridAdaptiveQuadrature/78",
+            "value": 5946.718991902271,
+            "unit": "ns/iter",
+            "extra": "iterations: 117687\ncpu: 5946.3989310627985 ns\nthreads: 1"
+          },
+          {
+            "name": "benchmark_RemapClenshawCurtisHybridAdaptiveQuadrature/80",
+            "value": 5943.38536079505,
+            "unit": "ns/iter",
+            "extra": "iterations: 117643\ncpu: 5942.672271193104 ns\nthreads: 1"
+          },
+          {
+            "name": "benchmark_RemapClenshawCurtisHybridAdaptiveQuadrature/82",
+            "value": 5957.391911268554,
+            "unit": "ns/iter",
+            "extra": "iterations: 118560\ncpu: 5956.4635711874835 ns\nthreads: 1"
+          },
+          {
+            "name": "benchmark_RemapClenshawCurtisHybridAdaptiveQuadrature/84",
+            "value": 5940.893149734387,
+            "unit": "ns/iter",
+            "extra": "iterations: 118156\ncpu: 5940.50933511648 ns\nthreads: 1"
+          },
+          {
+            "name": "benchmark_RemapClenshawCurtisHybridAdaptiveQuadrature/86",
+            "value": 5937.500747371414,
+            "unit": "ns/iter",
+            "extra": "iterations: 117746\ncpu: 5936.973612691875 ns\nthreads: 1"
+          },
+          {
+            "name": "benchmark_RemapClenshawCurtisHybridAdaptiveQuadrature/88",
+            "value": 5957.132898012015,
+            "unit": "ns/iter",
+            "extra": "iterations: 117308\ncpu: 5956.688955569809 ns\nthreads: 1"
+          },
+          {
+            "name": "benchmark_RemapClenshawCurtisHybridAdaptiveQuadrature/90",
+            "value": 5950.338541889293,
+            "unit": "ns/iter",
+            "extra": "iterations: 116987\ncpu: 5949.542043132836 ns\nthreads: 1"
+          },
+          {
+            "name": "benchmark_RemapClenshawCurtisHybridAdaptiveQuadrature/92",
+            "value": 6053.869925393177,
+            "unit": "ns/iter",
+            "extra": "iterations: 117817\ncpu: 6052.868805011449 ns\nthreads: 1"
+          },
+          {
+            "name": "benchmark_RemapClenshawCurtisHybridAdaptiveQuadrature/94",
+            "value": 5932.414930320409,
+            "unit": "ns/iter",
+            "extra": "iterations: 118256\ncpu: 5932.073577662278 ns\nthreads: 1"
+          },
+          {
+            "name": "benchmark_RemapClenshawCurtisHybridAdaptiveQuadrature/96",
+            "value": 5949.675575849392,
+            "unit": "ns/iter",
+            "extra": "iterations: 118043\ncpu: 5948.755699194097 ns\nthreads: 1"
+          },
+          {
+            "name": "benchmark_RemapClenshawCurtisHybridAdaptiveQuadrature/98",
+            "value": 5952.016172850116,
+            "unit": "ns/iter",
+            "extra": "iterations: 117790\ncpu: 5951.373817811333 ns\nthreads: 1"
+          },
+          {
+            "name": "benchmark_RemapClenshawCurtisHybridAdaptiveQuadrature/100",
+            "value": 5944.7031534676225,
+            "unit": "ns/iter",
+            "extra": "iterations: 117458\ncpu: 5944.492380255022 ns\nthreads: 1"
+          },
+          {
+            "name": "benchmark_RemapGLCCAdaptiveQuadrature/0",
+            "value": 7565.350323238386,
+            "unit": "ns/iter",
+            "extra": "iterations: 92192\ncpu: 7564.712274384247 ns\nthreads: 1"
+          },
+          {
+            "name": "benchmark_RemapGLCCAdaptiveQuadrature/2",
+            "value": 12123.549236413515,
+            "unit": "ns/iter",
+            "extra": "iterations: 58605\ncpu: 12107.520894121077 ns\nthreads: 1"
+          },
+          {
+            "name": "benchmark_RemapGLCCAdaptiveQuadrature/4",
+            "value": 15080.80645578626,
+            "unit": "ns/iter",
+            "extra": "iterations: 46377\ncpu: 15079.501498586924 ns\nthreads: 1"
+          },
+          {
+            "name": "benchmark_RemapGLCCAdaptiveQuadrature/6",
+            "value": 15059.352436822528,
+            "unit": "ns/iter",
+            "extra": "iterations: 46536\ncpu: 15057.416451779056 ns\nthreads: 1"
+          },
+          {
+            "name": "benchmark_RemapGLCCAdaptiveQuadrature/8",
+            "value": 15332.880638714196,
+            "unit": "ns/iter",
+            "extra": "iterations: 46531\ncpu: 15331.086587436312 ns\nthreads: 1"
+          },
+          {
+            "name": "benchmark_RemapGLCCAdaptiveQuadrature/10",
+            "value": 15063.896268689428,
+            "unit": "ns/iter",
+            "extra": "iterations: 46418\ncpu: 15061.64836916822 ns\nthreads: 1"
+          },
+          {
+            "name": "benchmark_RemapGLCCAdaptiveQuadrature/12",
+            "value": 15068.786821287895,
+            "unit": "ns/iter",
+            "extra": "iterations: 46393\ncpu: 15068.14900954912 ns\nthreads: 1"
+          },
+          {
+            "name": "benchmark_RemapGLCCAdaptiveQuadrature/14",
+            "value": 18362.11985322997,
+            "unit": "ns/iter",
+            "extra": "iterations: 38155\ncpu: 18359.51783514508 ns\nthreads: 1"
+          },
+          {
+            "name": "benchmark_RemapGLCCAdaptiveQuadrature/16",
+            "value": 18428.26183552048,
+            "unit": "ns/iter",
+            "extra": "iterations: 38169\ncpu: 18428.03843433163 ns\nthreads: 1"
+          },
+          {
+            "name": "benchmark_RemapGLCCAdaptiveQuadrature/18",
+            "value": 18340.265992296245,
+            "unit": "ns/iter",
+            "extra": "iterations: 38159\ncpu: 18338.240415106244 ns\nthreads: 1"
+          },
+          {
+            "name": "benchmark_RemapGLCCAdaptiveQuadrature/20",
+            "value": 18352.041078675895,
+            "unit": "ns/iter",
+            "extra": "iterations: 38195\ncpu: 18351.491268489728 ns\nthreads: 1"
+          },
+          {
+            "name": "benchmark_RemapGLCCAdaptiveQuadrature/22",
+            "value": 18349.083645607054,
+            "unit": "ns/iter",
+            "extra": "iterations: 38161\ncpu: 18346.07976730117 ns\nthreads: 1"
+          },
+          {
+            "name": "benchmark_RemapGLCCAdaptiveQuadrature/24",
+            "value": 18347.299714533212,
+            "unit": "ns/iter",
+            "extra": "iterations: 38183\ncpu: 18346.312704608008 ns\nthreads: 1"
+          },
+          {
+            "name": "benchmark_RemapGLCCAdaptiveQuadrature/26",
+            "value": 18357.01523694683,
+            "unit": "ns/iter",
+            "extra": "iterations: 38131\ncpu: 18353.75995908763 ns\nthreads: 1"
+          },
+          {
+            "name": "benchmark_RemapGLCCAdaptiveQuadrature/28",
+            "value": 18339.131372702734,
+            "unit": "ns/iter",
+            "extra": "iterations: 38151\ncpu: 18337.506906764902 ns\nthreads: 1"
+          },
+          {
+            "name": "benchmark_RemapGLCCAdaptiveQuadrature/30",
+            "value": 18309.67842129886,
+            "unit": "ns/iter",
+            "extra": "iterations: 38538\ncpu: 18307.182391406262 ns\nthreads: 1"
+          },
+          {
+            "name": "benchmark_RemapGLCCAdaptiveQuadrature/32",
+            "value": 18328.73055635589,
+            "unit": "ns/iter",
+            "extra": "iterations: 38123\ncpu: 18326.30454056593 ns\nthreads: 1"
+          },
+          {
+            "name": "benchmark_RemapGLCCAdaptiveQuadrature/34",
+            "value": 18259.308491302083,
+            "unit": "ns/iter",
+            "extra": "iterations: 38510\ncpu: 18258.587613606174 ns\nthreads: 1"
+          },
+          {
+            "name": "benchmark_RemapGLCCAdaptiveQuadrature/36",
+            "value": 18358.777422565916,
+            "unit": "ns/iter",
+            "extra": "iterations: 38162\ncpu: 18357.17150568634 ns\nthreads: 1"
+          },
+          {
+            "name": "benchmark_RemapGLCCAdaptiveQuadrature/38",
+            "value": 18347.73621593284,
+            "unit": "ns/iter",
+            "extra": "iterations: 38160\ncpu: 18347.051703353725 ns\nthreads: 1"
+          },
+          {
+            "name": "benchmark_RemapGLCCAdaptiveQuadrature/40",
+            "value": 18348.388932577487,
+            "unit": "ns/iter",
+            "extra": "iterations: 38148\ncpu: 18346.083988675833 ns\nthreads: 1"
+          },
+          {
+            "name": "benchmark_RemapGLCCAdaptiveQuadrature/42",
+            "value": 22174.865933648918,
+            "unit": "ns/iter",
+            "extra": "iterations: 31559\ncpu: 22174.511232927078 ns\nthreads: 1"
+          },
+          {
+            "name": "benchmark_RemapGLCCAdaptiveQuadrature/44",
+            "value": 22121.074201198724,
+            "unit": "ns/iter",
+            "extra": "iterations: 32048\ncpu: 22118.61348602087 ns\nthreads: 1"
+          },
+          {
+            "name": "benchmark_RemapGLCCAdaptiveQuadrature/46",
+            "value": 22180.86041594448,
+            "unit": "ns/iter",
+            "extra": "iterations: 31687\ncpu: 22180.09843153275 ns\nthreads: 1"
+          },
+          {
+            "name": "benchmark_RemapGLCCAdaptiveQuadrature/48",
+            "value": 22191.831021156904,
+            "unit": "ns/iter",
+            "extra": "iterations: 31572\ncpu: 22188.216109210058 ns\nthreads: 1"
+          },
+          {
+            "name": "benchmark_RemapGLCCAdaptiveQuadrature/50",
+            "value": 22166.656255938746,
+            "unit": "ns/iter",
+            "extra": "iterations: 31570\ncpu: 22165.149889135766 ns\nthreads: 1"
+          },
+          {
+            "name": "benchmark_RemapGLCCAdaptiveQuadrature/52",
+            "value": 21995.376552843532,
+            "unit": "ns/iter",
+            "extra": "iterations: 32038\ncpu: 21992.78587926785 ns\nthreads: 1"
+          },
+          {
+            "name": "benchmark_RemapGLCCAdaptiveQuadrature/54",
+            "value": 22230.46353008491,
+            "unit": "ns/iter",
+            "extra": "iterations: 31478\ncpu: 22228.273238452697 ns\nthreads: 1"
+          },
+          {
+            "name": "benchmark_RemapGLCCAdaptiveQuadrature/56",
+            "value": 22057.593760733216,
+            "unit": "ns/iter",
+            "extra": "iterations: 32023\ncpu: 22055.01601973706 ns\nthreads: 1"
+          },
+          {
+            "name": "benchmark_RemapGLCCAdaptiveQuadrature/58",
+            "value": 22239.15548645141,
+            "unit": "ns/iter",
+            "extra": "iterations: 31514\ncpu: 22236.38367074895 ns\nthreads: 1"
+          },
+          {
+            "name": "benchmark_RemapGLCCAdaptiveQuadrature/60",
+            "value": 22217.070731784974,
+            "unit": "ns/iter",
+            "extra": "iterations: 31471\ncpu: 22214.726319468045 ns\nthreads: 1"
+          },
+          {
+            "name": "benchmark_RemapGLCCAdaptiveQuadrature/62",
+            "value": 22229.905935084946,
+            "unit": "ns/iter",
+            "extra": "iterations: 31457\ncpu: 22227.33283529939 ns\nthreads: 1"
+          },
+          {
+            "name": "benchmark_RemapGLCCAdaptiveQuadrature/64",
+            "value": 22579.20675185938,
+            "unit": "ns/iter",
+            "extra": "iterations: 31458\ncpu: 22578.139201476424 ns\nthreads: 1"
+          },
+          {
+            "name": "benchmark_RemapGLCCAdaptiveQuadrature/66",
+            "value": 22216.732343878426,
+            "unit": "ns/iter",
+            "extra": "iterations: 31802\ncpu: 22214.256367525315 ns\nthreads: 1"
+          },
+          {
+            "name": "benchmark_RemapGLCCAdaptiveQuadrature/68",
+            "value": 22215.754284082424,
+            "unit": "ns/iter",
+            "extra": "iterations: 31512\ncpu: 22214.564166032564 ns\nthreads: 1"
+          },
+          {
+            "name": "benchmark_RemapGLCCAdaptiveQuadrature/70",
+            "value": 22207.72983073189,
+            "unit": "ns/iter",
+            "extra": "iterations: 31843\ncpu: 22205.918412210176 ns\nthreads: 1"
+          },
+          {
+            "name": "benchmark_RemapGLCCAdaptiveQuadrature/72",
+            "value": 22210.5425990216,
+            "unit": "ns/iter",
+            "extra": "iterations: 31104\ncpu: 22210.207754629788 ns\nthreads: 1"
+          },
+          {
+            "name": "benchmark_RemapGLCCAdaptiveQuadrature/74",
+            "value": 22208.369008724287,
+            "unit": "ns/iter",
+            "extra": "iterations: 31525\ncpu: 22205.515368755543 ns\nthreads: 1"
+          },
+          {
+            "name": "benchmark_RemapGLCCAdaptiveQuadrature/76",
+            "value": 22166.348439262747,
+            "unit": "ns/iter",
+            "extra": "iterations: 31908\ncpu: 22164.797386236227 ns\nthreads: 1"
+          },
+          {
+            "name": "benchmark_RemapGLCCAdaptiveQuadrature/78",
+            "value": 22219.797494649796,
+            "unit": "ns/iter",
+            "extra": "iterations: 31772\ncpu: 22216.953575476426 ns\nthreads: 1"
+          },
+          {
+            "name": "benchmark_RemapGLCCAdaptiveQuadrature/80",
+            "value": 22184.755757882547,
+            "unit": "ns/iter",
+            "extra": "iterations: 31522\ncpu: 22184.103197767487 ns\nthreads: 1"
+          },
+          {
+            "name": "benchmark_RemapGLCCAdaptiveQuadrature/82",
+            "value": 22181.78991649934,
+            "unit": "ns/iter",
+            "extra": "iterations: 31497\ncpu: 22179.13182207767 ns\nthreads: 1"
+          },
+          {
+            "name": "benchmark_RemapGLCCAdaptiveQuadrature/84",
+            "value": 22161.84501552742,
+            "unit": "ns/iter",
+            "extra": "iterations: 31558\ncpu: 22161.35147981475 ns\nthreads: 1"
+          },
+          {
+            "name": "benchmark_RemapGLCCAdaptiveQuadrature/86",
+            "value": 22186.389503023867,
+            "unit": "ns/iter",
+            "extra": "iterations: 31571\ncpu: 22183.781888442853 ns\nthreads: 1"
+          },
+          {
+            "name": "benchmark_RemapGLCCAdaptiveQuadrature/88",
+            "value": 22165.749564721304,
+            "unit": "ns/iter",
+            "extra": "iterations: 31589\ncpu: 22163.919244039545 ns\nthreads: 1"
+          },
+          {
+            "name": "benchmark_RemapGLCCAdaptiveQuadrature/90",
+            "value": 22151.941126252816,
+            "unit": "ns/iter",
+            "extra": "iterations: 31627\ncpu: 22149.156922882867 ns\nthreads: 1"
+          },
+          {
+            "name": "benchmark_RemapGLCCAdaptiveQuadrature/92",
+            "value": 22140.643616348152,
+            "unit": "ns/iter",
+            "extra": "iterations: 31612\ncpu: 22138.084113627738 ns\nthreads: 1"
+          },
+          {
+            "name": "benchmark_RemapGLCCAdaptiveQuadrature/94",
+            "value": 22149.786087286033,
+            "unit": "ns/iter",
+            "extra": "iterations: 31597\ncpu: 22145.093394943146 ns\nthreads: 1"
+          },
+          {
+            "name": "benchmark_RemapGLCCAdaptiveQuadrature/96",
+            "value": 22127.7065660239,
+            "unit": "ns/iter",
+            "extra": "iterations: 31663\ncpu: 22125.187916495466 ns\nthreads: 1"
+          },
+          {
+            "name": "benchmark_RemapGLCCAdaptiveQuadrature/98",
+            "value": 22095.202577334865,
+            "unit": "ns/iter",
+            "extra": "iterations: 31583\ncpu: 22093.303676028358 ns\nthreads: 1"
+          },
+          {
+            "name": "benchmark_RemapGLCCAdaptiveQuadrature/100",
+            "value": 22072.857961380367,
+            "unit": "ns/iter",
+            "extra": "iterations: 31590\ncpu: 22069.392877492694 ns\nthreads: 1"
           }
         ]
       }
