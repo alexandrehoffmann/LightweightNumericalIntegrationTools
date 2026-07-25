@@ -77,6 +77,14 @@ public:
 	 */
 	template<class Function> LongScalar integrate(Function&& f, const Scalar& xmin, const Scalar& xmax);
 
+	/**
+	 * @brief Perform adaptive quadrature over (-inf, inf) assuming the integrated function has several given peaks of known variance
+	 * @tparam Function Callable with signature Scalar f(Scalar).
+	 * @param f Function to integrate.
+	 * @param mu a span of Scalar that contains the approximate position of the peaks
+	 * @param sigma the approximate variance of the peaks
+	 * @return Approximation of the integral.
+	 */
 	template<class Function> LongScalar integrateWithHints(Function&& f, const std::span<const Scalar> mu, const Scalar& sigma);
 
 	/**
